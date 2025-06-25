@@ -58,6 +58,9 @@ export default function HomePage() {
     overflowX: 'hidden',
   };
 
+  // Handler to disable navigation
+  const preventNav = e => e.preventDefault();
+
   return (
     <div style={rootStyle}>
       {/* Floating shapes */}
@@ -70,12 +73,12 @@ export default function HomePage() {
       <header>
         <div className="container">
           <nav>
-            <div className="logo">TradeMind AI</div>
+            <div className="logo">OM AI</div>
             <div className="nav-links">
-              <Link to="/dashboard">Dashboard</Link>
-              <Link to="/analytics">Analytics</Link>
-              <Link to="/portfolio">Portfolio</Link>
-              <Link to="/alerts">Alerts</Link>
+              <a href="#" onClick={preventNav}>Dashboard</a>
+              <a href="#" onClick={preventNav}>Analytics</a>
+              <a href="#" onClick={preventNav}>Portfolio</a>
+              <a href="#" onClick={preventNav}>Alerts</a>
             </div>
             <div className="user-profile">
               <div style={{width: 32, height: 32, background: 'linear-gradient(135deg, #667eea, #764ba2)', borderRadius: '50%'}}></div>
