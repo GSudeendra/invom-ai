@@ -1,8 +1,7 @@
-version: '3.8'
 services:
   mongodb:
     image: mongo:6
-    container_name: etf_dashboard_mongodb
+    container_name: invom_ai_mongodb
     ports:
       - "27017:27017"
     volumes:

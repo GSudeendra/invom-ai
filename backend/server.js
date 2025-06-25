@@ -20,9 +20,9 @@ app.use(cors());
 // Serve static files from the project root
 app.use(express.static(path.join(__dirname, '..')));
 
-// Serve etf_dashboard.html at root
+// Serve invom_ai.html at root
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'etf_dashboard.html'));
+  res.sendFile(path.join(__dirname, '..', 'invom_ai.html'));
 });
 
 // Serve a blank favicon to silence 404s

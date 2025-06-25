@@ -22,7 +22,7 @@ npm install mongoose
 
 ### 2. Configure MongoDB Connection
 The connection is configured in `src/db.js` with the following options:
-- **Default URI**: `mongodb://localhost:27017/etf_dashboard`
+- **Default URI**: `mongodb://localhost:27017/invom_ai`
 - **Environment Variable**: Set `MONGODB_URI` for custom connection
 
 ### 3. Seed High Liquidity ETFs Data
@@ -115,10 +115,10 @@ db.high_liquidity_etfs.deleteMany({})
 ### Backup Data
 ```bash
 # Export collection
-mongoexport --db etf_dashboard --collection high_liquidity_etfs --out backup.json
+mongoexport --db invom_ai --collection high_liquidity_etfs --out backup.json
 
 # Import collection
-mongoimport --db etf_dashboard --collection high_liquidity_etfs --file backup.json
+mongoimport --db invom_ai --collection high_liquidity_etfs --file backup.json
 ```
 
 ## Next Steps

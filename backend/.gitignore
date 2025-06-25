@@ -105,8 +105,8 @@ android/
 ios/
 
 # React
-etf-dashboard-frontend/build/
-etf-dashboard-frontend/node_modules/
+invom-ai-frontend/build/
+invom-ai-frontend/node_modules/
 
 
 # Backend

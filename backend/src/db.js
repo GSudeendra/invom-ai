@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/etf_dashboard';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/invom_ai';
 
 function connectDB() {
   return mongoose.connect(MONGODB_URI);

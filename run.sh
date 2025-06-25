@@ -4,6 +4,7 @@ set -e
 # Colors
 GREEN='\033[0;32m'
 RED='\033[0;31m'
+YELLOW='\033[1;33m'
 NC='\033[0m'
 
 function check_cmd() {
@@ -48,6 +49,13 @@ function try_install_docker_compose() {
   fi
 }
 
+function cleanup_existing_containers() {
+  echo -e "${YELLOW}==> Cleaning up existing MongoDB containers...${NC}"
+  # Stop and remove any existing MongoDB containers that might conflict
+  docker stop invom_ai_mongodb etf_dashboard_mongodb 2>/dev/null || true
+  docker rm invom_ai_mongodb etf_dashboard_mongodb 2>/dev/null || true
+}
+
 function wait_for_mongo() {
   echo -e "${GREEN}==> Waiting for MongoDB to be ready...${NC}"
   for i in {1..20}; do
@@ -58,6 +66,19 @@ function wait_for_mongo() {
     sleep 1
   done
   echo -e "${RED}MongoDB did not start in time. Exiting.${NC}"
+  exit 1
+}
+
+function wait_for_backend() {
+  echo -e "${GREEN}==> Waiting for backend to be ready...${NC}"
+  for i in {1..30}; do
+    if nc -z localhost 3001; then
+      echo -e "${GREEN}Backend is up!${NC}"
+      return 0
+    fi
+    sleep 1
+  done
+  echo -e "${RED}Backend did not start in time. Exiting.${NC}"
   exit 1
 }
 
@@ -87,7 +108,14 @@ else
     fi
     if has_docker_compose; then
       echo -e "${GREEN}==> Starting MongoDB with Docker Compose...${NC}"
-      docker-compose up -d mongodb || docker compose up -d mongodb
+      cleanup_existing_containers
+      
+      # Try the new docker compose command first, fallback to docker-compose
+      if docker compose version >/dev/null 2>&1; then
+        docker compose up -d mongodb
+      else
+        docker-compose up -d mongodb
+      fi
       wait_for_mongo
     else
       echo -e "${RED}Docker Compose could not be installed automatically. Please install it manually.${NC}"
@@ -102,7 +130,7 @@ fi
 # After MongoDB is up, check if high_liquidity_etfs is empty and prompt to seed
 if has_cmd node; then
   if [ -f backend/node_modules/mongodb/package.json ]; then
-    ETF_COUNT=$(node -e "const { MongoClient } = require('./backend/node_modules/mongodb'); (async () => { try { const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true }); const db = client.db('etf_dashboard'); const count = await db.collection('high_liquidity_etfs').countDocuments(); console.log(count); await client.close(); } catch (e) { console.log(0); } })()")
+    ETF_COUNT=$(node -e "const { MongoClient } = require('./backend/node_modules/mongodb'); (async () => { try { const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true }); const db = client.db('invom_ai'); const count = await db.collection('high_liquidity_etfs').countDocuments(); console.log(count); await client.close(); } catch (e) { console.log(0); } })()")
     if [ "$ETF_COUNT" = "0" ]; then
       echo -e "${RED}No data found in high_liquidity_etfs collection.${NC}"
       read -p "Do you want to seed it now? (y/n): " SEED_CONFIRM
@@ -122,6 +150,14 @@ fi
 check_cmd node
 check_cmd npm
 
+# Get date for log files
+LOG_DATE=$(date +%Y%m%d)
+LOG_DIR="logs"
+BACKEND_LOG="$LOG_DIR/logs_backend_$LOG_DATE.log"
+FRONTEND_LOG="$LOG_DIR/logs_frontend_$LOG_DATE.log"
+
+mkdir -p "$LOG_DIR"
+
 # 2. Start backend
 cd backend
 echo -e "${GREEN}==> Starting backend...${NC}"
@@ -129,9 +165,9 @@ if [ ! -d node_modules ] || [ package-lock.json -nt node_modules ]; then
   echo -e "${GREEN}Installing backend dependencies...${NC}"
   npm install
 fi
-npm run start &
+npm run start >>"../$BACKEND_LOG" 2>&1 &
 BACKEND_PID=$!
-sleep 5
+wait_for_backend
 
 # 3. Start frontend
 cd ../frontend
@@ -140,17 +176,11 @@ if [ ! -d node_modules ] || [ package-lock.json -nt node_modules ]; then
   echo -e "${GREEN}Installing frontend dependencies...${NC}"
   npm install
 fi
-npm start &
+npm start >>"../$FRONTEND_LOG" 2>&1 &
 FRONTEND_PID=$!
 sleep 5
 
-# 4. Open frontend in browser
-if command -v open >/dev/null; then
-  open http://localhost:4000
-elif command -v xdg-open >/dev/null; then
-  xdg-open http://localhost:4000
-fi
-
+# 4. Print summary and instructions
 cd ..
 echo -e "${GREEN}ETF Dashboard started! Backend (port 3001), Frontend (port 4000).${NC}"
 echo -e "${GREEN}To stop: kill $BACKEND_PID $FRONTEND_PID${NC}"
@@ -170,8 +200,8 @@ ${GREEN}Access your app and services:${NC}
 
 ${GREEN}MongoDB Access Options:${NC}
 - MongoDB Compass:  Open Compass and connect to ${MONGO_URL}
-- Mongo Shell:      mongosh "${MONGO_URL}/etf_dashboard"
-- Docker CLI:       docker exec -it etf_dashboard_mongodb mongosh
+- Mongo Shell:      mongosh "${MONGO_URL}/invom_ai"
+- Docker CLI:       docker exec -it invom_ai_mongodb mongosh
 
 ${GREEN}Backend API Example:${NC}
 - List high liquidity ETFs:  ${BACKEND_URL}/api/etfs/high-liquidity
@@ -181,5 +211,34 @@ ${GREEN}To stop all services:${NC}
 - If using Docker: docker-compose down
 
 EOM
+
+# 5. Open frontend in browser only once, at the end
+if command -v open >/dev/null; then
+  open http://localhost:4000
+elif command -v xdg-open >/dev/null; then
+  xdg-open http://localhost:4000
+fi
+
+# 6. Final console log with decorative borders
+echo ""
+echo "_______________________________________"
+echo "________________________________________"
+echo "_________________________________________"
+echo "- Frontend:   http://localhost:4000"
+echo "- Backend:    http://localhost:3001"
+echo "- MongoDB:    mongodb://localhost:27017"
+echo "_________________________________________"
+echo "________________________________________"
+echo "_______________________________________"
+echo ""
+echo -e "${GREEN}Application logs are available at:${NC}"
+echo -e "${YELLOW}logs/logs_backend_$LOG_DATE.log${NC} - Backend logs"
+echo -e "${YELLOW}logs/logs_frontend_$LOG_DATE.log${NC} - Frontend logs"
+echo ""
+echo -e "${GREEN}Additional suggestions:${NC}"
+echo -e "${YELLOW}• Monitor logs in real-time: tail -f logs/logs_backend_$LOG_DATE.log${NC}"
+echo -e "${YELLOW}• Check for errors: grep -i error logs/logs_backend_$LOG_DATE.log${NC}"
+echo -e "${YELLOW}• View recent logs: ls -la logs/ | tail -5${NC}"
+echo ""
 
 wait $BACKEND_PID $FRONTEND_PID 

@@ -10,24 +10,36 @@ From the project root, use the provided scripts:
 
 ### 💻 Mac/Linux
 ```bash
-chmod +x start.sh
-./start.sh
+chmod +x run.sh
+./run.sh
 ```
 
 ### 🪟 Windows
 ```
-start start.bat
+run run.bat
 ```
 
 - These scripts will:
   - 🧑‍💻 Check for Node.js and npm
+  - 🗄️ Start MongoDB (Docker or local)
   - 📦 Install missing dependencies (backend and frontend)
-  - 🟢 Start the backend (port 3001) and then the frontend (port 3000)
+  - 🟢 Start the backend (port 3001) and then the frontend (port 4000)
   - 🌐 Open the dashboard in your browser
+  - 📝 Log all output to `logs/` directory with date stamps
 
 ---
 
 ## 🛠️ Manual Setup (Advanced)
+
+### 🗄️ MongoDB
+```bash
+# Using Docker (recommended)
+docker compose up -d mongodb
+
+# Or install MongoDB locally
+# macOS: brew install mongodb-community
+# Ubuntu: sudo apt-get install mongodb
+```
 
 ### 🔙 Backend
 ```bash
@@ -38,7 +50,7 @@ npm start
 
 ### 🔜 Frontend
 ```bash
-cd etf-dashboard-frontend
+cd frontend
 npm install
 npm start
 ```
@@ -48,7 +60,7 @@ npm start
 ## 🗂️ Project Structure
 
 ```
-etf-dashboard/
+invom-ai/
 ├── backend/           # 🟢 Node.js/Express API
 │   ├── server.js
 │   ├── package.json
@@ -66,18 +78,24 @@ etf-dashboard/
 │       └── services/
 │           ├── amfiNavService.js
 │           └── navDataService.js
-└── etf-dashboard-frontend/   # ⚛️ React app (user dashboard UI)
-    ├── package.json
-    └── src/
-        ├── api/
-        ├── components/
-        │   ├── etf/
-        │   └── layout/
-        ├── hooks/
-        ├── pages/
-        ├── styles/
-        ├── utils/
-        └── App.js, index.js
+├── frontend/          # ⚛️ React app (user dashboard UI)
+│   ├── package.json
+│   └── src/
+│       ├── api/
+│       ├── components/
+│       │   ├── etf/
+│       │   └── layout/
+│       ├── hooks/
+│       ├── pages/
+│       ├── styles/
+│       ├── utils/
+│       └── App.js, index.js
+├── logs/              # 📝 Application logs (auto-generated)
+│   ├── logs_backend_YYYYMMDD.log
+│   └── logs_frontend_YYYYMMDD.log
+├── run.sh             # 🚀 Mac/Linux startup script
+├── run.bat            # 🚀 Windows startup script
+└── docker-compose.yml # 🐳 MongoDB container setup
 ```
 
 ---
@@ -112,6 +130,7 @@ etf-dashboard/
 - 🟢 **Backend:** All business logic is in `src/`, with clear separation between API handlers and services.
 - ⚛️ **Frontend:** All UI logic is in `src/`, with components, hooks, pages, and styles organized by domain.
 - 🗃️ **Data:** Only the latest categorized ETF data is kept in `nav_data/`.
+- 📝 **Logging:** All application logs are automatically saved to `logs/` directory with date stamps.
 
 ---
 
@@ -129,13 +148,41 @@ etf-dashboard/
   - Ensure Node.js v18+ is installed.
   - Check for missing dependencies: `npm install`
   - Check import paths if you move files.
+  - Check logs: `tail -f logs/logs_backend_YYYYMMDD.log`
 
 - ❌ **Frontend not compiling?**  
   - Ensure all CSS imports use the correct path (`./styles/App.css`).
   - Check for missing dependencies: `npm install`
+  - Check logs: `tail -f logs/logs_frontend_YYYYMMDD.log`
 
 - ⚠️ **Live data not working?**  
   - Puppeteer may be blocked by NSE anti-bot. Try again or check logs.
+
+- 🗄️ **MongoDB issues?**
+  - Check if MongoDB is running: `docker ps` or `brew services list`
+  - Check logs for connection errors
+  - Ensure port 27017 is not in use by another process
+
+---
+
+## 📝 Logging
+
+The application automatically logs all output to the `logs/` directory:
+
+- **Backend logs:** `logs/logs_backend_YYYYMMDD.log`
+- **Frontend logs:** `logs/logs_frontend_YYYYMMDD.log`
+
+**Useful commands:**
+```bash
+# Monitor logs in real-time
+tail -f logs/logs_backend_$(date +%Y%m%d).log
+
+# Check for errors
+grep -i error logs/logs_backend_$(date +%Y%m%d).log
+
+# View recent log files
+ls -la logs/ | tail -5
+```
 
 ---
 
