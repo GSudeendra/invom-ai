@@ -164,12 +164,37 @@ export default function DashboardPage() {
   // Compare modal state
   const [compareModalOpen, setCompareModalOpen] = useState(false);
 
-  // Set default category when categories load
+  // Set default filters on mount and on refresh
   useEffect(() => {
-    if (categories.length > 0 && !selectedCategory) {
-      setSelectedCategory(categories[0].key);
+    if (categories.length > 0) {
+      // Set to 'nifty50' if available, otherwise first category
+      const defaultCategory = categories.find(cat => cat.key === 'nifty50')?.key || categories[0]?.key || '';
+      setSelectedCategory(defaultCategory);
+      setSelectedRecommendation('All');
+      setSelectedPriceRange('All');
+      setSearchTerm('');
     }
-  }, [categories, selectedCategory]);
+  }, [categories]);
+
+  // Additional effect to ensure defaults are set on page load/refresh
+  useEffect(() => {
+    // This runs on every page load/refresh
+    if (categories.length > 0 && !selectedCategory) {
+      const defaultCategory = categories.find(cat => cat.key === 'nifty50')?.key || categories[0]?.key || '';
+      setSelectedCategory(defaultCategory);
+    }
+  }, []);
+
+  // Reset filters and search when toggling live/cached data
+  useEffect(() => {
+    if (categories.length > 0) {
+      const defaultCategory = categories.find(cat => cat.key === 'nifty50')?.key || categories[0]?.key || '';
+      setSelectedCategory(defaultCategory);
+      setSelectedRecommendation('All');
+      setSelectedPriceRange('All');
+      setSearchTerm('');
+    }
+  }, [liveMode]);
 
   // Fetch live ETF data when live mode is enabled
   useEffect(() => {
@@ -211,18 +236,39 @@ export default function DashboardPage() {
     : dataSource;
 
   // Filtering logic (search, price, recommendation)
-  const filteredEtfs = (categoryFilteredData || []).filter(etf => {
+  const filteredEtfs = (dataSource || []).filter(etf => {
+    // If 'All' is selected for category, skip category filtering
+    const categoryIsAll = selectedCategory === 'All';
     const name = liveMode 
       ? (etf.assets || etf.symbol || '')
       : (etf.schemeName || etf.name || '');
     const nav = liveMode 
       ? parseFloat(etf.ltP || 0)
       : parseFloat(etf.latestNav || etf.nav || 0);
-    
+
+    // Get default category consistently
+    const defaultCategory = categories.find(cat => cat.key === 'nifty50')?.key || categories[0]?.key || '';
+
+    // If all filters are at default or all are 'All', show all ETFs (skip all filtering except search)
+    const isDefault = (selectedCategory === defaultCategory || categoryIsAll) && selectedRecommendation === 'All' && selectedPriceRange === 'All' && searchTerm === '';
+    if (isDefault) return true;
+
     let matches = name.toLowerCase().includes(searchTerm.toLowerCase());
     if (selectedPriceRange === 'lt100') matches = matches && nav < 100;
     if (selectedPriceRange === '100-500') matches = matches && nav >= 100 && nav <= 500;
     if (selectedPriceRange === 'gt500') matches = matches && nav > 500;
+    if (selectedRecommendation !== 'All') {
+      matches = matches && (etf.recommendation === selectedRecommendation);
+    }
+    // If not 'All' for category, filter by category as before
+    if (!categoryIsAll && selectedCategory !== defaultCategory) {
+      if (liveMode) {
+        // Use your live category filter logic if needed
+        // (already handled by filterLiveEtfsByCategory if you want)
+      } else {
+        matches = matches && etf.category === selectedCategory;
+      }
+    }
     return matches;
   });
 
@@ -248,6 +294,12 @@ export default function DashboardPage() {
         .catch(err => setLiveError(err.message || 'Failed to fetch live ETF data'))
         .finally(() => setLiveLoading(false));
     }
+    // Reset all filters and search with consistent default category
+    const defaultCategory = categories.find(cat => cat.key === 'nifty50')?.key || categories[0]?.key || '';
+    setSelectedCategory(defaultCategory);
+    setSelectedRecommendation('All');
+    setSelectedPriceRange('All');
+    setSearchTerm('');
   };
 
   // Calculate enhanced stats for live mode
@@ -297,6 +349,14 @@ export default function DashboardPage() {
   }, []);
 
   const handleClearSelectedEtfs = useCallback(() => setSelectedEtfs([]), []);
+
+  // Compute if any filter is active (outside AdvancedFilter)
+  const defaultCategory = categories.find(cat => cat.key === 'nifty50')?.key || categories[0]?.key || '';
+  const isAnyFilterActive = categories.length > 0 && (
+    selectedCategory !== defaultCategory ||
+    selectedRecommendation !== 'All' ||
+    selectedPriceRange !== 'All'
+  );
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -420,7 +480,7 @@ export default function DashboardPage() {
         )}
 
         {/* Controls */}
-        <div className="card p-6 mb-8">
+        <div className="card p-6 mb-8" style={{ overflow: 'visible' }}>
           {catLoading ? (
             <FilterBarSkeleton />
           ) : catError ? (
@@ -447,7 +507,8 @@ export default function DashboardPage() {
                 price={selectedPriceRange}
                 onPriceChange={setSelectedPriceRange}
                 onClear={() => {
-                  setSelectedCategory('All');
+                  const defaultCategory = categories.find(cat => cat.key === 'nifty50')?.key || categories[0]?.key || '';
+                  setSelectedCategory(defaultCategory);
                   setSelectedRecommendation('All');
                   setSelectedPriceRange('All');
                 }}
@@ -503,23 +564,10 @@ export default function DashboardPage() {
           )}
         </div>
 
-        {/* Quick Actions */}
-        <div className="flex flex-wrap gap-4 mb-8">
-          <Link to="/stats" className="btn btn-primary">
-            📈 View All Statistics
-          </Link>
-          <Link to="/analytics" className="btn btn-success">
-            📊 Advanced Analytics
-          </Link>
-          <button className="btn btn-warning">
-            🔄 Compare ETFs
-          </button>
-          {selectedEtfs.length > 0 && (
-            <button className="btn btn-primary" onClick={() => setCompareModalOpen(true)}>
-              Compare Selected ({selectedEtfs.length})
-            </button>
-          )}
-        </div>
+        {/* Show filter label above ETF list/grid if any filter is active */}
+        {isAnyFilterActive && (
+          <div className="mb-4 text-primary-700 font-semibold text-sm">Filters applied</div>
+        )}
 
         {/* Compare Modal */}
         <CompareModal
