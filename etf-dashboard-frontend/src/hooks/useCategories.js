@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { fetchCategories } from '../api/etfApi';
 
 export default function useCategories() {
@@ -6,12 +6,22 @@ export default function useCategories() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetchCategories()
-      .then(setCategories)
-      .catch(setError)
-      .finally(() => setLoading(false));
+  const fetchData = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await fetchCategories();
+      setCategories(data);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
-  return { categories, loading, error };
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return { categories, loading, error, refetch: fetchData };
 } 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { fetchEtfsByCategory } from '../api/etfApi';
 
 export default function useEtfsByCategory(categoryKey) {
@@ -6,14 +6,24 @@ export default function useEtfsByCategory(categoryKey) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  const fetchData = useCallback(async () => {
     if (!categoryKey) return;
-    setLoading(true);
-    fetchEtfsByCategory(categoryKey)
-      .then(data => setEtfs(data.funds || []))
-      .catch(setError)
-      .finally(() => setLoading(false));
+    
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await fetchEtfsByCategory(categoryKey);
+      setEtfs(data.funds || []);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
   }, [categoryKey]);
 
-  return { etfs, loading, error };
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return { etfs, loading, error, refetch: fetchData };
 } 

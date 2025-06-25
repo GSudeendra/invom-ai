@@ -56,6 +56,12 @@ module.exports = async function (req, res) {
     if (!data || !data.data) {
       return res.status(502).json({ error: 'Invalid response from NSE API', details: data });
     }
+
+    // Log the structure of the first ETF to understand available fields
+    if (data.data && data.data.length > 0) {
+      console.log('NSE ETF data structure (first item):', JSON.stringify(data.data[0], null, 2));
+    }
+
     res.json(data);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch NSE ETF data (Puppeteer)', details: err.message });
