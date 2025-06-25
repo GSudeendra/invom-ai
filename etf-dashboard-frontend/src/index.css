@@ -10,19 +10,46 @@
     @apply border-gray-200;
   }
   
-  body {
+  body, html, #root {
     @apply bg-gray-50 text-gray-900 font-sans antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-size: 16px;
+    line-height: 1.6;
+    background: #fff !important;
+    border: none !important;
+    box-shadow: none !important;
   }
   
   html {
     scroll-behavior: smooth;
   }
+  
+  h1, .h1 {
+    @apply text-3xl font-extrabold text-gray-900 leading-tight;
+  }
+  
+  h2, .h2 {
+    @apply text-2xl font-bold text-gray-900 leading-snug;
+  }
+  
+  h3, .h3 {
+    @apply text-lg font-semibold text-gray-900 leading-snug;
+  }
+  
+  h4, .h4 {
+    @apply text-base font-semibold text-gray-800;
+  }
+  
+  label {
+    @apply font-medium text-gray-700;
+  }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-none;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
   }
   
   .btn-primary {
@@ -47,14 +74,25 @@
   
   .card {
     @apply bg-white rounded-xl shadow-soft border border-gray-100 overflow-hidden;
+    transition: box-shadow 0.2s, border-color 0.2s;
   }
   
   .card-hover {
-    @apply card hover:shadow-medium transition-all duration-300 hover:scale-[1.02];
+    @apply card hover:shadow-medium transition-all duration-300 hover:scale-[1.02] focus-within:shadow-medium focus-within:scale-[1.01];
+    border: 1.5px solid transparent;
+  }
+  
+  .card-hover.selected {
+    @apply ring-2 ring-primary-500;
   }
   
   .input {
-    @apply w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200;
+    @apply w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200 bg-white text-gray-900 placeholder-gray-400;
+    font-size: 1rem;
+  }
+  
+  .input:focus {
+    @apply border-primary-500;
   }
   
   .select {
@@ -103,6 +141,32 @@
     background-color: #9ca3af;
     border-radius: 50%;
   }
+  
+  .table {
+    @apply w-full text-sm text-left text-gray-700;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  .table th, .table td {
+    @apply px-4 py-3 align-middle;
+  }
+  
+  .table th {
+    @apply font-semibold text-xs uppercase tracking-wider bg-gray-50 text-gray-500;
+  }
+  
+  .table tr {
+    @apply border-b border-gray-100;
+  }
+  
+  .table tr:last-child {
+    @apply border-b-0;
+  }
+  
+  .modal {
+    @apply bg-white rounded-xl shadow-lg p-8 max-w-2xl w-full;
+  }
 }
 
 @layer utilities {
@@ -118,6 +182,10 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+  
+  .focus-ring {
+    @apply focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
 }
 
 /* Mobile-specific styles */
@@ -132,6 +200,18 @@
   
   .input, .select {
     @apply px-3 py-2 text-sm;
+  }
+  
+  h1, .h1 {
+    @apply text-2xl;
+  }
+  
+  h2, .h2 {
+    @apply text-xl;
+  }
+  
+  h3, .h3 {
+    @apply text-base;
   }
 }
 
@@ -208,4 +288,20 @@
 .trade-value-indicator {
   background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
   border: 1px solid #3b82f6;
+}
+
+/* Table row hover/selected */
+.table tr:hover {
+  @apply bg-primary-50;
+}
+.table tr.selected {
+  @apply bg-primary-100;
+}
+
+/* Modal overlay for ReactModal */
+.ReactModal__Overlay {
+  @apply bg-black bg-opacity-40 z-40;
+}
+.ReactModal__Content {
+  @apply modal;
 } 

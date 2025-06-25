@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import ETFCard from '../components/etf/ETFCard';
 import FilterBar from '../components/etf/Filters';
 import ETFGrid from '../components/etf/ETFGrid';
+import ETFTable from '../components/etf/ETFTable';
 import useCategories from '../hooks/useCategories';
 import useEtfsByCategory from '../hooks/useEtfsByCategory';
 import { ETFCardSkeleton, StatsCardSkeleton, FilterBarSkeleton } from '../components/ui/LoadingSkeleton';
@@ -11,6 +12,8 @@ import { ErrorState, EmptyState } from '../components/ui/ErrorState';
 import { BarChart3, TrendingUp, RotateCcw, Grid, List } from 'lucide-react';
 import { fetchLiveEtfs } from '../api/etfApi';
 import { formatPrice, formatPercent, formatVolume, formatCurrency } from '../utils/format';
+import AdvancedFilter from '../components/etf/AdvancedFilter';
+import ReactModal from 'react-modal';
 
 const StatsCard = ({ title, value, change, icon: Icon, subtitle }) => (
   <div className="card p-6">
@@ -71,20 +74,71 @@ function filterLiveEtfsByCategory(liveEtfs, selectedCategory) {
 const LiveDataIndicator = ({ timestamp, isConnected }) => (
   <div className="flex items-center gap-2 text-sm">
     <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-success-500 animate-pulse' : 'bg-gray-400'}`}></div>
-    <span className="text-gray-600">
-      {isConnected ? 'Live Data' : 'Connecting...'}
-    </span>
     {timestamp && (
-      <span className="text-gray-500">
-        • {new Date(timestamp).toLocaleTimeString('en-IN', { 
+      <span className="text-gray-500 ml-1">
+        {new Date(timestamp).toLocaleTimeString('en-IN', { 
           hour: '2-digit', 
           minute: '2-digit', 
           second: '2-digit' 
         })}
       </span>
     )}
+    {!isConnected && <span className="text-gray-400 ml-2">Connecting...</span>}
   </div>
 );
+
+// Compare Modal component
+function CompareModal({ isOpen, onClose, etfs, liveMode }) {
+  if (!isOpen) return null;
+  return (
+    <ReactModal
+      isOpen={isOpen}
+      onRequestClose={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40"
+      overlayClassName="fixed inset-0 z-40 bg-black bg-opacity-40"
+      ariaHideApp={false}
+    >
+      <div className="bg-white rounded-xl shadow-lg max-w-5xl w-full p-8 relative">
+        <button className="absolute top-4 right-4 btn btn-secondary" onClick={onClose}>Close</button>
+        <h2 className="text-2xl font-bold mb-6">Compare ETFs</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[600px]">
+            <thead>
+              <tr>
+                <th className="text-left px-4 py-2">Name</th>
+                <th className="text-left px-4 py-2">Symbol</th>
+                <th className="text-left px-4 py-2">Category</th>
+                <th className="text-right px-4 py-2">NAV</th>
+                <th className="text-right px-4 py-2">1Y Return</th>
+                <th className="text-right px-4 py-2">Volume</th>
+              </tr>
+            </thead>
+            <tbody>
+              {etfs.map((etf, idx) => {
+                const name = liveMode ? (etf.assets || etf.symbol) : (etf.schemeName || etf.name);
+                const symbol = liveMode ? etf.symbol : etf.symbol || etf.amfiCode;
+                const category = etf.category && etf.category !== 'N/A' ? etf.category : '-';
+                const nav = liveMode ? etf.ltP : etf.latestNav || etf.nav;
+                const return1Y = liveMode ? etf.yPC : etf.return1Y;
+                const volume = liveMode ? etf.qty : '-';
+                return (
+                  <tr key={symbol || idx} className="border-t">
+                    <td className="px-4 py-2 font-medium text-gray-900">{name}</td>
+                    <td className="px-4 py-2 text-gray-700">{symbol}</td>
+                    <td className="px-4 py-2 text-gray-700">{category}</td>
+                    <td className="px-4 py-2 text-right font-medium text-gray-900">{formatPrice(nav)}</td>
+                    <td className={`px-4 py-2 text-right font-medium ${return1Y >= 0 ? 'text-success-600' : 'text-danger-600'}`}>{return1Y !== undefined ? formatPercent(return1Y) : '-'}</td>
+                    <td className="px-4 py-2 text-right text-gray-700">{volume !== undefined ? volume : '-'}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ReactModal>
+  );
+}
 
 export default function DashboardPage() {
   const { categories, loading: catLoading, error: catError, refetch: refetchCategories } = useCategories();
@@ -103,6 +157,12 @@ export default function DashboardPage() {
 
   // Add timestamp state for live data
   const [liveTimestamp, setLiveTimestamp] = useState(null);
+
+  // For bulk compare
+  const [selectedEtfs, setSelectedEtfs] = useState([]);
+
+  // Compare modal state
+  const [compareModalOpen, setCompareModalOpen] = useState(false);
 
   // Set default category when categories load
   useEffect(() => {
@@ -166,6 +226,15 @@ export default function DashboardPage() {
     return matches;
   });
 
+  // Compute if all visible ETFs have the same NAV date
+  let globalNavDate = null;
+  if (!liveMode && filteredEtfs.length > 0) {
+    const navDates = filteredEtfs.map(etf => etf.navDate).filter(Boolean);
+    if (navDates.length > 0 && navDates.every(date => date === navDates[0])) {
+      globalNavDate = navDates[0];
+    }
+  }
+
   const handleRefreshData = () => {
     refetchCategories();
     if (selectedCategory) {
@@ -218,6 +287,17 @@ export default function DashboardPage() {
 
   const liveStats = calculateLiveStats();
 
+  // Bulk compare handlers
+  const handleToggleSelectEtf = useCallback((etfKey) => {
+    setSelectedEtfs(prev =>
+      prev.includes(etfKey)
+        ? prev.filter(key => key !== etfKey)
+        : [...prev, etfKey]
+    );
+  }, []);
+
+  const handleClearSelectedEtfs = useCallback(() => setSelectedEtfs([]), []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header liveMode={liveMode} />
@@ -257,15 +337,22 @@ export default function DashboardPage() {
                 icon={BarChart3}
               />
               <StatsCard 
-                title={liveMode ? "Total Volume" : "Live Data"} 
-                value={liveMode ? formatVolume(liveStats.totalVolume) : (liveMode ? "Connected" : "Cached")} 
+                title={liveMode ? "Total Volume" : "Live Mode"} 
+                value={liveMode ? formatVolume(liveStats.totalVolume) : (liveMode ? "Connected" : "Off")}
                 change={liveMode ? formatCurrency(liveStats.totalTradeValue) : (liveMode ? "Real-time" : "Last updated")}
-                subtitle={liveMode ? "Units traded" : "Data source"}
+                subtitle={liveMode ? "Units traded" : "Data source: mfindia"}
                 icon={TrendingUp}
               />
             </>
           )}
         </div>
+
+        {/* Global NAV Date (if all the same) */}
+        {!liveMode && globalNavDate && (
+          <div className="mb-4 text-right text-sm text-gray-500">
+            NAV Date: <span className="font-medium text-gray-900">{globalNavDate}</span>
+          </div>
+        )}
 
         {/* Market Activity Summary (Live Mode Only) */}
         {liveMode && liveEtfs.length > 0 && (
@@ -339,24 +426,37 @@ export default function DashboardPage() {
           ) : catError ? (
             <ErrorState error={catError} onRetry={refetchCategories} title="Failed to load categories" />
           ) : (
-            <div className="flex flex-col lg:flex-row gap-6">
+            <div className="flex flex-col lg:flex-row gap-6 items-center">
+              {/* Search Bar */}
               <div className="flex-1">
-                <FilterBar
-                  searchTerm={searchTerm}
-                  onSearchChange={setSearchTerm}
-                  category={selectedCategory}
-                  onCategoryChange={setSelectedCategory}
-                  categoryOptions={categories.map(cat => ({ value: cat.key, label: cat.label }))}
-                  recommendation={selectedRecommendation}
-                  onRecommendationChange={setSelectedRecommendation}
-                  price={selectedPriceRange}
-                  onPriceChange={setSelectedPriceRange}
+                <input
+                  type="text"
+                  placeholder="Search ETFs..."
+                  value={searchTerm}
+                  onChange={e => setSearchTerm(e.target.value)}
+                  className="input w-full"
                 />
               </div>
-              
+              {/* Advanced Filter Dropdown */}
+              <AdvancedFilter
+                category={selectedCategory}
+                onCategoryChange={setSelectedCategory}
+                categoryOptions={categories.map(cat => ({ value: cat.key, label: cat.label }))}
+                recommendation={selectedRecommendation}
+                onRecommendationChange={setSelectedRecommendation}
+                price={selectedPriceRange}
+                onPriceChange={setSelectedPriceRange}
+                onClear={() => {
+                  setSelectedCategory('All');
+                  setSelectedRecommendation('All');
+                  setSelectedPriceRange('All');
+                }}
+              />
+              {/* Live Toggle, View Toggle, Refresh Button (unchanged) */}
               <div className="flex items-center gap-4">
                 {/* Live Toggle */}
                 <div className="flex items-center gap-2">
+                  <span className="text-sm font-medium text-gray-700">Live Updates</span>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input
                       type="checkbox"
@@ -366,18 +466,13 @@ export default function DashboardPage() {
                     />
                     <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
                   </label>
-                  <div className="flex flex-col">
-                    <span className="text-sm font-medium text-gray-700">
-                      {liveMode ? 'Live Data' : 'Cached Data'}
-                    </span>
-                    {liveMode && (
-                      <LiveDataIndicator 
-                        timestamp={liveTimestamp} 
-                        isConnected={!liveLoading && !liveError} 
-                      />
-                    )}
-                  </div>
                 </div>
+                {liveMode && (
+                  <LiveDataIndicator 
+                    timestamp={liveTimestamp} 
+                    isConnected={!liveLoading && !liveError} 
+                  />
+                )}
 
                 {/* View Toggle */}
                 <div className="flex items-center gap-2">
@@ -419,9 +514,25 @@ export default function DashboardPage() {
           <button className="btn btn-warning">
             🔄 Compare ETFs
           </button>
+          {selectedEtfs.length > 0 && (
+            <button className="btn btn-primary" onClick={() => setCompareModalOpen(true)}>
+              Compare Selected ({selectedEtfs.length})
+            </button>
+          )}
         </div>
 
-        {/* ETF Grid */}
+        {/* Compare Modal */}
+        <CompareModal
+          isOpen={compareModalOpen}
+          onClose={() => setCompareModalOpen(false)}
+          etfs={filteredEtfs.filter(etf => {
+            const etfKey = liveMode ? etf.symbol : (etf.amfiCode || etf.symbol || etf.schemeName);
+            return selectedEtfs.includes(etfKey);
+          })}
+          liveMode={liveMode}
+        />
+
+        {/* ETF Grid or Table */}
         {dataLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(6)].map((_, i) => (
@@ -436,19 +547,31 @@ export default function DashboardPage() {
             description="Try adjusting your filters or search terms."
           />
         ) : (
-          <div className={viewMode === 'grid'
-            ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
-            : 'space-y-4'
-          }>
-            {filteredEtfs.map(etf => (
-              <ETFCard
-                key={liveMode ? etf.symbol : (etf.amfiCode || etf.symbol || etf.schemeName)}
-                etf={etf}
-                liveMode={liveMode}
-                liveData={liveMode ? etf : null}
-              />
-            ))}
-          </div>
+          viewMode === 'list' ? (
+            <ETFTable 
+              etfs={filteredEtfs} 
+              liveMode={liveMode} 
+              selectedEtfs={selectedEtfs}
+              onToggleSelect={handleToggleSelectEtf}
+            />
+          ) : (
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+              {filteredEtfs.map(etf => {
+                const etfKey = liveMode ? etf.symbol : (etf.amfiCode || etf.symbol || etf.schemeName);
+                return (
+                  <ETFCard
+                    key={etfKey}
+                    etf={etf}
+                    liveMode={liveMode}
+                    liveData={liveMode ? etf : null}
+                    showNavDate={!globalNavDate}
+                    selected={selectedEtfs.includes(etfKey)}
+                    onToggleSelect={() => handleToggleSelectEtf(etfKey)}
+                  />
+                );
+              })}
+            </div>
+          )
         )}
       </div>
     </div>

@@ -64,7 +64,7 @@ export default function Header({ liveMode }) {
             {liveMode && (
               <div className="flex items-center space-x-2 text-sm text-gray-500">
                 <div className="w-2 h-2 bg-success-500 rounded-full animate-pulse"></div>
-                <span>Live Data</span>
+                <span>Live</span>
               </div>
             )}
             <button className="btn btn-primary text-sm">

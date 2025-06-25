@@ -261,7 +261,7 @@ const ETFStatsPage = () => {
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="text-sm text-gray-900 max-w-xs truncate" title={etf.schemeName}>
+                        <div className="text-sm text-gray-900 max-w-xs" title={etf.schemeName}>
                           {etf.schemeName || '-'}
                         </div>
                       </td>
