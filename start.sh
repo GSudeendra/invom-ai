@@ -134,7 +134,7 @@ BACKEND_PID=$!
 sleep 5
 
 # 3. Start frontend
-cd ../etf-dashboard-frontend
+cd ../frontend
 echo -e "${GREEN}==> Starting frontend...${NC}"
 if [ ! -d node_modules ] || [ package-lock.json -nt node_modules ]; then
   echo -e "${GREEN}Installing frontend dependencies...${NC}"

@@ -103,3 +103,7 @@ storybook-static/
 *.xcodeproj
 android/
 ios/
+
+# React
+frontend/build/
+frontend/node_modules/
