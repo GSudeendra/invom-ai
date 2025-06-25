@@ -1,0 +1,477 @@
+/* SwingTrading.css - Styles for the technical analysis and swing trading components */
+
+/* Technical Chart Component Styles */
+.technical-chart-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.chart-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.chart-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.timeframe-selector {
+  display: flex;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.timeframe-btn {
+  background: none;
+  border: none;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.timeframe-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.timeframe-btn.active {
+  background-color: #2563eb;
+  color: white;
+}
+
+.toggle-volume-btn {
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-volume-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.toggle-volume-btn.active {
+  background-color: #2563eb;
+  color: white;
+}
+
+.chart-body {
+  height: 400px;
+  margin-bottom: 16px;
+}
+
+.chart-footer {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 12px;
+}
+
+.chart-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 2px;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.stat-value.positive {
+  color: #22c55e;
+}
+
+.stat-value.negative {
+  color: #ef4444;
+}
+
+.chart-loading, .chart-error, .chart-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+.chart-error {
+  color: #ef4444;
+}
+
+/* Indicator Panel Component Styles */
+.indicator-panel {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.indicator-navigation {
+  display: flex;
+  overflow-x: auto;
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.indicator-tab {
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.indicator-tab:hover {
+  background-color: #e5e7eb;
+}
+
+.indicator-tab.active {
+  background-color: #fff;
+  border-bottom: 3px solid #2563eb;
+  font-weight: 500;
+}
+
+.indicator-content {
+  padding: 16px;
+}
+
+.indicator-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.indicator-signal-summary {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 8px;
+}
+
+.signal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.signal-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.overall-signal {
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.overall-signal.bullish, .signal.bullish {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.overall-signal.bearish, .signal.bearish {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.overall-signal.neutral, .signal.neutral {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+.overall-signal.strong.bullish {
+  background-color: #bbf7d0;
+  color: #15803d;
+}
+
+.overall-signal.strong.bearish {
+  background-color: #fecaca;
+  color: #b91c1c;
+}
+
+.key-indicators {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.indicator-card {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  padding: 12px;
+  transition: transform 0.2s ease;
+}
+
+.indicator-card:hover {
+  transform: translateY(-2px);
+}
+
+.indicator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.indicator-header h5 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.indicator-signal {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.indicator-value {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 8px 0;
+}
+
+.indicator-desc {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.indicator-group {
+  margin-bottom: 24px;
+}
+
+.indicator-group h4 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+  color: #374151;
+}
+
+.indicator-detail {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.indicator-detail h5 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.indicator-value-large {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 10px 0;
+  color: #1e3a8a;
+}
+
+.indicator-gauge {
+  margin: 16px 0;
+  position: relative;
+}
+
+.gauge-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.gauge-scale span {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.gauge-bar {
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  position: relative;
+}
+
+.gauge-marker {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #2563eb;
+  border-radius: 50%;
+  transform: translateX(-6px) translateY(-2px);
+}
+
+.gauge-zones {
+  display: flex;
+  height: 6px;
+  margin-top: 4px;
+}
+
+.zone {
+  height: 100%;
+}
+
+.zone.oversold {
+  width: 30%;
+  background-color: #dcfce7;
+  border-radius: 4px 0 0 4px;
+}
+
+.zone.neutral {
+  width: 40%;
+  background-color: #e5e7eb;
+}
+
+.zone.overbought {
+  width: 30%;
+  background-color: #fee2e2;
+  border-radius: 0 4px 4px 0;
+}
+
+.indicator-values-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.value-item {
+  margin-bottom: 8px;
+}
+
+.value-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-right: 4px;
+}
+
+.value {
+  font-weight: 500;
+  color: #374151;
+}
+
+.moving-avg-signals {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.signal-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.signal-label {
+  font-size: 0.9rem;
+  color: #4b5563;
+  width: 100px;
+}
+
+.signal {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.indicator-interpretation {
+  margin-top: 12px;
+  padding: 10px;
+  background-color: #f3f4f6;
+  border-left: 3px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.value.very-positive {
+  color: #059669;
+  font-weight: 600;
+}
+
+.value.positive {
+  color: #15803d;
+}
+
+.value.very-negative {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.value.negative {
+  color: #b91c1c;
+}
+
+.indicators-loading, .indicators-error, .no-etf-selected {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+.indicators-error {
+  color: #ef4444;
+}
+
+.technical-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 1200px) {
+  .technical-section {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Enhanced Dashboard specific layout adjustments */
+.enhanced-dashboard .technical-section {
+  margin-top: 20px;
+}
+
+/* Fix for Recharts responsive container */
+.recharts-responsive-container {
+  min-height: 300px;
+}

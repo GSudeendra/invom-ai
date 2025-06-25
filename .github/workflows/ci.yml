@@ -1,0 +1,23 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install backend dependencies
+        run: cd backend && npm install
+      - name: Install frontend dependencies
+        run: cd etf-dashboard-frontend && npm install
+      - name: Run backend integration tests
+        run: cd backend && node ../test-backend.js
+      - name: Run frontend unit tests
+        run: cd etf-dashboard-frontend && npm test -- --watchAll=false
+      - name: Run Cypress E2E tests
+        run: cd etf-dashboard-frontend && npx cypress run 

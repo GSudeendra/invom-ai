@@ -1,0 +1,1 @@
+export { default } from '../components/intelligent-dashboard/IntelligentDashboard'; 

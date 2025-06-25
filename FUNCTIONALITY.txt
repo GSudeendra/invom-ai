@@ -1,0 +1,1117 @@
+# ETF Dashboard - Comprehensive Functionality Documentation
+
+This document provides detailed technical specifications and functionality overview of the ETF Dashboard application, designed for AI tools, developers, and system understanding.
+
+---
+
+## 🏗️ System Architecture
+
+### Technology Stack
+- **Backend**: Node.js + Express.js
+- **Frontend**: React 18 with modern hooks
+- **Data Sources**: AMFI (NAVAll.txt), mfapi.in, NSE (live scraping)
+- **Web Scraping**: Puppeteer for live NSE data
+- **Storage**: File-based JSON storage (daily files)
+- **Caching**: In-memory caching with TTL
+- **Deployment**: localhost:3000 (frontend), localhost:5000 (backend)
+
+### Complete Project Structure with Swing Trading Files
+```
+project/
+├── backend/
+│   ├── src/
+│   │   ├── services/
+│   │   │   ├── core/                              # Core ETF Services
+│   │   │   │   ├── amfiNavService.js             # Core ETF data fetching & categorization
+│   │   │   │   ├── liveDataService.js            # NSE live data scraping
+│   │   │   │   ├── cacheService.js               # In-memory caching logic
+│   │   │   │   └── dataValidationService.js      # Data integrity validation
+│   │   │   ├── swing-trading/                     # Swing Trading Core Services
+│   │   │   │   ├── technicalAnalysisService.js   # Technical indicators calculations
+│   │   │   │   ├── signalGenerationService.js    # Buy/sell signal generation
+│   │   │   │   ├── patternRecognitionService.js  # Chart pattern recognition
+│   │   │   │   ├── backtestingService.js         # Strategy backtesting engine
+│   │   │   │   ├── riskManagementService.js      # Risk assessment and management
+│   │   │   │   ├── portfolioAnalysisService.js   # Portfolio performance analysis
+│   │   │   │   ├── alertEngineService.js         # Alert generation and management
+│   │   │   │   ├── strategyBuilderService.js     # Custom strategy creation
+│   │   │   │   ├── screeningService.js           # Advanced ETF screening
+│   │   │   │   └── historicalDataService.js      # Historical data management
+│   │   │   ├── ai-intelligence/                   # AI/ML Services (Intelligent Dashboard)
+│   │   │   │   ├── mlPredictionService.js        # Machine learning predictions
+│   │   │   │   ├── sentimentAnalysisService.js   # News/social sentiment analysis
+│   │   │   │   ├── aiStrategyService.js          # AI-generated trading strategies
+│   │   │   │   ├── marketRegimeService.js        # Market condition detection
+│   │   │   │   ├── correlationAnalysisService.js # Cross-asset correlation analysis
+│   │   │   │   ├── alternativeDataService.js     # Alternative data integration
+│   │   │   │   ├── aiAssistantService.js         # AI chat assistants
+│   │   │   │   ├── neuralNetworkService.js       # Deep learning models
+│   │   │   │   └── reinforcementLearningService.js # RL trading agents
+│   │   │   ├── data-feeds/                        # External Data Integration
+│   │   │   │   ├── newsDataService.js            # Financial news aggregation
+│   │   │   │   ├── economicDataService.js        # Economic indicators
+│   │   │   │   ├── socialDataService.js          # Social media data
+│   │   │   │   ├── satelliteDataService.js       # Satellite imagery data
+│   │   │   │   ├── optionsDataService.js         # Options chain data
+│   │   │   │   └── futuresDataService.js         # Futures market data
+│   │   │   └── portfolio/                         # Portfolio Management
+│   │   │       ├── portfolioService.js           # Portfolio CRUD operations
+│   │   │       ├── watchlistService.js           # Watchlist management
+│   │   │       ├── transactionService.js         # Transaction tracking
+│   │   │       ├── performanceService.js         # Performance calculations
+│   │   │       └── rebalancingService.js         # Portfolio rebalancing
+│   │   ├── routes/
+│   │   │   ├── core/
+│   │   │   │   ├── etfRoutes.js                  # Basic ETF endpoints
+│   │   │   │   ├── categoryRoutes.js             # Category management
+│   │   │   │   └── searchRoutes.js               # Search functionality
+│   │   │   ├── swing-trading/
+│   │   │   │   ├── technicalRoutes.js            # Technical analysis endpoints
+│   │   │   │   ├── signalRoutes.js               # Trading signals endpoints
+│   │   │   │   ├── backtestRoutes.js             # Backtesting endpoints
+│   │   │   │   ├── screeningRoutes.js            # Advanced screening endpoints
+│   │   │   │   ├── alertRoutes.js                # Alert management endpoints
+│   │   │   │   ├── strategyRoutes.js             # Strategy management endpoints
+│   │   │   │   └── riskRoutes.js                 # Risk management endpoints
+│   │   │   ├── ai-intelligence/
+│   │   │   │   ├── predictionRoutes.js           # ML prediction endpoints
+│   │   │   │   ├── sentimentRoutes.js            # Sentiment analysis endpoints
+│   │   │   │   ├── aiStrategyRoutes.js           # AI strategy endpoints
+│   │   │   │   ├── assistantRoutes.js            # AI assistant endpoints
+│   │   │   │   └── alternativeDataRoutes.js      # Alternative data endpoints
+│   │   │   └── portfolio/
+│   │   │       ├── portfolioRoutes.js            # Portfolio management endpoints
+│   │   │       ├── watchlistRoutes.js            # Watchlist endpoints
+│   │   │       ├── transactionRoutes.js          # Transaction endpoints
+│   │   │       └── performanceRoutes.js          # Performance analysis endpoints
+│   │   ├── models/                                # Data Models
+│   │   │   ├── ETF.js                            # ETF data model
+│   │   │   ├── Portfolio.js                      # Portfolio data model
+│   │   │   ├── Watchlist.js                      # Watchlist data model
+│   │   │   ├── Transaction.js                    # Transaction data model
+│   │   │   ├── Alert.js                          # Alert data model
+│   │   │   ├── Strategy.js                       # Trading strategy model
+│   │   │   ├── Signal.js                         # Trading signal model
+│   │   │   ├── TechnicalIndicator.js             # Technical indicator model
+│   │   │   ├── BacktestResult.js                 # Backtest result model
+│   │   │   ├── MLPrediction.js                   # ML prediction model
+│   │   │   └── User.js                           # User profile model
+│   │   ├── utils/
+│   │   │   ├── core/
+│   │   │   │   ├── dataUtils.js                  # Data processing utilities
+│   │   │   │   ├── logger.js                     # Logging utilities
+│   │   │   │   ├── validationUtils.js            # Input validation
+│   │   │   │   └── errorHandler.js               # Error handling
+│   │   │   ├── technical/
+│   │   │   │   ├── indicatorCalculations.js      # Technical indicator math
+│   │   │   │   ├── patternDetection.js           # Chart pattern detection
+│   │   │   │   ├── trendAnalysis.js              # Trend analysis utilities
+│   │   │   │   ├── supportResistance.js          # S/R level calculations
+│   │   │   │   ├── volumeAnalysis.js             # Volume analysis utilities
+│   │   │   │   └── volatilityCalculations.js     # Volatility metrics
+│   │   │   ├── ai/
+│   │   │   │   ├── mlUtils.js                    # Machine learning utilities
+│   │   │   │   ├── dataPreprocessing.js          # Data preprocessing for ML
+│   │   │   │   ├── featureEngineering.js         # Feature extraction
+│   │   │   │   ├── modelTraining.js              # Model training utilities
+│   │   │   │   ├── predictionUtils.js            # Prediction processing
+│   │   │   │   └── nlpUtils.js                   # Natural language processing
+│   │   │   ├── financial/
+│   │   │   │   ├── riskMetrics.js                # Risk calculation utilities
+│   │   │   │   ├── performanceMetrics.js         # Performance calculations
+│   │   │   │   ├── portfolioMath.js              # Portfolio mathematics
+│   │   │   │   ├── optionsPricing.js             # Options valuation
+│   │   │   │   └── statisticalUtils.js           # Statistical functions
+│   │   │   └── data/
+│   │   │       ├── csvParser.js                  # CSV data parsing
+│   │   │       ├── jsonProcessor.js              # JSON data processing
+│   │   │       ├── dataCompression.js            # Data compression utilities
+│   │   │       ├── cacheOptimization.js          # Cache optimization
+│   │   │       └── dataExport.js                 # Data export utilities
+│   │   ├── middleware/
+│   │   │   ├── authentication.js                 # User authentication
+│   │   │   ├── authorization.js                  # Role-based access control
+│   │   │   ├── rateLimiting.js                   # API rate limiting
+│   │   │   ├── dataValidation.js                 # Request validation
+│   │   │   ├── errorHandling.js                  # Global error handling
+│   │   │   ├── logging.js                        # Request logging
+│   │   │   └── subscriptionCheck.js              # Subscription tier validation
+│   │   ├── config/
+│   │   │   ├── database.js                       # Database configuration
+│   │   │   ├── redis.js                          # Redis cache configuration
+│   │   │   ├── mlModels.js                       # ML model configurations
+│   │   │   ├── technicalIndicators.js            # Technical indicator settings
+│   │   │   ├── alertSettings.js                  # Alert system configuration
+│   │   │   └── apiKeys.js                        # External API configurations
+│   │   ├── jobs/                                 # Background Jobs
+│   │   │   ├── dataRefreshJob.js                 # Daily data refresh
+│   │   │   ├── signalGenerationJob.js            # Periodic signal generation
+│   │   │   ├── alertProcessingJob.js             # Alert processing
+│   │   │   ├── mlModelTrainingJob.js             # ML model retraining
+│   │   │   ├── backtestingJob.js                 # Automated backtesting
+│   │   │   ├── portfolioUpdateJob.js             # Portfolio value updates
+│   │   │   └── dataCleanupJob.js                 # Old data cleanup
+│   │   └── app.js                                # Express app configuration
+│   ├── data/                                     # Data Storage
+│   │   ├── nav_data/                             # Daily NAV data
+│   │   ├── historical/                           # Historical price data
+│   │   │   ├── daily/                            # Daily OHLCV data
+│   │   │   ├── weekly/                           # Weekly aggregated data
+│   │   │   └── monthly/                          # Monthly aggregated data
+│   │   ├── technical/                            # Technical analysis data
+│   │   │   ├── indicators/                       # Calculated indicators
+│   │   │   ├── patterns/                         # Detected patterns
+│   │   │   └── signals/                          # Generated signals
+│   │   ├── ml-models/                            # Machine learning models
+│   │   │   ├── trained-models/                   # Serialized ML models
+│   │   │   ├── training-data/                    # Training datasets
+│   │   │   └── predictions/                      # Model predictions
+│   │   ├── alternative-data/                     # Alternative data sources
+│   │   │   ├── news/                             # News sentiment data
+│   │   │   ├── social/                           # Social media data
+│   │   │   ├── economic/                         # Economic indicators
+│   │   │   └── satellite/                        # Satellite imagery data
+│   │   ├── portfolios/                           # User portfolio data
+│   │   ├── watchlists/                           # User watchlist data
+│   │   ├── alerts/                               # Alert configurations
+│   │   ├── strategies/                           # Trading strategies
+│   │   └── backtest-results/                     # Backtesting results
+│   ├── tests/                                    # Test Files
+│   │   ├── unit/
+│   │   │   ├── services/
+│   │   │   │   ├── technicalAnalysis.test.js     # Technical analysis tests
+│   │   │   │   ├── signalGeneration.test.js      # Signal generation tests
+│   │   │   │   ├── backtesting.test.js           # Backtesting tests
+│   │   │   │   ├── riskManagement.test.js        # Risk management tests
+│   │   │   │   └── mlPrediction.test.js          # ML prediction tests
+│   │   │   ├── utils/
+│   │   │   │   ├── indicatorCalculations.test.js # Indicator calculation tests
+│   │   │   │   ├── patternDetection.test.js      # Pattern detection tests
+│   │   │   │   └── riskMetrics.test.js           # Risk metrics tests
+│   │   │   └── models/
+│   │   │       ├── ETF.test.js                   # ETF model tests
+│   │   │       ├── Portfolio.test.js             # Portfolio model tests
+│   │   │       └── Strategy.test.js              # Strategy model tests
+│   │   ├── integration/
+│   │   │   ├── api/
+│   │   │   │   ├── technicalRoutes.test.js       # Technical API tests
+│   │   │   │   ├── signalRoutes.test.js          # Signal API tests
+│   │   │   │   ├── backtestRoutes.test.js        # Backtest API tests
+│   │   │   │   └── portfolioRoutes.test.js       # Portfolio API tests
+│   │   │   └── services/
+│   │   │       ├── dataFlow.test.js              # End-to-end data flow tests
+│   │   │       └── alertSystem.test.js           # Alert system integration tests
+│   │   └── e2e/
+│   │       ├── swingTradingWorkflow.test.js      # Complete swing trading workflow
+│   │       ├── portfolioManagement.test.js       # Portfolio management workflow
+│   │       └── aiPredictions.test.js             # AI prediction workflow
+│   ├── scripts/                                  # Utility Scripts
+│   │   ├── dataSetup.js                          # Initial data setup
+│   │   ├── modelTraining.js                      # ML model training script
+│   │   ├── backtestRunner.js                     # Batch backtesting script
+│   │   ├── dataImport.js                         # Historical data import
+│   │   ├── databaseSetup.js                      # Database initialization
+│   │   └── performanceOptimization.js            # Performance optimization script
+│   ├── docs/                                     # API Documentation
+│   │   ├── api/
+│   │   │   ├── technical-analysis.md             # Technical analysis API docs
+│   │   │   ├── signal-generation.md              # Signal generation API docs
+│   │   │   ├── backtesting.md                    # Backtesting API docs
+│   │   │   ├── portfolio-management.md           # Portfolio API docs
+│   │   │   └── ai-predictions.md                 # AI prediction API docs
+│   │   ├── algorithms/
+│   │   │   ├── technical-indicators.md           # Technical indicator algorithms
+│   │   │   ├── pattern-recognition.md            # Pattern recognition algorithms
+│   │   │   ├── signal-generation.md              # Signal generation algorithms
+│   │   │   └── ml-models.md                      # ML model documentation
+│   │   └── deployment/
+│   │       ├── production-setup.md               # Production deployment guide
+│   │       ├── performance-tuning.md             # Performance optimization guide
+│   │       └── monitoring.md                     # System monitoring guide
+│   └── server.js                                 # Server entry point
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── common/                           # Shared Components
+│   │   │   │   ├── ETFCard.js                    # Individual ETF display component
+│   │   │   │   ├── CategoryFilter.js             # Category selection component
+│   │   │   │   ├── LoadingSpinner.js             # Loading indicator component
+│   │   │   │   ├── SearchBar.js                  # Search functionality
+│   │   │   │   ├── Modal.js                      # Modal dialog component
+│   │   │   │   ├── Toast.js                      # Notification component
+│   │   │   │   ├── Pagination.js                 # Pagination component
+│   │   │   │   └── ErrorBoundary.js              # Error handling component
+│   │   │   ├── basic-dashboard/                  # Basic Dashboard Components
+│   │   │   │   ├── BasicETFGrid.js               # Simple ETF grid
+│   │   │   │   ├── BasicETFCard.js               # Minimal ETF card
+│   │   │   │   ├── SimpleWatchlist.js            # Basic watchlist
+│   │   │   │   ├── CategoryTabs.js               # Category tab navigation
+│   │   │   │   └── BasicSearch.js                # Simple search component
+│   │   │   ├── enhanced-dashboard/               # Enhanced Dashboard Components
+│   │   │   │   ├── swing-trading/                # Swing Trading Components
+│   │   │   │   │   ├── TechnicalChart.js         # Interactive candlestick chart
+│   │   │   │   │   ├── IndicatorPanel.js         # Technical indicators panel
+│   │   │   │   │   ├── SignalCard.js             # Trading signal display
+│   │   │   │   │   ├── PatternHighlight.js       # Chart pattern highlighting
+│   │   │   │   │   ├── SupportResistance.js      # S/R level overlay
+│   │   │   │   │   ├── VolumeAnalysis.js         # Volume analysis component
+│   │   │   │   │   ├── TrendAnalysis.js          # Trend analysis display
+│   │   │   │   │   ├── VolatilityMeter.js        # Volatility indicator
+│   │   │   │   │   └── SwingScore.js             # Swing trading score
+│   │   │   │   ├── screening/                    # Advanced Screening
+│   │   │   │   │   ├── AdvancedFilter.js         # Multi-criteria filtering
+│   │   │   │   │   ├── TechnicalScreener.js      # Technical screening
+│   │   │   │   │   ├── PerformanceScreener.js    # Performance screening
+│   │   │   │   │   ├── VolatilityScreener.js     # Volatility screening
+│   │   │   │   │   ├── VolumeScreener.js         # Volume screening
+│   │   │   │   │   └── CustomScreener.js         # Custom screening criteria
+│   │   │   │   ├── portfolio/                    # Portfolio Management
+│   │   │   │   │   ├── PortfolioOverview.js      # Portfolio summary
+│   │   │   │   │   ├── HoldingsTable.js          # Portfolio holdings
+│   │   │   │   │   ├── PerformanceChart.js       # Portfolio performance
+│   │   │   │   │   ├── AllocationPieChart.js     # Asset allocation
+│   │   │   │   │   ├── RebalancingSuggestions.js # Rebalancing recommendations
+│   │   │   │   │   ├── RiskMetrics.js            # Portfolio risk metrics
+│   │   │   │   │   ├── TransactionHistory.js     # Transaction log
+│   │   │   │   │   └── PortfolioComparison.js    # Benchmark comparison
+│   │   │   │   ├── alerts/                       # Alert System
+│   │   │   │   │   ├── AlertCenter.js            # Alert management center
+│   │   │   │   │   ├── AlertCreator.js           # Create new alerts
+│   │   │   │   │   ├── AlertList.js              # Active alerts list
+│   │   │   │   │   ├── AlertHistory.js           # Alert history
+│   │   │   │   │   ├── PriceAlert.js             # Price-based alerts
+│   │   │   │   │   ├── TechnicalAlert.js         # Technical indicator alerts
+│   │   │   │   │   ├── VolumeAlert.js            # Volume-based alerts
+│   │   │   │   │   └── NewsAlert.js              # News-based alerts
+│   │   │   │   ├── backtesting/                  # Backtesting Components
+│   │   │   │   │   ├── BacktestBuilder.js        # Strategy backtesting setup
+│   │   │   │   │   ├── BacktestResults.js        # Backtest results display
+│   │   │   │   │   ├── PerformanceMetrics.js     # Performance statistics
+│   │   │   │   │   ├── EquityCurve.js            # Equity curve chart
+│   │   │   │   │   ├── DrawdownChart.js          # Drawdown analysis
+│   │   │   │   │   ├── TradeAnalysis.js          # Individual trade analysis
+│   │   │   │   │   └── StrategyComparison.js     # Strategy comparison
+│   │   │   │   └── watchlist/                    # Enhanced Watchlist
+│   │   │   │       ├── WatchlistManager.js       # Watchlist management
+│   │   │   │       ├── CustomWatchlist.js        # Custom watchlist creation
+│   │   │   │       ├── WatchlistAlerts.js        # Watchlist-based alerts
+│   │   │   │       ├── WatchlistPerformance.js   # Watchlist performance
+│   │   │   │       └── WatchlistSharing.js       # Share watchlists
+│   │   │   ├── intelligent-dashboard/            # Intelligent Dashboard Components
+│   │   │   │   ├── ai-predictions/               # AI Prediction Components
+│   │   │   │   │   ├── PredictionChart.js        # Price prediction visualization
+│   │   │   │   │   ├── ConfidenceInterval.js     # Prediction confidence bands
+│   │   │   │   │   ├── ModelAccuracy.js          # Model accuracy display
+│   │   │   │   │   ├── PredictionHistory.js      # Historical predictions
+│   │   │   │   │   ├── VolatilityForecast.js     # Volatility predictions
+│   │   │   │   │   ├── TrendPrediction.js        # Trend direction predictions
+│   │   │   │   │   └── MarketRegime.js           # Market regime detection
+│   │   │   │   ├── ai-strategies/                # AI Strategy Components
+│   │   │   │   │   ├── StrategyGenerator.js      # AI strategy creation
+│   │   │   │   │   ├── StrategyOptimizer.js      # Strategy optimization
+│   │   │   │   │   ├── EnsembleStrategies.js     # Multi-strategy ensemble
+│   │   │   │   │   ├── StrategyPerformance.js    # AI strategy performance
+│   │   │   │   │   ├── RiskAdjustment.js         # AI risk management
+│   │   │   │   │   └── AdaptiveStrategy.js       # Self-adapting strategies
+│   │   │   │   ├── sentiment/                    # Sentiment Analysis
+│   │   │   │   │   ├── SentimentDashboard.js     # Overall sentiment view
+│   │   │   │   │   ├── NewsSentiment.js          # News sentiment analysis
+│   │   │   │   │   ├── SocialSentiment.js        # Social media sentiment
+│   │   │   │   │   ├── SentimentTrends.js        # Sentiment trend analysis
+│   │   │   │   │   ├── SentimentAlerts.js        # Sentiment-based alerts
+│   │   │   │   │   └── SentimentCorrelation.js   # Sentiment-price correlation
+│   │   │   │   ├── alternative-data/             # Alternative Data Components
+│   │   │   │   │   ├── EconomicIndicators.js     # Economic data visualization
+│   │   │   │   │   ├── SatelliteData.js          # Satellite imagery insights
+│   │   │   │   │   ├── SocialTrends.js           # Social trend analysis
+│   │   │   │   │   ├── CorporateEvents.js        # Corporate events impact
+│   │   │   │   │   ├── SupplyChainData.js        # Supply chain indicators
+│   │   │   │   │   └── MacroFactors.js           # Macroeconomic factors
+│   │   │   │   ├── ai-assistants/                # AI Assistant Components
+│   │   │   │   │   ├── TradingAssistant.js       # Trading AI assistant
+│   │   │   │   │   ├── ResearchAssistant.js      # Research AI assistant
+│   │   │   │   │   ├── RiskAssistant.js          # Risk management assistant
+│   │   │   │   │   ├── ChatInterface.js          # AI chat interface
+│   │   │   │   │   ├── VoiceInterface.js         # Voice command interface
+│   │   │   │   │   └── AssistantHistory.js       # Assistant interaction history
+│   │   │   │   └── advanced-analytics/           # Advanced Analytics
+│   │   │   │       ├── CorrelationMatrix.js      # Cross-asset correlations
+│   │   │   │       ├── FactorAnalysis.js         # Factor exposure analysis
+│   │   │   │       ├── RiskAttribution.js        # Risk factor attribution
+│   │   │   │       ├── PerformanceAttribution.js # Performance attribution
+│   │   │   │       ├── StressTest.js             # Portfolio stress testing
+│   │   │   │       ├── ScenarioAnalysis.js       # Scenario analysis
+│   │   │   │       └── MonteCarloSimulation.js   # Monte Carlo simulations
+│   │   │   └── charts/                           # Chart Components
+│   │   │       ├── CandlestickChart.js           # OHLC candlestick chart
+│   │   │       ├── LineChart.js                  # Simple line chart
+│   │   │       ├── AreaChart.js                  # Area chart
+│   │   │       ├── BarChart.js                   # Bar chart
+│   │   │       ├── HeatMap.js                    # Heat map visualization
+│   │   │       ├── ScatterPlot.js                # Scatter plot
+│   │   │       ├── BubbleChart.js                # Bubble chart
+│   │   │       ├── TreeMap.js                    # Tree map
+│   │   │       ├── SankeyDiagram.js              # Sankey flow diagram
+│   │   │       └── NetworkGraph.js               # Network graph
+│   │   ├── hooks/                                # Custom React Hooks
+│   │   │   ├── core/
+│   │   │   │   ├── useETFData.js                 # ETF data fetching hook
+│   │   │   │   ├── useLiveData.js                # Live data fetching hook
+│   │   │   │   ├── useSearch.js                  # Search functionality hook
+│   │   │   │   ├── useFiltering.js               # Filtering logic hook
+│   │   │   │   └── usePagination.js              # Pagination logic hook
+│   │   │   ├── swing-trading/
+│   │   │   │   ├── useTechnicalAnalysis.js       # Technical analysis hook
+│   │   │   │   ├── useSignalGeneration.js        # Trading signals hook
+│   │   │   │   ├── usePatternRecognition.js      # Pattern recognition hook
+│   │   │   │   ├── useBacktesting.js             # Backtesting hook
+│   │   │   │   ├── useScreening.js               # Advanced screening hook
+│   │   │   │   ├── usePortfolio.js               # Portfolio management hook
+│   │   │   │   ├── useAlerts.js                  # Alert management hook
+│   │   │   │   ├── useWatchlist.js               # Watchlist management hook
+│   │   │   │   └── useRiskManagement.js          # Risk management hook
+│   │   │   ├── ai-intelligence/
+│   │   │   │   ├── usePredictions.js             # ML predictions hook
+│   │   │   │   ├── useSentimentAnalysis.js       # Sentiment analysis hook
+│
+
+---
+
+## 📊 Dashboard Hierarchy & Feature Distribution
+
+### Dashboard Tier System
+The application features three distinct dashboard levels, each building upon the previous with enhanced capabilities:
+
+1. **Basic Dashboard** - Essential ETF viewing and filtering
+2. **Enhanced Dashboard** - Advanced analytics and swing trading tools
+3. **Intelligent Dashboard** - AI-powered insights and automated trading signals
+
+---
+
+## 🎯 Swing Trading Functionality Integration
+
+### Core Swing Trading Features
+The Enhanced and Intelligent dashboards include comprehensive swing trading capabilities designed for ETF traders looking to capitalize on price swings over days to weeks.
+
+#### Technical Analysis Engine
+- **Moving Averages**: SMA, EMA, WMA calculations for multiple timeframes
+- **Momentum Indicators**: RSI, MACD, Stochastic Oscillator, Williams %R
+- **Volatility Indicators**: Bollinger Bands, Average True Range (ATR)
+- **Volume Indicators**: On-Balance Volume (OBV), Volume Weighted Average Price (VWAP)
+- **Trend Indicators**: ADX, Parabolic SAR, Ichimoku Cloud
+
+#### Swing Trading Signals
+- **Entry Signals**: Breakout patterns, support/resistance bounces, moving average crossovers
+- **Exit Signals**: Profit targets, stop-loss triggers, trend reversal indicators
+- **Risk Management**: Position sizing calculators, risk-reward ratio analysis
+- **Pattern Recognition**: Double tops/bottoms, head and shoulders, triangles, flags
+
+#### Backtesting Engine
+- **Historical Performance**: Test strategies against historical ETF data
+- **Strategy Optimization**: Parameter tuning for maximum returns
+- **Risk Metrics**: Sharpe ratio, maximum drawdown, win rate analysis
+- **Performance Comparison**: Strategy vs. buy-and-hold benchmarking
+
+---
+
+## 🔧 Core Functionality Details
+
+### 1. Automated ETF Data Fetching & Categorization
+
+#### Data Sources Integration
+- **Primary Source**: AMFI NAVAll.txt (official mutual fund NAV data)
+- **Secondary Source**: mfapi.in API (backup/validation)
+- **Live Source**: NSE website (real-time pricing)
+
+#### Categorization Logic
+The system uses intelligent keyword matching and rule-based categorization:
+
+```javascript
+// Example categorization rules
+const CATEGORY_RULES = {
+  'Large Cap': ['NIFTY 50', 'SENSEX', 'LARGE CAP'],
+  'Mid Cap': ['NIFTY MIDCAP', 'MID CAP'],
+  'Small Cap': ['NIFTY SMALLCAP', 'SMALL CAP'],
+  'Sectoral': ['BANK', 'IT', 'PHARMA', 'AUTO', 'METAL'],
+  'International': ['NASDAQ', 'S&P 500', 'INTERNATIONAL'],
+  'Commodity': ['GOLD', 'SILVER', 'COMMODITY'],
+  'Debt': ['GILT', 'BOND', 'DEBT']
+};
+```
+
+#### Data Processing Pipeline
+1. **Fetch**: Download NAVAll.txt from AMFI
+2. **Parse**: Extract ETF entries using regex patterns
+3. **Filter**: Remove "Regular" and "IDCW" variants
+4. **Categorize**: Apply rule-based categorization
+5. **Validate**: Cross-reference with mfapi.in
+6. **Store**: Save as daily JSON file with timestamp
+
+#### File Storage Pattern
+```
+nav_data/
+├── nav_data_2025-06-24.json
+├── nav_data_2025-06-23.json
+└── nav_data_2025-06-22.json
+```
+
+### 2. Robust API Backend Specification
+
+#### API Endpoints
+
+**GET /api/etfs**
+- **Purpose**: Retrieve all categorized ETFs
+- **Response**: Array of ETF objects with full details
+- **Caching**: 1-hour TTL
+- **Error Handling**: Returns 500 with error message if data unavailable
+
+**GET /api/categories**
+- **Purpose**: Retrieve all available ETF categories
+- **Response**: Array of category names
+- **Logic**: Dynamically generated from current ETF data
+
+**GET /api/etfs/category/:categoryName**
+- **Purpose**: Retrieve ETFs filtered by specific category
+- **Parameters**: categoryName (URL parameter)
+- **Response**: Array of ETF objects in specified category
+- **Validation**: Returns 404 if category doesn't exist
+
+**GET /api/nav/:schemeCode**
+- **Purpose**: Retrieve specific ETF NAV data
+- **Parameters**: schemeCode (6-digit scheme identifier)
+- **Response**: Single ETF object with detailed NAV information
+- **Validation**: Returns 404 if scheme not found
+
+**POST /api/refresh-nav**
+- **Purpose**: Manually trigger NAV data refresh
+- **Response**: Success/failure status with timestamp
+- **Process**: Initiates full data fetch and categorization pipeline
+
+**GET /api/live-data/:symbol**
+- **Purpose**: Retrieve live ETF data from NSE
+- **Parameters**: symbol (NSE trading symbol)
+- **Response**: Live price, volume, and market statistics
+- **Technology**: Puppeteer-based web scraping
+
+#### Caching Strategy
+- **In-Memory Cache**: Redis-like structure using JavaScript Map
+- **TTL**: 1 hour for NAV data, 5 minutes for live data
+- **Auto-Refresh**: Automatic cache invalidation and refresh
+- **Fallback**: File-based storage if cache fails
+
+### 3. Live ETF Data (NSE Scraping) Implementation
+
+#### Puppeteer Configuration
+```javascript
+const puppeteerConfig = {
+  headless: true,
+  args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  timeout: 30000,
+  userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+};
+```
+
+#### Anti-Bot Measures Handling
+- Randomized delays between requests
+- User-Agent rotation
+- Request rate limiting
+- Graceful error handling with retries
+- Fallback to cached data if scraping fails
+
+#### Data Points Extracted
+- Current Price (LTP)
+- Previous Close Price
+- Price Change (absolute and percentage)
+- Trading Volume
+- 52-week High/Low
+- Market Capitalization
+- P/E Ratio (where applicable)
+
+### 4. Modern React Frontend Architecture
+
+#### Component Hierarchy
+```
+Dashboard (Main Container)
+├── CategoryFilter (Category Selection)
+├── LiveToggle (Live/NAV Mode Switch)
+├── RefreshButton (Manual Data Refresh)
+├── ETFGrid (Grid Container)
+│   └── ETFCard[] (Individual ETF Components)
+└── LoadingSpinner (Loading States)
+```
+
+#### State Management
+- **Global State**: React Context for app-wide data
+- **Local State**: useState for component-specific data
+- **Server State**: Custom hooks for API data management
+- **Cache State**: Browser-based caching for performance
+
+#### Key Features Implementation
+
+**Category Filtering**
+```javascript
+const filterETFsByCategory = (etfs, selectedCategory) => {
+  if (selectedCategory === 'All') return etfs;
+  return etfs.filter(etf => etf.category === selectedCategory);
+};
+```
+
+**Live Data Toggle**
+```javascript
+const [isLiveMode, setIsLiveMode] = useState(false);
+const toggleLiveMode = () => {
+  setIsLiveMode(!isLiveMode);
+  if (!isLiveMode) fetchLiveData();
+};
+```
+
+**Infinite Scroll**
+```javascript
+const useInfiniteScroll = (callback) => {
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000) {
+        callback();
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [callback]);
+};
+```
+
+#### UI/UX Design Specifications
+- **Design System**: Glassmorphism with blur effects
+- **Color Scheme**: Blue-based with transparency
+- **Typography**: System fonts with clean hierarchy
+- **Responsive**: Mobile-first design approach
+- **Animations**: Smooth transitions and hover effects
+- **Accessibility**: WCAG compliant with proper ARIA labels
+
+### 5. Production-Grade Code Quality
+
+#### Error Handling Strategy
+- **API Level**: Try-catch blocks with meaningful error messages
+- **Frontend Level**: Error boundaries and fallback UI
+- **Network Level**: Retry mechanisms with exponential backoff
+- **User Level**: Toast notifications and error states
+
+#### Logging Implementation
+```javascript
+const logger = {
+  info: (message, data) => console.log(`[INFO] ${message}`, data),
+  error: (message, error) => console.error(`[ERROR] ${message}`, error),
+  warn: (message, data) => console.warn(`[WARN] ${message}`, data)
+};
+```
+
+#### Performance Optimizations
+- Memoization for expensive calculations
+- Lazy loading for components
+- Image optimization and lazy loading
+- API response compression
+- Browser caching headers
+
+---
+
+## 📊 Detailed Dashboard Specifications
+
+### 🔰 Basic Dashboard (Entry Level)
+**Target Users**: Beginner investors, casual ETF viewers
+**Access**: Free/Public access
+
+#### Core Features
+- **ETF Grid Display**: Clean card-based layout showing essential ETF information
+- **Category Filtering**: Filter ETFs by sector, market cap, geography
+- **Basic Search**: Search by ETF name or symbol
+- **NAV Display**: Current NAV with daily change percentage
+- **Basic Sorting**: Sort by name, NAV, change percentage
+- **Simple Watchlist**: Add/remove ETFs from personal watchlist (max 10 ETFs)
+
+#### Data Points Displayed
+- ETF Name and Symbol
+- Current NAV
+- Daily Change (₹ and %)
+- Previous Close
+- Basic Volume Information
+- Fund House Name
+- Asset Under Management (AUM)
+
+#### Technical Specifications
+```javascript
+const BasicDashboardFeatures = {
+  maxWatchlistItems: 10,
+  refreshInterval: 300000, // 5 minutes
+  categories: ['All', 'Large Cap', 'Mid Cap', 'Small Cap', 'Sectoral', 'International'],
+  sortOptions: ['Name', 'NAV', 'Change %'],
+  searchFields: ['name', 'symbol']
+};
+```
+
+#### UI Components
+- **ETFBasicCard**: Minimal design with essential information
+- **CategoryTabs**: Simple tab-based category selection
+- **BasicSearchBar**: Text input with autocomplete
+- **SimpleWatchlist**: Drag-and-drop watchlist management
+
+---
+
+### 🚀 Enhanced Dashboard (Intermediate Level)
+**Target Users**: Active traders, swing traders, technical analysts
+**Access**: Premium subscription required
+
+#### Advanced Features
+- **All Basic Dashboard Features** (inherited)
+- **Advanced Technical Analysis**: 20+ technical indicators
+- **Interactive Charts**: TradingView-style candlestick charts
+- **Swing Trading Signals**: Buy/sell recommendations
+- **Advanced Screening**: Multi-criteria ETF screening
+- **Portfolio Tracking**: Track multiple portfolios with P&L
+- **Alerts System**: Price, volume, and technical indicator alerts
+- **Extended Watchlist**: Unlimited ETFs with custom categories
+- **Historical Data**: 5-year historical price data
+- **Export Functionality**: Excel/CSV export for analysis
+
+#### Swing Trading Specific Features
+
+**1. Technical Indicator Suite**
+```javascript
+const TechnicalIndicators = {
+  trend: ['SMA', 'EMA', 'WMA', 'MACD', 'ADX', 'Parabolic SAR'],
+  momentum: ['RSI', 'Stochastic', 'Williams %R', 'CMO'],
+  volatility: ['Bollinger Bands', 'ATR', 'Keltner Channels'],
+  volume: ['OBV', 'VWAP', 'Volume Oscillator', 'A/D Line'],
+  support_resistance: ['Pivot Points', 'Fibonacci Retracements']
+};
+```
+
+**2. Swing Trading Dashboard Layout**
+```javascript
+const SwingTradingLayout = {
+  leftPanel: {
+    etfList: 'Filtered ETF list with swing scores',
+    watchlists: 'Multiple custom watchlists',
+    alerts: 'Active alerts and notifications'
+  },
+  centerPanel: {
+    mainChart: 'Interactive candlestick chart',
+    indicators: 'Overlay and oscillator indicators',
+    patterns: 'Highlighted chart patterns'
+  },
+  rightPanel: {
+    signals: 'Buy/sell signals with reasoning',
+    analysis: 'Quick technical analysis summary',
+    news: 'ETF-specific news and events'
+  }
+};
+```
+
+**3. Swing Trading Signals Engine**
+```javascript
+const SwingSignals = {
+  bullish: [
+    'Golden Cross (50 SMA above 200 SMA)',
+    'RSI oversold bounce (RSI < 30 then > 35)',
+    'Bollinger Band squeeze breakout',
+    'Support level bounce with volume',
+    'MACD bullish divergence'
+  ],
+  bearish: [
+    'Death Cross (50 SMA below 200 SMA)',
+    'RSI overbought rejection (RSI > 70 then < 65)',
+    'Resistance level rejection',
+    'Volume divergence on rally',
+    'MACD bearish divergence'
+  ],
+  neutral: [
+    'Sideways consolidation',
+    'Mixed signals from indicators',
+    'Low volume environment'
+  ]
+};
+```
+
+**4. Advanced Screening Criteria**
+- **Technical Filters**: RSI range, MACD status, moving average position
+- **Fundamental Filters**: AUM size, expense ratio, tracking error
+- **Performance Filters**: 1D, 1W, 1M, 3M, 6M, 1Y returns
+- **Volatility Filters**: Beta, standard deviation, maximum drawdown
+- **Volume Filters**: Average volume, volume spike detection
+
+**5. Portfolio Management Features**
+```javascript
+const PortfolioFeatures = {
+  creation: 'Create multiple portfolios',
+  tracking: 'Real-time P&L calculation',
+  allocation: 'Asset allocation visualization',
+  rebalancing: 'Rebalancing suggestions',
+  performance: 'Risk-adjusted performance metrics',
+  comparison: 'Portfolio vs benchmark comparison',
+  history: 'Transaction history and audit trail'
+};
+```
+
+**6. Alert System Specifications**
+```javascript
+const AlertTypes = {
+  price: ['Price crosses above/below value', 'Daily change > threshold'],
+  technical: ['RSI overbought/oversold', 'MACD crossover', 'MA crossover'],
+  volume: ['Volume spike > average', 'Unusual volume activity'],
+  pattern: ['Chart pattern formation', 'Support/resistance break'],
+  news: ['ETF-specific news alerts', 'Sector news alerts']
+};
+```
+
+#### Data Requirements
+- **Historical Data**: 5 years of daily OHLCV data
+- **Intraday Data**: 15-minute intervals for current day
+- **Technical Calculations**: Real-time indicator computations
+- **News Feed**: ETF and sector-specific news integration
+- **Market Data**: Index levels, sector performance
+
+---
+
+### 🧠 Intelligent Dashboard (Advanced Level)
+**Target Users**: Professional traders, fund managers, algorithmic traders
+**Access**: Premium Plus subscription
+
+#### AI-Powered Features
+- **All Enhanced Dashboard Features** (inherited)
+- **Machine Learning Predictions**: AI-powered price predictions
+- **Sentiment Analysis**: News and social media sentiment scoring
+- **Automated Strategy Generation**: AI creates custom trading strategies
+- **Risk Management AI**: Intelligent position sizing and risk assessment
+- **Market Regime Detection**: AI identifies market conditions
+- **Correlation Analysis**: Cross-ETF and sector correlation insights
+- **Alternative Data Integration**: Satellite data, social trends, economic indicators
+
+#### Advanced AI Features
+
+**1. Machine Learning Models**
+```javascript
+const MLModels = {
+  pricePreduction: {
+    models: ['LSTM', 'Random Forest', 'XGBoost', 'Transformer'],
+    inputs: ['price_history', 'volume', 'technical_indicators', 'market_data'],
+    outputs: ['next_day_price', 'weekly_trend', 'probability_bands'],
+    accuracy: 'Backtested accuracy metrics displayed'
+  },
+  patternRecognition: {
+    models: ['CNN', 'Computer Vision'],
+    patterns: ['Head & Shoulders', 'Triangles', 'Flags', 'Wedges'],
+    confidence: 'Pattern confidence scores 0-100%'
+  },
+  sentimentAnalysis: {
+    sources: ['news_articles', 'social_media', 'analyst_reports'],
+    processing: ['NLP', 'Transformer models', 'Sentiment scoring'],
+    output: 'Bullish/Bearish/Neutral with confidence scores'
+  }
+};
+```
+
+**2. Automated Strategy Builder**
+```javascript
+const StrategyBuilder = {
+  inputs: {
+    riskTolerance: 'Conservative/Moderate/Aggressive',
+    timeHorizon: '1-3 days / 1-2 weeks / 1-3 months',
+    capital: 'Available trading capital',
+    preferences: 'Sector preferences, ETF types'
+  },
+  aiGeneration: {
+    entryRules: 'AI-generated entry conditions',
+    exitRules: 'AI-generated exit conditions',
+    riskManagement: 'Stop-loss and position sizing rules',
+    backtesting: 'Automatic strategy backtesting'
+  },
+  optimization: {
+    parameterTuning: 'AI optimizes strategy parameters',
+    walkForward: 'Walk-forward analysis for robustness',
+    ensembleMethods: 'Combines multiple strategies'
+  }
+};
+```
+
+**3. Advanced Risk Management**
+```javascript
+const RiskManagement = {
+  portfolioLevel: {
+    var: 'Value at Risk calculations',
+    cvar: 'Conditional Value at Risk',
+    correlation: 'Portfolio correlation analysis',
+    concentration: 'Concentration risk assessment'
+  },
+  positionLevel: {
+    kellyFormula: 'Kelly criterion position sizing',
+    riskParity: 'Risk parity allocation',
+    volatilityTargeting: 'Volatility-based position sizing',
+    drawdownControl: 'Maximum drawdown limits'
+  },
+  marketLevel: {
+    regimeDetection: 'Bull/Bear/Sideways market detection',
+    volatilityForecasting: 'GARCH-based volatility prediction',
+    liquidityAssessment: 'ETF liquidity scoring',
+    systemicRisk: 'Market stress indicators'
+  }
+};
+```
+
+**4. Alternative Data Integration**
+```javascript
+const AlternativeData = {
+  economic: {
+    sources: ['Economic indicators', 'Central bank data', 'GDP forecasts'],
+    processing: 'Real-time economic impact scoring',
+    integration: 'Economic factor ETF recommendations'
+  },
+  satellite: {
+    sources: ['Agricultural data', 'Mining activity', 'Infrastructure development'],
+    application: 'Commodity and sector ETF insights',
+    frequency: 'Weekly satellite data updates'
+  },
+  social: {
+    sources: ['Twitter sentiment', 'Reddit discussions', 'Google trends'],
+    processing: 'Social sentiment ETF scoring',
+    alerts: 'Viral trend ETF opportunities'
+  },
+  corporate: {
+    sources: ['Earnings data', 'Corporate actions', 'Insider trading'],
+    analysis: 'Sector rotation predictions',
+    timing: 'Event-driven ETF strategies'
+  }
+};
+```
+
+**5. Advanced Analytics Dashboard**
+```javascript
+const AnalyticsDashboard = {
+  predictiveAnalytics: {
+    priceForecasts: '1D, 1W, 1M price predictions with confidence intervals',
+    volatilityForecasts: 'GARCH-based volatility predictions',
+    correlationForecasts: 'Dynamic correlation predictions',
+    regimeForecasts: 'Market regime change probability'
+  },
+  performanceAnalytics: {
+    attributionAnalysis: 'Performance attribution to factors',
+    riskAdjustedReturns: 'Sharpe, Sortino, Calmar ratios',
+    benchmarkAnalysis: 'Alpha, beta, tracking error',
+    drawdownAnalysis: 'Maximum drawdown, recovery time'
+  },
+  marketAnalytics: {
+    sectorRotation: 'Sector strength rankings and trends',
+    marketBreadth: 'Advance/decline ratios, new highs/lows',
+    volatilityRegime: 'VIX analysis and volatility clustering',
+    liquidityAnalysis: 'Bid-ask spreads, volume patterns'
+  }
+};
+```
+
+**6. Custom AI Assistants**
+```javascript
+const AIAssistants = {
+  tradingAssistant: {
+    capabilities: ['Strategy suggestions', 'Risk warnings', 'Market updates'],
+    interaction: 'Natural language chat interface',
+    learning: 'Learns from user preferences and outcomes'
+  },
+  researchAssistant: {
+    capabilities: ['ETF analysis', 'Sector research', 'Competitive analysis'],
+    integration: 'Automatically generates research reports',
+    scheduling: 'Scheduled research updates'
+  },
+  riskAssistant: {
+    capabilities: ['Portfolio risk assessment', 'Stress testing', 'Scenario analysis'],
+    monitoring: '24/7 risk monitoring and alerts',
+    recommendations: 'Risk reduction suggestions'
+  }
+};
+```
+
+#### Real-time Data Requirements
+- **Tick-by-tick Data**: For high-frequency analysis
+- **Level 2 Data**: Order book depth for liquidity analysis
+- **Options Data**: For volatility surface construction
+- **Futures Data**: For basis analysis and arbitrage opportunities
+- **Global Markets**: International ETF and index data
+- **Economic Data**: Real-time economic indicator feeds
+
+---
+
+## 🔄 Dashboard Comparison Matrix
+
+| Feature | Basic | Enhanced | Intelligent |
+|---------|-------|----------|-------------|
+| **ETF Viewing** | ✅ Basic | ✅ Advanced | ✅ AI-Enhanced |
+| **Technical Analysis** | ❌ | ✅ 20+ Indicators | ✅ AI-Powered |
+| **Charting** | ❌ | ✅ Interactive | ✅ Predictive |
+| **Swing Trading Signals** | ❌ | ✅ Rule-Based | ✅ AI-Generated |
+| **Portfolio Management** | ❌ | ✅ Basic | ✅ Advanced |
+| **Backtesting** | ❌ | ✅ Manual | ✅ Automated |
+| **Alerts** | ❌ | ✅ Technical | ✅ AI + Technical |
+| **Historical Data** | 1 Day | 5 Years | 10+ Years |
+| **Predictions** | ❌ | ❌ | ✅ ML-Based |
+| **Alternative Data** | ❌ | ❌ | ✅ Multiple Sources |
+| **Custom Strategies** | ❌ | ✅ Manual | ✅ AI-Generated |
+| **Risk Management** | ❌ | ✅ Basic | ✅ Advanced AI |
+| **API Access** | ❌ | ✅ Limited | ✅ Full Access |
+| **Mobile App** | ❌ | ✅ Basic | ✅ Full-Featured |
+| **Support** | Community | Email | Priority + Phone |
+
+---
+
+## 💰 Monetization Strategy
+
+### Subscription Tiers
+- **Basic Dashboard**: Free (with ads, limited features)
+- **Enhanced Dashboard**: ₹2,999/month (swing trading features)
+- **Intelligent Dashboard**: ₹9,999/month (AI features, unlimited access)
+
+### Additional Revenue Streams
+- **API Access**: Pay-per-call for external developers
+- **White Label**: Dashboard licensing to other platforms
+- **Data Feeds**: Selling processed ETF data and signals
+- **Education**: Swing trading courses and webinars
+- **Brokerage Integration**: Commission sharing with partner brokers
+
+---
+
+## 🚀 Deployment & Operations
+
+### Environment Configuration
+```javascript
+// Environment variables
+PORT=5000
+NODE_ENV=production
+CACHE_TTL=3600
+MAX_RETRY_ATTEMPTS=3
+NSE_SCRAPING_TIMEOUT=30000
+```
+
+### Monitoring & Health Checks
+- **Health Endpoint**: `/api/health` for system status
+- **Metrics**: Response times, error rates, cache hit ratios
+- **Alerts**: Automatic notifications for system failures
+- **Logging**: Structured logging with timestamps and context
+
+### Scaling Considerations
+- **Horizontal Scaling**: Load balancer compatible
+- **Database Migration**: Easy transition from file to database storage
+- **CDN Integration**: Static asset optimization
+- **Microservices**: Modular architecture for service separation
+
+---
+
+## 🔄 Data Flow Diagrams
+
+### ETF Data Processing Flow
+```
+AMFI NAVAll.txt → Parser → Filter → Categorizer → Validator → JSON Storage → API Cache → Frontend
+```
+
+### Live Data Flow
+```
+NSE Website → Puppeteer Scraper → Data Extractor → Cache → API → Frontend Live Mode
+```
+
+### User Interaction Flow
+```
+User Request → Category Filter → API Call → Cache Check → Data Response → UI Update
+```
+
+---
+
+## 🧪 Testing Strategy
+
+### Backend Testing
+- Unit tests for data processing functions
+- Integration tests for API endpoints
+- Mock tests for external API calls
+- Performance tests for scraping operations
+
+### Frontend Testing
+- Component unit tests with React Testing Library
+- Integration tests for user interactions
+- E2E tests for critical user journeys
+- Accessibility testing with automated tools
+
+---
+
+## 📝 API Documentation Examples
+
+### Sample API Responses
+
+**GET /api/etfs**
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "schemeCode": "120503",
+      "schemeName": "Aditya Birla Sun Life Nifty 50 ETF",
+      "nav": "29.0023",
+      "date": "2025-06-24",
+      "category": "Large Cap",
+      "symbol": "ABSLNFTF",
+      "changePercent": "+0.46%",
+      "rsi": "64.16"
+    }
+  ],
+  "timestamp": "2025-06-24T10:30:00Z"
+}
+```
+
+**GET /api/live-data/ABSLNFTF**
+```json
+{
+  "success": true,
+  "data": {
+    "symbol": "ABSLNFTF",
+    "ltp": "29.15",
+    "change": "+0.13",
+    "changePercent": "+0.45%",
+    "volume": "1,245,678",
+    "high": "29.20",
+    "low": "28.95",
+    "previousClose": "29.02"
+  },
+  "timestamp": "2025-06-24T15:45:30Z"
+}
+```
+
+---
+
+## 🔧 Maintenance & Updates
+
+### Regular Maintenance Tasks
+- Daily data refresh validation
+- Cache performance monitoring
+- Log file rotation and cleanup
+- Security updates for dependencies
+- Performance metrics analysis
+
+### Update Procedures
+- **Code Updates**: Git-based deployment with rollback capability
+- **Data Schema**: Backward-compatible changes with migration scripts
+- **API Changes**: Versioning strategy for breaking changes
+- **UI Updates**: Progressive enhancement approach
+
+---
+
+## 🎯 Future Enhancement Opportunities
+
+### Planned Features
+- **Portfolio Management**: User watchlists and portfolios
+- **Advanced Analytics**: Technical indicators and charts
+- **Alerts System**: Price and volume-based notifications
+- **Mobile App**: React Native implementation
+- **API Rate Limiting**: Enhanced security and usage controls
+
+### Scalability Improvements
+- **Database Migration**: PostgreSQL/MongoDB integration
+- **Microservices**: Service decomposition for better scaling
+- **Real-time Updates**: WebSocket implementation for live data
+- **Advanced Caching**: Redis integration for distributed caching
+
+---
+
+**This documentation serves as a comprehensive reference for developers, AI tools, and system administrators working with the ETF Dashboard application. All technical specifications are designed to be implementation-ready and easily understood by automated development tools.**
