@@ -1,0 +1,402 @@
+[
+  {
+    "rank": 1,
+    "etfName": "CPSE ETF",
+    "symbol": "CPSEETF",
+    "category": "PSU",
+    "indexTracked": "Nifty CPSE Index",
+    "schemeCode": 140107,
+    "schemeName": "CPSE ETF",
+    "isinGrowth": "INF457M01133"
+  },
+  {
+    "rank": 2,
+    "etfName": "Nippon India ETF Nifty Bank BeES",
+    "symbol": "BANKBEES",
+    "category": "Banking",
+    "indexTracked": "Nifty Bank Index",
+    "schemeCode": 140087,
+    "schemeName": "Nippon India ETF Nifty Bank BeES",
+    "isinGrowth": "INF204KB15I9"
+  },
+  {
+    "rank": 3,
+    "etfName": "SBI Nifty 50 ETF",
+    "symbol": "SETFNIF50",
+    "category": "Large Cap",
+    "indexTracked": "Nifty 50 Index",
+    "schemeCode": 135106,
+    "schemeName": "SBI Nifty 50 ETF",
+    "isinGrowth": "INF200KA1FS1"
+  },
+  {
+    "rank": 4,
+    "etfName": "Nippon India ETF Gold BeES",
+    "symbol": "GOLDBEES",
+    "category": "Precious Metals",
+    "indexTracked": "Domestic Gold Price",
+    "schemeCode": 140088,
+    "schemeName": "Nippon India ETF Gold BeES",
+    "isinGrowth": "INF204KB17I5"
+  },
+  {
+    "rank": 5,
+    "etfName": "Nippon India ETF Nifty 50 BeES",
+    "symbol": "NIFTYBEES",
+    "category": "Large Cap",
+    "indexTracked": "Nifty 50 Index",
+    "schemeCode": 140084,
+    "schemeName": "Nippon India ETF Nifty 50 BeES",
+    "isinGrowth": "INF204KB14I2"
+  },
+  {
+    "rank": 6,
+    "etfName": "Motilal Oswal NASDAQ 100 ETF",
+    "symbol": "N100",
+    "category": "US Technology",
+    "indexTracked": "NASDAQ 100 Index",
+    "schemeCode": 114984,
+    "schemeName": "Motilal Oswal Nasdaq 100 ETF (MOFN100)",
+    "isinGrowth": "INF247L01AP3"
+  },
+  {
+    "rank": 7,
+    "etfName": "SBI Gold ETF",
+    "symbol": "SETFGOLD",
+    "category": "Precious Metals",
+    "indexTracked": "Domestic Gold Price",
+    "schemeCode": 111954,
+    "schemeName": "SBI Gold ETF",
+    "isinGrowth": "INF200KA16D8"
+  },
+  {
+    "rank": 8,
+    "etfName": "Nippon India ETF Nifty 1D Rate Liquid BeES",
+    "symbol": "LIQUIDBEES",
+    "category": "Liquid/Money Market",
+    "indexTracked": "Nifty 1D Rate Index",
+    "schemeCode": 140086,
+    "schemeName": "Nippon India ETF Nifty 1D Rate Liquid BeES - DAILY IDCW Option",
+    "isinGrowth": "INF732E01037"
+  },
+  {
+    "rank": 9,
+    "etfName": "Kotak Gold Etf",
+    "symbol": "KOTAKGOLD",
+    "category": "Precious Metals",
+    "indexTracked": "Domestic Gold Price",
+    "schemeCode": 106193,
+    "schemeName": "KOTAK GOLD ETF",
+    "isinGrowth": "INF174KA1HJ8"
+  },
+  {
+    "rank": 10,
+    "etfName": "HDFC Gold Exchange Traded Fund",
+    "symbol": "HDFCMFGETF",
+    "category": "Precious Metals",
+    "indexTracked": "Domestic Gold Price",
+    "schemeCode": 113049,
+    "schemeName": "HDFC Gold ETF - Growth Option",
+    "isinGrowth": "INF179KC1981"
+  },
+  {
+    "rank": 11,
+    "etfName": "ICICI Prudential Gold ETF",
+    "symbol": "ICICIGOLD",
+    "category": "Precious Metals",
+    "indexTracked": "Domestic Gold Price",
+    "schemeCode": 113076,
+    "schemeName": "ICICI Prudential Gold ETF",
+    "isinGrowth": "INF109KC1NT3"
+  },
+  {
+    "rank": 12,
+    "etfName": "Aditya BSL Nifty 50 ETF",
+    "symbol": "BSLNIFTY",
+    "category": "Large Cap",
+    "indexTracked": "Nifty 50 Index",
+    "schemeCode": 115512,
+    "schemeName": "Aditya Birla Sun Life Nifty 50 ETF",
+    "isinGrowth": "INF209KB19D1"
+  },
+  {
+    "rank": 13,
+    "etfName": "ICICI Prudential Nifty 100 Low Vol 30 ETF",
+    "symbol": "ICICILOVOL",
+    "category": "Low Volatility",
+    "indexTracked": "Nifty 100 Low Volatility 30 Index",
+    "schemeCode": 141596,
+    "schemeName": "ICICI Prudential Nifty 100 Low Volatility 30 ETF",
+    "isinGrowth": "INF109KC19U5"
+  },
+  {
+    "rank": 14,
+    "etfName": "Nippon India ETF Nifty PSU Bank BeES",
+    "symbol": "PSUBNKBEES",
+    "category": "PSU Banking",
+    "indexTracked": "Nifty PSU Bank Index",
+    "schemeCode": 140089,
+    "schemeName": "Nippon India ETF Nifty PSU Bank BeES",
+    "isinGrowth": "INF204KB16I7"
+  },
+  {
+    "rank": 15,
+    "etfName": "ICICI Prudential Silver ETF",
+    "symbol": "ICICISLV",
+    "category": "Precious Metals",
+    "indexTracked": "Domestic Silver Price",
+    "schemeCode": 149464,
+    "schemeName": "ICICI PRUDENTIAL SILVER ETF",
+    "isinGrowth": "INF109KC1Y56"
+  },
+  {
+    "rank": 16,
+    "etfName": "Nippon India Nifty Pharma ETF",
+    "symbol": "PHARMABEES",
+    "category": "Pharmaceutical",
+    "indexTracked": "Nifty Pharma Index",
+    "schemeCode": 149008,
+    "schemeName": "Nippon India Nifty Pharma ETF",
+    "isinGrowth": "INF204KC1089"
+  },
+  {
+    "rank": 17,
+    "etfName": "Nippon India Silver ETF",
+    "symbol": "SILVERBEES",
+    "category": "Precious Metals",
+    "indexTracked": "Domestic Silver Price",
+    "schemeCode": 149758,
+    "schemeName": "Nippon India Silver ETF",
+    "isinGrowth": "INF204KC1402"
+  },
+  {
+    "rank": 18,
+    "etfName": "UTI Nifty Bank ETF",
+    "symbol": "UTIBANKETF",
+    "category": "Banking",
+    "indexTracked": "Nifty Bank Index",
+    "schemeCode": 148173,
+    "schemeName": "UTI Nifty Bank ETF",
+    "isinGrowth": "INF789F1AUV1"
+  },
+  {
+    "rank": 19,
+    "etfName": "Mirae Asset Nifty Midcap 150 ETF",
+    "symbol": "MAN50ETF",
+    "category": "Mid Cap",
+    "indexTracked": "Nifty Midcap 150 Index",
+    "schemeCode": 149918,
+    "schemeName": "Mirae Asset Nifty Midcap 150 ETF",
+    "isinGrowth": "INF769K01IC9"
+  },
+  {
+    "rank": 20,
+    "etfName": "Nippon India ETF Nifty IT",
+    "symbol": "NETFIT",
+    "category": "Information Technology",
+    "indexTracked": "Nifty IT Index",
+    "schemeCode": 148408,
+    "schemeName": "Nippon India ETF Nifty IT",
+    "isinGrowth": "INF204KB15V2"
+  },
+  {
+    "rank": 21,
+    "etfName": "ICICI Prudential Nifty FMCG ETF",
+    "symbol": "FMCGIETF",
+    "category": "Fast Moving Consumer Goods",
+    "indexTracked": "Nifty FMCG Index",
+    "schemeCode": 149072,
+    "schemeName": "ICICI Prudential Nifty FMCG ETF",
+    "isinGrowth": "INF109KC19V3"
+  },
+  {
+    "rank": 22,
+    "etfName": "Mirae Asset Hang Seng TECH ETF",
+    "symbol": "MAHSTECH",
+    "category": "Hong Kong Technology",
+    "indexTracked": "Hang Seng TECH Index",
+    "schemeCode": 149379,
+    "schemeName": "Mirae Asset Hang Seng TECH ETF",
+    "isinGrowth": "INF769K01HS7"
+  },
+  {
+    "rank": 23,
+    "etfName": "Nippon IN ETF Nifty 8-13 yr G-Sec Long Term Gilt",
+    "symbol": "NETFLTGILT",
+    "category": "Government Securities",
+    "indexTracked": "Nifty 8-13 yr G-Sec Index",
+    "schemeCode": 139496,
+    "schemeName": "Nippon India ETF Nifty 8-13 yr G-Sec Long Term Gilt",
+    "isinGrowth": "INF204KB1882"
+  },
+  {
+    "rank": 24,
+    "etfName": "Kotak Nifty Alpha 50 ETF",
+    "symbol": "KOTAKALPHA",
+    "category": "Alpha/Factor",
+    "indexTracked": "Nifty Alpha 50 Index",
+    "schemeCode": 149397,
+    "schemeName": "Kotak Nifty Alpha 50 ETF",
+    "isinGrowth": "INF174KA1IA5"
+  },
+  {
+    "rank": 25,
+    "etfName": "ICICI Prudential Nifty 200 Momentum 30 ETF",
+    "symbol": "ICICIMOM30",
+    "category": "Momentum",
+    "indexTracked": "Nifty 200 Momentum 30 Index",
+    "schemeCode": 150455,
+    "schemeName": "ICICI Prudential Nifty 200 Momentum 30 ETF",
+    "isinGrowth": "INF109KC17C7"
+  },
+  {
+    "rank": 26,
+    "etfName": "ICICI Prudential Nifty Midcap 150 ETF",
+    "symbol": "ICICIM150",
+    "category": "Mid Cap",
+    "indexTracked": "Nifty Midcap 150 Index",
+    "schemeCode": 147921,
+    "schemeName": "ICICI Prudential Nifty Midcap 150 ETF",
+    "isinGrowth": "INF109KC11W8"
+  },
+  {
+    "rank": 27,
+    "etfName": "ICICI Pru Nifty Alpha Low- Volatility 30 ETF",
+    "symbol": "ICICIALPLV",
+    "category": "Alpha Low Volatility",
+    "indexTracked": "Nifty Alpha Low-Volatility 30 Index",
+    "schemeCode": 148456,
+    "schemeName": "ICICI Prudential Nifty Alpha Low- Volatility 30 ETF",
+    "isinGrowth": "INF109KC17V7"
+  },
+  {
+    "rank": 28,
+    "etfName": "ICICI Prudential Nifty IT ETF",
+    "symbol": "ICICITECH",
+    "category": "Information Technology",
+    "indexTracked": "Nifty IT Index",
+    "schemeCode": 148466,
+    "schemeName": "ICICI Prudential Nifty IT ETF",
+    "isinGrowth": "INF109KC16I6"
+  },
+  {
+    "rank": 29,
+    "etfName": "ICICI Prudential Nifty Private Bank ETF",
+    "symbol": "ICICIBANKP",
+    "category": "Private Banking",
+    "indexTracked": "Nifty Private Bank Index",
+    "schemeCode": 147530,
+    "schemeName": "ICICI Prudential Nifty Private Bank ETF",
+    "isinGrowth": "INF109KC18U7"
+  },
+  {
+    "rank": 30,
+    "etfName": "ICICI Prudential Nifty Bank ETF",
+    "symbol": "ICICIBANKN",
+    "category": "Banking",
+    "indexTracked": "Nifty Bank Index",
+    "schemeCode": 147483,
+    "schemeName": "ICICI Prudential Nifty Bank ETF",
+    "isinGrowth": "INF109KC15I8"
+  },
+  {
+    "rank": 31,
+    "etfName": "HDFC Nifty Smallcap 250 ETF - Growth Option",
+    "symbol": "HDFCSML250",
+    "category": "Small Cap",
+    "indexTracked": "Nifty Smallcap 250 Index",
+    "schemeCode": 151375,
+    "schemeName": "HDFC NIFTY Smallcap 250 ETF - Growth Option",
+    "isinGrowth": "INF179KC1FB2"
+  },
+  {
+    "rank": 32,
+    "etfName": "Zerodha Nifty 1D Rate Liquid ETF",
+    "symbol": "LIQUIDCASE",
+    "category": "Liquid/Money Market",
+    "indexTracked": "Nifty 1D Rate Index",
+    "schemeCode": 152327,
+    "schemeName": "Zerodha Nifty 1D Rate Liquid ETF - Growth Option",
+    "isinGrowth": "INF0R8F01034"
+  },
+  {
+    "rank": 33,
+    "etfName": "Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF",
+    "symbol": "MANS250MQ",
+    "category": "Small Cap/Momentum",
+    "indexTracked": "Nifty Smallcap 250 Momentum Quality 100 Index",
+    "schemeCode": 152455,
+    "schemeName": "Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF",
+    "isinGrowth": "INF769K01LC3"
+  },
+  {
+    "rank": 34,
+    "etfName": "Motilal Oswal Nifty Smallcap 250 ETF",
+    "symbol": "MOSMLCAP250",
+    "category": "Small Cap",
+    "indexTracked": "Nifty Smallcap 250 Index",
+    "schemeCode": 152546,
+    "schemeName": "Motilal Oswal Nifty Smallcap 250 ETF",
+    "isinGrowth": "INF247L01CH6"
+  },
+  {
+    "rank": 35,
+    "etfName": "Tata Gold Exchange Traded Fund",
+    "symbol": "TATAGOLD",
+    "category": "Precious Metals",
+    "indexTracked": "Domestic Gold Price",
+    "schemeCode": 152284,
+    "schemeName": "Tata Gold Exchange Traded Fund",
+    "isinGrowth": "INF277KA1976"
+  },
+  {
+    "rank": 36,
+    "etfName": "Tata Silver Exchange Traded Fund",
+    "symbol": "TATASILVER",
+    "category": "Precious Metals",
+    "indexTracked": "Domestic Silver Price",
+    "schemeCode": 152285,
+    "schemeName": "Tata Silver Exchange Traded Fund",
+    "isinGrowth": "INF277KA1984"
+  },
+  {
+    "rank": 37,
+    "etfName": "Zerodha Gold ETF",
+    "symbol": "ZEROGOLD",
+    "category": "Precious Metals",
+    "indexTracked": "Domestic Gold Price",
+    "schemeCode": 152476,
+    "schemeName": "Zerodha Gold ETF",
+    "isinGrowth": "INF0R8F01042"
+  },
+  {
+    "rank": 38,
+    "etfName": "Zerodha Nifty Midcap 150 ETF",
+    "symbol": "ZEROMID150",
+    "category": "Mid Cap",
+    "indexTracked": "Nifty Midcap 150 Index",
+    "schemeCode": 152668,
+    "schemeName": "Zerodha Nifty Midcap 150 ETF",
+    "isinGrowth": "INF0R8F01059"
+  },
+  {
+    "rank": 39,
+    "etfName": "ICICI Prudential Nifty Oil & Gas ETF",
+    "symbol": "ICICIOILGAS",
+    "category": "Sectoral – Energy",
+    "indexTracked": "Nifty Oil & Gas Index",
+    "schemeCode": 152748,
+    "schemeName": "ICICI Prudential Nifty Oil & Gas ETF",
+    "isinGrowth": "INF109KC18W3"
+  },
+  {
+    "rank": 40,
+    "etfName": "ICICI Prudential Nifty Metal ETF",
+    "symbol": "ICICIMETAL",
+    "category": "Sectoral – Metal",
+    "indexTracked": "Nifty Metal Index",
+    "schemeCode": 152769,
+    "schemeName": "ICICI Prudential Nifty Metal ETF",
+    "isinGrowth": "INF109KC19W1"
+  }
+] 

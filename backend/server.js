@@ -9,6 +9,8 @@ const getNavBySchemeIdHandler = require('./src/api/etf/getNavBySchemeId');
 const getCategoriesHandler = require('./src/api/etf/getCategories');
 const getEtfsByCategoryHandler = require('./src/api/etf/getEtfsByCategory');
 const fetchNseEtfsHandler = require('./src/api/etf/fetchNseEtfs');
+const connectDB = require('./src/db');
+const getHighLiquidityEtfsHandler = require('./src/api/etf/getHighLiquidityEtfs');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -131,8 +133,17 @@ app.get('/api/etfs/category/:categoryKey', getEtfsByCategoryHandler);
 app.get('/api/nav', getNavBySchemeIdHandler);
 app.post('/api/fetch-navs', fetchNavsHandler);
 app.get('/api/etfs/live', fetchNseEtfsHandler);
+app.get('/api/etfs/high-liquidity', getHighLiquidityEtfsHandler);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+connectDB()
+  .then(() => {
+    console.log('MongoDB connected');
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Failed to connect to MongoDB:', err);
+    process.exit(1);
+  });
 
