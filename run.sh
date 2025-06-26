@@ -1,6 +1,15 @@
 #!/bin/bash
 set -e
 
+# Prevent multiple instances of this script
+LOCKFILE="/tmp/invom_ai_run.lock"
+if [ -f "$LOCKFILE" ]; then
+  echo "Another instance of run.sh is already running. Exiting."
+  exit 1
+fi
+trap "rm -f $LOCKFILE" EXIT
+touch "$LOCKFILE"
+
 # Colors
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -189,14 +198,16 @@ echo -e "${GREEN}To stop: kill $BACKEND_PID $FRONTEND_PID${NC}"
 BACKEND_URL="http://localhost:3001"
 FRONTEND_URL="http://localhost:4000"
 MONGO_URL="mongodb://localhost:27017"
+SWAGGER_URL="http://localhost:3001/api-docs/"
 
 cat <<EOM
 
 ${GREEN}Access your app and services:${NC}
 
-- Frontend:   ${FRONTEND_URL}
-- Backend:    ${BACKEND_URL}
-- MongoDB:    ${MONGO_URL}
+- Frontend:   		t${FRONTEND_URL}
+- Backend:    		t${BACKEND_URL}
+- MongoDB:    		${MONGO_URL}
+- Swagger API Docs: 	${SWAGGER_URL}
 
 ${GREEN}MongoDB Access Options:${NC}
 - MongoDB Compass:  Open Compass and connect to ${MONGO_URL}
@@ -213,10 +224,14 @@ ${GREEN}To stop all services:${NC}
 EOM
 
 # 5. Open frontend in browser only once, at the end
-if command -v open >/dev/null; then
-  open http://localhost:4000
-elif command -v xdg-open >/dev/null; then
-  xdg-open http://localhost:4000
+BROWSER_LOCK=".frontend_browser_opened"
+if [ ! -f "$BROWSER_LOCK" ]; then
+  if command -v open >/dev/null; then
+    open http://localhost:4000
+  elif command -v xdg-open >/dev/null; then
+    xdg-open http://localhost:4000
+  fi
+  touch "$BROWSER_LOCK"
 fi
 
 # 6. Final console log with decorative borders
@@ -227,6 +242,7 @@ echo "_________________________________________"
 echo "- Frontend:   http://localhost:4000"
 echo "- Backend:    http://localhost:3001"
 echo "- MongoDB:    mongodb://localhost:27017"
+echo "- Swagger API Docs:  http://localhost:3001/api-docs/"
 echo "_________________________________________"
 echo "________________________________________"
 echo "_______________________________________"

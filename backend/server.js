@@ -11,6 +11,9 @@ const getEtfsByCategoryHandler = require('./src/api/etf/getEtfsByCategory');
 const fetchNseEtfsHandler = require('./src/api/etf/fetchNseEtfs');
 const connectDB = require('./src/db');
 const getHighLiquidityEtfsHandler = require('./src/api/etf/getHighLiquidityEtfs');
+const { ensureNavData } = require('./src/services/navDataService');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -128,12 +131,24 @@ function categorizeEtfs(etfs, categories) {
 }
 
 app.get('/api/etfs', getEtfListHandler);
+app.get('/api/etfs/list', getEtfListHandler);
 app.get('/api/etfs/categories', getCategoriesHandler);
 app.get('/api/etfs/category/:categoryKey', getEtfsByCategoryHandler);
 app.get('/api/nav', getNavBySchemeIdHandler);
 app.post('/api/fetch-navs', fetchNavsHandler);
 app.get('/api/etfs/live', fetchNseEtfsHandler);
 app.get('/api/etfs/high-liquidity', getHighLiquidityEtfsHandler);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// On server startup, ensure today's NAV data is present (fetch/write/save if missing)
+(async () => {
+  try {
+    await ensureNavData();
+    console.log('[Startup] ETF NAV data ensured for today.');
+  } catch (err) {
+    console.error('[Startup] Failed to ensure ETF NAV data:', err);
+  }
+})();
 
 connectDB()
   .then(() => {

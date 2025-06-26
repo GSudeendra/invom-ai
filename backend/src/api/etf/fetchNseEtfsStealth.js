@@ -187,6 +187,25 @@ const cookies = [
   }
 ];
 
+/**
+ * @swagger
+ * /api/etfs/live-stealth:
+ *   get:
+ *     summary: Fetch live ETF NAVs from NSE (stealth)
+ *     description: Fetches live ETF NAVs from NSE using Puppeteer Stealth and returns the data.
+ *     responses:
+ *       200:
+ *         description: Live ETF NAV data (stealth)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ */
 module.exports = async function (req, res) {
   const clientIP = req.ip || req.connection.remoteAddress || 'unknown';
   if (!isIPExcluded(clientIP)) {
@@ -195,8 +214,7 @@ module.exports = async function (req, res) {
       return res.status(429).json({
         error: 'Too many requests from this IP',
         message: 'Please wait a minute before making another request',
-        retryAfter: 60,
-        data: [],
+        retryAfter: 60,        data: [],
         note: 'No data available due to rate limiting'
       });
     }

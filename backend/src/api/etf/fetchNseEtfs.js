@@ -155,6 +155,25 @@ console.log('🔒 Rate limiting excluded IPs:');
 console.log('   Exact IPs:', excludedIPs.exactIPs);
 console.log('   CIDR Ranges:', excludedIPs.cidrRanges);
 
+/**
+ * @swagger
+ * /api/etfs/live:
+ *   get:
+ *     summary: Fetch live ETF NAVs from NSE (puppeteer)
+ *     description: Fetches live ETF NAVs from NSE using Puppeteer and returns the data.
+ *     responses:
+ *       200:
+ *         description: Live ETF NAV data
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ */
 module.exports = async function (req, res) {
   const clientIP = req.ip || req.connection.remoteAddress || 'unknown';
   

@@ -1,5 +1,36 @@
 const axios = require('axios');
 
+/**
+ * @swagger
+ * /api/etfs/nav/{schemeId}:
+ *   get:
+ *     summary: Get NAV by scheme ID
+ *     description: Returns the latest NAV for a given scheme ID (AMFI code).
+ *     parameters:
+ *       - in: path
+ *         name: schemeId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The AMFI scheme code
+ *     responses:
+ *       200:
+ *         description: Latest NAV for the scheme
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 schemeName:
+ *                   type: string
+ *                 amfiCode:
+ *                   type: string
+ *                 date:
+ *                   type: string
+ *                 nav:
+ *                   type: string
+ */
+
 module.exports = async function (req, res) {
   const schemeId = req.query.schemeId || req.params.schemeId;
   if (!schemeId) {

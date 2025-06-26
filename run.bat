@@ -152,6 +152,7 @@ REM Access instructions
 set "BACKEND_URL=http://localhost:3001"
 set "FRONTEND_URL=http://localhost:4000"
 set "MONGO_URL=mongodb://localhost:27017"
+set "SWAGGER_URL=http://localhost:3001/api-docs/"
 
 echo.
 echo %GREEN%Access your app and services:%NC%
@@ -159,6 +160,7 @@ echo.
 echo - Frontend:   %FRONTEND_URL%
 echo - Backend:    %BACKEND_URL%
 echo - MongoDB:    %MONGO_URL%
+echo - Swagger API Docs:  %SWAGGER_URL%
 echo.
 echo %GREEN%MongoDB Access Options:%NC%
 echo - MongoDB Compass:  Open Compass and connect to %MONGO_URL%
@@ -184,6 +186,7 @@ echo _________________________________________
 echo - Frontend:   http://localhost:4000
 echo - Backend:    http://localhost:3001
 echo - MongoDB:    mongodb://localhost:27017
+echo - Swagger API Docs:  http://localhost:3001/api-docs/
 echo _________________________________________
 echo ________________________________________
 echo _______________________________________

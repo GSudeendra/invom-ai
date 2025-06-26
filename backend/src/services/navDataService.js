@@ -1,6 +1,8 @@
 const fs = require('fs/promises');
 const path = require('path');
 const { getCategorizedEtfList } = require('./amfiNavService');
+const EtfNavCategorized = require('../models/EtfNavCategorized');
+const connectDB = require('../db');
 
 const NAV_DATA_DIR = path.join(__dirname, '..', '..', 'nav_data');
 let navCache = null;
@@ -15,6 +17,22 @@ async function ensureNavDataDir() {
 function getTodayNavFilePath() {
   const today = new Date().toISOString().slice(0, 10);
   return path.join(NAV_DATA_DIR, `etf_navs_categorized_${today}.json`);
+}
+
+// Save categorized ETF NAVs to MongoDB
+async function saveCategorizedNavsToMongo(categorized) {
+  await connectDB();
+  const docs = Object.entries(categorized).map(([categoryKey, cat]) => ({
+    categoryKey,
+    label: cat.label,
+    description: cat.description,
+    keywords: cat.keywords,
+    funds: cat.funds,
+    importedAt: new Date()
+  }));
+  const categoryKeys = docs.map(doc => doc.categoryKey);
+  await EtfNavCategorized.deleteMany({ categoryKey: { $in: categoryKeys } });
+  await EtfNavCategorized.insertMany(docs);
 }
 
 // Robustly ensure NAV data is up-to-date in memory and on disk, with retries
@@ -39,6 +57,8 @@ async function ensureNavData() {
         await fs.writeFile(navFilePath, JSON.stringify({ categories: categorized }, null, 4));
         navCache = categorized;
         navCacheDate = today;
+        // Save to MongoDB only if new data was fetched and written
+        await saveCategorizedNavsToMongo(categorized);
         return navCache;
       } catch (fetchErr) {
         console.error(`[Attempt ${attempt}] Failed to fetch/categorize/save NAV data:`, fetchErr.message);
@@ -62,23 +82,8 @@ async function getEtfsByCategory(categoryKey) {
   return navData[categoryKey] || null;
 }
 
-// Fetch and save NAV data (for admin/cron/manual trigger)
-async function fetchAndSaveNavData() {
-  await ensureNavDataDir();
-  const navFilePath = getTodayNavFilePath();
-  const categorized = await getCategorizedEtfList();
-  if (categorized.error) {
-    return { error: categorized.error };
-  }
-  await fs.writeFile(navFilePath, JSON.stringify({ categories: categorized }, null, 4));
-  navCache = categorized;
-  navCacheDate = new Date().toISOString().slice(0, 10);
-  return { file: navFilePath };
-}
-
 module.exports = {
   ensureNavData,
   getAllCategories,
-  getEtfsByCategory,
-  fetchAndSaveNavData
+  getEtfsByCategory
 }; 
