@@ -6,6 +6,7 @@ import DashboardPage from './pages/DashboardPage';
 import AnalyticsPage from './pages/AnalyticsPage';
 import PortfolioPage from './pages/PortfolioPage';
 import HomePage from './pages/HomePage';
+import PortfolioDashboard from './components/portfolio/PortfolioDashboard';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/stats" element={<ETFStatsPage />} />
         <Route path="/analytics" element={<AnalyticsPage />} />
-        <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/portfolio" element={<PortfolioDashboard />} />
       </Routes>
     </BrowserRouter>
   );

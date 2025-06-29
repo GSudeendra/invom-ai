@@ -1,4 +1,4 @@
-package broker_connector.broker_connector;
+package com.invom.brokerconnector;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

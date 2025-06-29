@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/HomePage.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const initialMarketData = [
   { symbol: 'SPY', price: 445.67, change: 1.24 },
@@ -13,6 +13,8 @@ const initialMarketData = [
 
 export default function HomePage() {
   const [marketData, setMarketData] = useState(initialMarketData);
+  const [activeTab, setActiveTab] = useState('dashboard');
+  const location = useLocation();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -75,9 +77,9 @@ export default function HomePage() {
           <nav>
             <div className="logo">OM AI</div>
             <div className="nav-links">
-              <a href="#" onClick={preventNav}>Dashboard</a>
+              <Link to="/dashboard" className={location.pathname === '/dashboard' ? 'active' : ''}>ETF Dashboard</Link>
+              <Link to="/portfolio" className={activeTab === 'portfolio' ? 'active' : ''}>Portfolio</Link>
               <a href="#" onClick={preventNav}>Analytics</a>
-              <a href="#" onClick={preventNav}>Portfolio</a>
               <a href="#" onClick={preventNav}>Alerts</a>
             </div>
             <div className="user-profile">
@@ -89,6 +91,9 @@ export default function HomePage() {
       </header>
       <main>
         <div className="container">
+          {/* Tab Content */}
+          {activeTab === 'dashboard' && (
+            <>
           {/* Hero Section */}
           <section className="hero">
             <div className="hero-content">
@@ -249,6 +254,8 @@ export default function HomePage() {
               </div>
             </div>
           </section>
+            </>
+          )}
         </div>
       </main>
     </div>

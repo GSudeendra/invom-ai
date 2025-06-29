@@ -1,0 +1,497 @@
+openapi: 3.0.1
+info:
+  title: Kite Broker API
+  version: "1.0.0"
+  description: |
+    REST API for connecting to Kite trading platform through MCP (Model Context Protocol) server.
+    
+    ## Features
+    - Order Management: Place and cancel trading orders
+    - Position Tracking: Get current positions with P&L
+    - Holdings Management: Retrieve portfolio holdings
+    - Real-time trading data through MCP server
+    
+    ## Authentication
+    This API currently uses mock implementations. For production use, ensure proper authentication is configured.
+    
+  contact:
+    name: API Support
+    email: support@example.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:8080
+    description: Development server
+  - url: https://api.example.com
+    description: Production server
+
+paths:
+  /api/v1/kite/health:
+    get:
+      summary: Health Check
+      description: Check if the Kite Broker API is running
+      operationId: healthCheck
+      tags:
+        - Health
+      responses:
+        '200':
+          description: API is running
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Kite Broker API is running"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/kite/connection-test:
+    get:
+      summary: Test MCP Connection
+      description: Test the connection to the Kite MCP server
+      operationId: testMcpConnection
+      tags:
+        - Connection
+      responses:
+        '200':
+          description: Connection test result
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Connection successful: HTTP 200 OK"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/kite/orders:
+    post:
+      summary: Place Order
+      description: Place a new trading order
+      operationId: placeOrder
+      tags:
+        - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+            examples:
+              market_buy:
+                summary: Market Buy Order
+                value:
+                  symbol: "RELIANCE"
+                  orderType: "MARKET"
+                  quantity: 100
+                  side: "BUY"
+                  product: "CNC"
+                  validity: "DAY"
+              limit_sell:
+                summary: Limit Sell Order
+                value:
+                  symbol: "TCS"
+                  orderType: "LIMIT"
+                  quantity: 50
+                  price: 3500.0
+                  side: "SELL"
+                  product: "MIS"
+                  validity: "DAY"
+      responses:
+        '200':
+          description: Order placed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '400':
+          description: Bad request - validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/kite/orders/{orderId}:
+    delete:
+      summary: Cancel Order
+      description: Cancel an existing order by order ID
+      operationId: cancelOrder
+      tags:
+        - Orders
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: The order ID to cancel
+          schema:
+            type: string
+            example: "ORDER_1703123456789"
+      responses:
+        '200':
+          description: Order cancelled successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '404':
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/kite/positions:
+    get:
+      summary: Get Positions
+      description: Retrieve current trading positions
+      operationId: getPositions
+      tags:
+        - Positions
+      responses:
+        '200':
+          description: Positions retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PositionResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/kite/holdings:
+    get:
+      summary: Get Holdings
+      description: Retrieve current portfolio holdings
+      operationId: getHoldings
+      tags:
+        - Holdings
+      responses:
+        '200':
+          description: Holdings retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HoldingResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    OrderRequest:
+      type: object
+      required:
+        - symbol
+        - orderType
+        - quantity
+      properties:
+        symbol:
+          type: string
+          description: Trading symbol (e.g., RELIANCE, TCS)
+          example: "RELIANCE"
+        orderType:
+          type: string
+          description: Type of order
+          enum: [MARKET, LIMIT, STOP_LOSS, STOP_LOSS_MARKET]
+          example: "MARKET"
+        quantity:
+          type: integer
+          minimum: 1
+          description: Number of shares to trade
+          example: 100
+        price:
+          type: number
+          format: double
+          description: Price for limit orders (required for LIMIT orders)
+          example: 2500.0
+        side:
+          type: string
+          description: Buy or sell
+          enum: [BUY, SELL]
+          example: "BUY"
+        product:
+          type: string
+          description: Product type
+          enum: [CNC, MIS, NRML]
+          default: "CNC"
+          example: "CNC"
+        validity:
+          type: string
+          description: Order validity
+          enum: [DAY, IOC, GTC]
+          default: "DAY"
+          example: "DAY"
+        disclosedQuantity:
+          type: string
+          description: Disclosed quantity for iceberg orders
+          example: ""
+        triggerPrice:
+          type: string
+          description: Trigger price for stop loss orders
+          example: ""
+
+    OrderResponse:
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Unique order identifier
+          example: "ORDER_1703123456789"
+        status:
+          type: string
+          description: Order status
+          enum: [SUCCESS, ERROR, CANCELLED, PENDING, REJECTED]
+          example: "SUCCESS"
+        message:
+          type: string
+          description: Status message
+          example: "Order placed successfully"
+        tradingSymbol:
+          type: string
+          description: Trading symbol
+          example: "RELIANCE"
+        orderType:
+          type: string
+          description: Order type
+          example: "MARKET"
+        quantity:
+          type: integer
+          description: Order quantity
+          example: 100
+        price:
+          type: number
+          format: double
+          description: Order price
+          example: 2500.0
+        side:
+          type: string
+          description: Buy or sell
+          example: "BUY"
+        product:
+          type: string
+          description: Product type
+          example: "CNC"
+        validity:
+          type: string
+          description: Order validity
+          example: "DAY"
+        timestamp:
+          type: string
+          format: date-time
+          description: Order timestamp
+          example: "2023-12-21T10:30:45"
+        exchangeOrderId:
+          type: string
+          nullable: true
+          description: Exchange order ID
+          example: "123456789"
+        rejectionReason:
+          type: string
+          nullable: true
+          description: Reason for rejection if order failed
+          example: "Insufficient funds"
+
+    Position:
+      type: object
+      properties:
+        tradingSymbol:
+          type: string
+          description: Trading symbol
+          example: "RELIANCE"
+        exchange:
+          type: string
+          description: Exchange name
+          example: "NSE"
+        product:
+          type: string
+          description: Product type
+          example: "CNC"
+        quantity:
+          type: integer
+          description: Position quantity
+          example: 100
+        averagePrice:
+          type: number
+          format: double
+          description: Average price
+          example: 2500.0
+        lastPrice:
+          type: number
+          format: double
+          description: Last traded price
+          example: 2550.0
+        pnl:
+          type: number
+          format: double
+          description: Profit and loss
+          example: 5000.0
+        side:
+          type: string
+          description: Position side
+          enum: [LONG, SHORT]
+          example: "LONG"
+        dayQuantity:
+          type: string
+          description: Day trading quantity
+          example: "0"
+        dayPnl:
+          type: number
+          format: double
+          description: Day trading P&L
+          example: 0.0
+
+    PositionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Response status
+          example: "SUCCESS"
+        message:
+          type: string
+          description: Status message
+          example: "Positions retrieved successfully"
+        positions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Position'
+
+    Holding:
+      type: object
+      properties:
+        tradingSymbol:
+          type: string
+          description: Trading symbol
+          example: "INFY"
+        exchange:
+          type: string
+          description: Exchange name
+          example: "NSE"
+        isin:
+          type: string
+          description: ISIN code
+          example: "INE009A01021"
+        quantity:
+          type: integer
+          description: Holding quantity
+          example: 50
+        averagePrice:
+          type: number
+          format: double
+          description: Average price
+          example: 1500.0
+        lastPrice:
+          type: number
+          format: double
+          description: Last traded price
+          example: 1550.0
+        pnl:
+          type: number
+          format: double
+          description: Profit and loss
+          example: 2500.0
+        product:
+          type: string
+          description: Product type
+          example: "CNC"
+        collateralQuantity:
+          type: string
+          description: Collateral quantity
+          example: "0"
+        collateralType:
+          type: string
+          description: Collateral type
+          example: ""
+
+    HoldingResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Response status
+          example: "SUCCESS"
+        message:
+          type: string
+          description: Status message
+          example: "Holdings retrieved successfully"
+        holdings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Holding'
+
+    ValidationErrorResponse:
+      type: object
+      description: Validation error response
+      properties:
+        symbol:
+          type: string
+          example: "Symbol is required"
+        quantity:
+          type: string
+          example: "Quantity must be positive"
+        orderType:
+          type: string
+          example: "Order type is required"
+
+    ErrorResponse:
+      type: object
+      description: Generic error response
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: "Internal server error: Something went wrong"
+        timestamp:
+          type: string
+          format: date-time
+          description: Error timestamp
+          example: "2023-12-21T10:30:45"
+        path:
+          type: string
+          description: Request path
+          example: "/api/v1/kite/orders"
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for authentication
+
+tags:
+  - name: Health
+    description: Health check endpoints
+  - name: Connection
+    description: Connection testing operations
+  - name: Orders
+    description: Order management operations
+  - name: Positions
+    description: Position tracking operations
+  - name: Holdings
+    description: Holdings management operations 

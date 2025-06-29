@@ -3,6 +3,9 @@ const path = require('path');
 const { getCategorizedEtfList } = require('./amfiNavService');
 const EtfNavCategorized = require('../models/EtfNavCategorized');
 const connectDB = require('../db');
+const HighLiquidityEtf = require('../models/HighLiquidityEtf');
+const HistoricalNav = require('../models/HistoricalNav');
+const axios = require('axios');
 
 const NAV_DATA_DIR = path.join(__dirname, '..', '..', 'nav_data');
 let navCache = null;
@@ -82,8 +85,42 @@ async function getEtfsByCategory(categoryKey) {
   return navData[categoryKey] || null;
 }
 
+// Utility: Fetch all unique schemeIds (schemeCodes) from high-liquidity ETFs
+async function getAllHighLiquiditySchemeIds() {
+  const etfs = await HighLiquidityEtf.find({ schemeCode: { $exists: true, $ne: null } }).lean();
+  return etfs.map(e => e.schemeCode).filter(Boolean);
+}
+
+// Fetch and save historical NAV data for a single schemeId
+async function fetchAndSaveHistoricalNav(schemeId) {
+  try {
+    const url = `https://api.mfapi.in/mf/${schemeId}`;
+    const response = await axios.get(url, { timeout: 15000 });
+    if (response.data && response.data.meta && Array.isArray(response.data.data)) {
+      await HistoricalNav.findOneAndUpdate(
+        { schemeId: String(schemeId) },
+        {
+          schemeId: String(schemeId),
+          meta: response.data.meta,
+          data: response.data.data,
+          status: response.data.status || 'SUCCESS',
+          fetchedAt: new Date()
+        },
+        { upsert: true, setDefaultsOnInsert: true }
+      );
+      return { success: true, schemeId };
+    } else {
+      return { success: false, schemeId, error: 'Invalid response structure' };
+    }
+  } catch (err) {
+    return { success: false, schemeId, error: err.message };
+  }
+}
+
 module.exports = {
   ensureNavData,
   getAllCategories,
-  getEtfsByCategory
+  getEtfsByCategory,
+  getAllHighLiquiditySchemeIds,
+  fetchAndSaveHistoricalNav
 }; 

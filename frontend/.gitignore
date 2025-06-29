@@ -40,6 +40,9 @@ jspm_packages/
 .yarn/
 .yarnrc.yml
 
+# Package lock files
+package-lock.json
+
 # Parcel
 .cache/
 .parcel-cache/
@@ -88,3 +91,6 @@ storybook-static/
 *.xcodeproj
 android/
 ios/
+
+# Portfolio data files (user-specific data)
+public/mydata/

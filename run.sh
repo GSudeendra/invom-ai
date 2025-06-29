@@ -226,10 +226,10 @@ EOM
 # 5. Open frontend in browser only once, at the end
 BROWSER_LOCK=".frontend_browser_opened"
 if [ ! -f "$BROWSER_LOCK" ]; then
-  if command -v open >/dev/null; then
-    open http://localhost:4000
-  elif command -v xdg-open >/dev/null; then
-    xdg-open http://localhost:4000
+if command -v open >/dev/null; then
+  open http://localhost:4000
+elif command -v xdg-open >/dev/null; then
+  xdg-open http://localhost:4000
   fi
   touch "$BROWSER_LOCK"
 fi

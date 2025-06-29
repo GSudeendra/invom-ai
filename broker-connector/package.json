@@ -1,0 +1,13 @@
+{
+  "name": "test-kite-mcp-server",
+  "version": "1.0.0",
+  "description": "Test MCP server for Kite broker integration",
+  "main": "test-mcp-server.js",
+  "scripts": {
+    "start": "node test-mcp-server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.13.2"
+  },
+  "type": "commonjs"
+} 

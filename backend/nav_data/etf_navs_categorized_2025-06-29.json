@@ -1,0 +1,2514 @@
+{
+    "categories": {
+        "nifty50": {
+            "label": "Nifty 50",
+            "description": "ETFs tracking the Nifty 50 index",
+            "amfiCodes": {},
+            "keywords": [
+                "nifty 50",
+                "niftybees",
+                "niftyetf",
+                "nifty bees"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "Groww Nifty 500 Momentum 50 ETF FOF - Direct Plan - Growth",
+                    "amfiCode": "153453",
+                    "latestNav": "10.9898",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Quantum Nifty 50 ETF Fund of Fund - Direct Plan - Growth",
+                    "amfiCode": "150390",
+                    "latestNav": "15.0833",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sun Life Nifty 50 ETF",
+                    "amfiCode": "115512",
+                    "latestNav": "29.6582",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ANGEL ONE NIFTY 50 ETF",
+                    "amfiCode": "153531",
+                    "latestNav": "10.4552",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Axis Nifty 50 ETF",
+                    "amfiCode": "141545",
+                    "latestNav": "280.1613",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Bajaj Finserv Nifty 50 ETF",
+                    "amfiCode": "152356",
+                    "latestNav": "260.5131",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "BANDHAN Nifty 50 ETF",
+                    "amfiCode": "139839",
+                    "latestNav": "279.8471",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "DSP Nifty 50 Equal Weight ETF",
+                    "amfiCode": "149286",
+                    "latestNav": "331.776",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "DSP Nifty 50 ETF",
+                    "amfiCode": "149392",
+                    "latestNav": "266.5756",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Groww Nifty 500 Low Volatility 50 ETF",
+                    "amfiCode": "153583",
+                    "latestNav": "10.2107",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Groww Nifty 500 Momentum 50 ETF",
+                    "amfiCode": "153452",
+                    "latestNav": "11.0595",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY 50 ETF - Growth Plan",
+                    "amfiCode": "135853",
+                    "latestNav": "285.2557",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY 50 VALUE 20 ETF - Growth Option",
+                    "amfiCode": "150619",
+                    "latestNav": "135.9302",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty 50 ETF",
+                    "amfiCode": "121366",
+                    "latestNav": "286.8180",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Invesco India Nifty 50 Exchange Traded Fund",
+                    "amfiCode": "115284",
+                    "latestNav": "2904.0467",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Nifty 50 ETF",
+                    "amfiCode": "112351",
+                    "latestNav": "280.7547",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Nifty 50 Value 20 ETF - Payout of Income Distribution cum capital withdrawal option",
+                    "amfiCode": "135744",
+                    "latestNav": "150.6491",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "LIC MF Nifty 50 ETF",
+                    "amfiCode": "135607",
+                    "latestNav": "284.0826",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty 50 ETF",
+                    "amfiCode": "145633",
+                    "latestNav": "275.3172",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty 50 Equal Weight ETF",
+                    "amfiCode": "153519",
+                    "latestNav": "321.6877",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "MOTILAL OSWAL NIFTY 50 EQUAL WEIGHT ETF",
+                    "amfiCode": "153532",
+                    "latestNav": "32.2063",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nifty 50 ETF",
+                    "amfiCode": "113069",
+                    "latestNav": "264.9615",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nifty 500 ETF",
+                    "amfiCode": "152106",
+                    "latestNav": "23.9325",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nifty 500 Momentum 50 ETF",
+                    "amfiCode": "152874",
+                    "latestNav": "54.7137",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty 50 BeES",
+                    "amfiCode": "140084",
+                    "latestNav": "288.3082",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty 50 Shariah BeES",
+                    "amfiCode": "140094",
+                    "latestNav": "515.2166",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty 50 Value 20",
+                    "amfiCode": "134782",
+                    "latestNav": "151.1901",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Quantum Nifty 50 ETF",
+                    "amfiCode": "108479",
+                    "latestNav": "2787.5918",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI Nifty 50 ETF",
+                    "amfiCode": "135106",
+                    "latestNav": "272.5138",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Tata Nifty 50 Exchange Traded Fund",
+                    "amfiCode": "145801",
+                    "latestNav": "275.6283",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "UTI Nifty 50 ETF",
+                    "amfiCode": "135320",
+                    "latestNav": "280.5468",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "banking": {
+            "label": "Banking",
+            "description": "ETFs focused on banking sector stocks",
+            "amfiCodes": {},
+            "keywords": [
+                "bank",
+                "banking",
+                "bankbees",
+                "nifty bank"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sun Life Nifty Bank ETF",
+                    "amfiCode": "147735",
+                    "latestNav": "58.5287",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Axis NIFTY Bank ETF",
+                    "amfiCode": "148559",
+                    "latestNav": "589.1720",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Bajaj Finserv Nifty Bank ETF",
+                    "amfiCode": "152357",
+                    "latestNav": "58.0231",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Baroda BNP Paribas Nifty Bank ETF",
+                    "amfiCode": "152683",
+                    "latestNav": "57.5792",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "DSP Nifty Bank ETF",
+                    "amfiCode": "151262",
+                    "latestNav": "58.453",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "DSP Nifty Private Bank ETF",
+                    "amfiCode": "151887",
+                    "latestNav": "28.776",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "DSP Nifty PSU Bank ETF",
+                    "amfiCode": "151888",
+                    "latestNav": "70.5577",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Edelweiss Nifty Bank ETF - Growth",
+                    "amfiCode": "152857",
+                    "latestNav": "57.6215",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY Bank ETF - GROWTH",
+                    "amfiCode": "148461",
+                    "latestNav": "58.7864",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY Private Bank ETF - Growth Option",
+                    "amfiCode": "150802",
+                    "latestNav": "28.88",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY PSU BANK ETF",
+                    "amfiCode": "152350",
+                    "latestNav": "70.7937",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Bank ETF",
+                    "amfiCode": "147483",
+                    "latestNav": "58.6338",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Financial Services Ex-BaNk ETF",
+                    "amfiCode": "150879",
+                    "latestNav": "31.3269",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Private Bank ETF",
+                    "amfiCode": "147530",
+                    "latestNav": "28.6290",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty PSU Bank ETF",
+                    "amfiCode": "151572",
+                    "latestNav": "71.0247",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Nifty Bank ETF",
+                    "amfiCode": "133122",
+                    "latestNav": "592.5809",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Nifty PSU Bank ETF",
+                    "amfiCode": "106929",
+                    "latestNav": "701.8199",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty Bank ETF",
+                    "amfiCode": "151857",
+                    "latestNav": "581.3880",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty PSU Bank ETF",
+                    "amfiCode": "152929",
+                    "latestNav": "70.4559",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty Bank BeES",
+                    "amfiCode": "140087",
+                    "latestNav": "591.4929",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty PSU Bank BeES",
+                    "amfiCode": "140089",
+                    "latestNav": "78.2951",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI BSE PSU BANK ETF",
+                    "amfiCode": "153435",
+                    "latestNav": "40.9005",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI Nifty Bank ETF",
+                    "amfiCode": "134008",
+                    "latestNav": "586.7871",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI Nifty Private Bank ETF",
+                    "amfiCode": "148541",
+                    "latestNav": "289.4561",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Tata Nifty Private Bank Exchange Traded Fund",
+                    "amfiCode": "147614",
+                    "latestNav": "293.3318",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "UTI Nifty Bank ETF",
+                    "amfiCode": "148173",
+                    "latestNav": "59.0679",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "largeCap": {
+            "label": "Large Cap",
+            "description": "ETFs focused on large cap companies",
+            "amfiCodes": {},
+            "keywords": [
+                "largecap",
+                "top 100",
+                "nifty 100"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty 100 Low Volatility 30 ETF FOF - Direct Plan - Growth",
+                    "amfiCode": "148822",
+                    "latestNav": "18.4516",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty 100 Low Volatility 30 ETF FOF - Growth",
+                    "amfiCode": "148821",
+                    "latestNav": "18.1111",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY 100 ETF - Growth Option",
+                    "amfiCode": "150476",
+                    "latestNav": "26.8641",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty 100 ETF",
+                    "amfiCode": "123004",
+                    "latestNav": "29.0560",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty 100 Low Volatility 30 ETF",
+                    "amfiCode": "141596",
+                    "latestNav": "22.1240",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Nifty 100 Equal Weight ETF",
+                    "amfiCode": "153315",
+                    "latestNav": "33.295",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Nifty 100 Low Volatility 30 ETF",
+                    "amfiCode": "150000",
+                    "latestNav": "20.9938",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "LIC MF Nifty 100 ETF",
+                    "amfiCode": "136473",
+                    "latestNav": "284.6121",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty 100 ESG Sector Leaders ETF",
+                    "amfiCode": "148572",
+                    "latestNav": "43.5783",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty 100 Low Volatility 30 ETF",
+                    "amfiCode": "151604",
+                    "latestNav": "206.0715",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty 100",
+                    "amfiCode": "121146",
+                    "latestNav": "276.2543",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Zerodha Nifty 100 ETF",
+                    "amfiCode": "152667",
+                    "latestNav": "10.881",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "midCap": {
+            "label": "Mid Cap",
+            "description": "ETFs focused on mid cap companies",
+            "amfiCodes": {},
+            "keywords": [
+                "midcap",
+                "midcap 150",
+                "juniorbees"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "DSP Nifty Midcap 150 Quality 50 ETF",
+                    "amfiCode": "149403",
+                    "latestNav": "254.9183",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY Midcap 150 ETF - Growth Option",
+                    "amfiCode": "151374",
+                    "latestNav": "22.0041",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential BSE Midcap Select ETF",
+                    "amfiCode": "139519",
+                    "latestNav": "17.8148",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Midcap 150 ETF",
+                    "amfiCode": "147921",
+                    "latestNav": "22.4481",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Nifty Midcap 150 ETF",
+                    "amfiCode": "153398",
+                    "latestNav": "22.064",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Nifty Midcap 50 ETF",
+                    "amfiCode": "149757",
+                    "latestNav": "170.3394",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "LIC MF Nifty Midcap 100 ETF",
+                    "amfiCode": "152404",
+                    "latestNav": "59.5132",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty Midcap 150 ETF",
+                    "amfiCode": "149918",
+                    "latestNav": "22.1678",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nifty Midcap 100 ETF",
+                    "amfiCode": "114456",
+                    "latestNav": "63.6860",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty Midcap 150",
+                    "amfiCode": "146271",
+                    "latestNav": "224.5242",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "UTI Nifty Midcap 150 Exchange Traded Fund",
+                    "amfiCode": "152050",
+                    "latestNav": "219.4983",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Zerodha Nifty Midcap 150 ETF",
+                    "amfiCode": "152668",
+                    "latestNav": "10.8465",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "smallCap": {
+            "label": "Small Cap",
+            "description": "ETFs focused on small cap companies",
+            "amfiCodes": {},
+            "keywords": [
+                "smallcap",
+                "small cap 250"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty MidSmallcap400 Momentum Quality 100 ETF Fund of Fund - Direct Plan - Growth",
+                    "amfiCode": "152645",
+                    "latestNav": "10.332",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF Fund of Fund - Direct Plan - Growth",
+                    "amfiCode": "152459",
+                    "latestNav": "10.741",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY Smallcap 250 ETF - Growth Option",
+                    "amfiCode": "151375",
+                    "latestNav": "177.1597",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty MidSmallcap400 Momentum Quality 100 ETF",
+                    "amfiCode": "152634",
+                    "latestNav": "51.1189",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF",
+                    "amfiCode": "152455",
+                    "latestNav": "48.2892",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nifty Smallcap 250 ETF",
+                    "amfiCode": "152546",
+                    "latestNav": "17.6572",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "it": {
+            "label": "Information Technology",
+            "description": "ETFs focused on information technology sector",
+            "amfiCodes": {},
+            "keywords": [
+                "it",
+                "tech",
+                "nifty it",
+                "itbees"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sun Life Silver ETF FOF-Direct Growth",
+                    "amfiCode": "149780",
+                    "latestNav": "16.7137",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Axis Equity ETFs FOF - Direct Plan - Growth Option",
+                    "amfiCode": "149847",
+                    "latestNav": "15.3857",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Alpha Low - Volatility 30 ETF FOF - Direct Plan - Growth",
+                    "amfiCode": "149158",
+                    "latestNav": "15.2889",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Alpha Low - Volatility 30 ETF FOF - Growth",
+                    "amfiCode": "149157",
+                    "latestNav": "15.0250",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae AssetHang Seng TECH ETF Fund of Fund Direct Plan - Growth Option",
+                    "amfiCode": "149381",
+                    "latestNav": "11.429",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Tata Nifty India Digital ETF Fund of Fund-Direct Plan-Growth",
+                    "amfiCode": "150344",
+                    "latestNav": "14.8345",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sun Life US Treasury 1-3 Year Bond ETFs Fund Of Funds-Direct Growth",
+                    "amfiCode": "152140",
+                    "latestNav": "11.1747",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sun Life US Treasury 3-10 Year Bond ETFs Fund Of Funds-Direct Growth",
+                    "amfiCode": "152150",
+                    "latestNav": "11.4386",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Global X Artificial Intelligence & Technology ETF Fund of Fund - Direct Plan- Growth",
+                    "amfiCode": "150597",
+                    "latestNav": "21.848",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sun Life Gold ETF",
+                    "amfiCode": "115127",
+                    "latestNav": "84.4731",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sun Life BSE Sensex ETF",
+                    "amfiCode": "139581",
+                    "latestNav": "83.7062",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sun Life Crisil 10 Year Gilt ETF",
+                    "amfiCode": "152802",
+                    "latestNav": "109.0598",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ADITYA BIRLA SUN LIFE CRISIL BROAD BASED GILT ETF",
+                    "amfiCode": "152732",
+                    "latestNav": "109.5857",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sun Life Nifty 200 Momentum 30 ETF",
+                    "amfiCode": "150498",
+                    "latestNav": "32.2137",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sun Life Nifty 200 Quality 30 ETF",
+                    "amfiCode": "150497",
+                    "latestNav": "21.6908",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sun Life Nifty Healthcare ETF",
+                    "amfiCode": "149262",
+                    "latestNav": "14.7514",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sun Life Nifty IT ETF",
+                    "amfiCode": "149293",
+                    "latestNav": "41.2039",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sunlife Nifty Next 50 ETF",
+                    "amfiCode": "145881",
+                    "latestNav": "71.5719",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sun Life Nifty PSE ETF",
+                    "amfiCode": "152620",
+                    "latestNav": "10.2619",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Aditya Birla Sun Life Silver ETF",
+                    "amfiCode": "149779",
+                    "latestNav": "105.6292",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Axis IT ETF",
+                    "amfiCode": "148799",
+                    "latestNav": "418.5816",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "DSP Nifty IT ETF",
+                    "amfiCode": "151820",
+                    "latestNav": "40.1664",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Edelweiss BSE Capital Markets & Insurance  ETF - Growth",
+                    "amfiCode": "153180",
+                    "latestNav": "23.9372",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Edelweiss Nifty500 Multicap Momentum Quality 50 ETF - Growth",
+                    "amfiCode": "152981",
+                    "latestNav": "43.7737",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY IT ETF - Growth option",
+                    "amfiCode": "150801",
+                    "latestNav": "40.549",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY100 Low Volatility 30 ETF - Growth Option",
+                    "amfiCode": "150658",
+                    "latestNav": "20.5718",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY100 QUALITY 30 ETF - Growth Option",
+                    "amfiCode": "150620",
+                    "latestNav": "58.1571",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty 200 Quality 30 ETF",
+                    "amfiCode": "151907",
+                    "latestNav": "21.4949",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Alpha Low- Volatility 30 ETF",
+                    "amfiCode": "148456",
+                    "latestNav": "28.0391",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Commodities ETF",
+                    "amfiCode": "151207",
+                    "latestNav": "90.6480",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty IT ETF",
+                    "amfiCode": "148466",
+                    "latestNav": "42.1592",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Nifty IT ETF",
+                    "amfiCode": "148763",
+                    "latestNav": "42.0062",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Hang Seng TECH ETF",
+                    "amfiCode": "149379",
+                    "latestNav": "19.4919",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty IT ETF",
+                    "amfiCode": "152155",
+                    "latestNav": "40.1887",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal BSE Low Volatility ETF",
+                    "amfiCode": "149921",
+                    "latestNav": "38.4908",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal BSE Quality ETF",
+                    "amfiCode": "150520",
+                    "latestNav": "198.7509",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nifty Capital Market ETF",
+                    "amfiCode": "153406",
+                    "latestNav": "46.9967",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty Dividend Opportunities 50",
+                    "amfiCode": "128639",
+                    "latestNav": "79.3765",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty IT",
+                    "amfiCode": "148408",
+                    "latestNav": "42.2069",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI Nifty 200 Quality 30 ETF",
+                    "amfiCode": "145648",
+                    "latestNav": "226.0655",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI Nifty IT ETF",
+                    "amfiCode": "148542",
+                    "latestNav": "421.3183",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Tata Nifty India Digital Exchange Traded Fund",
+                    "amfiCode": "149959",
+                    "latestNav": "95.2307",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "UTI Nifty IT ETF",
+                    "amfiCode": "152355",
+                    "latestNav": "398.7657",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "sensex": {
+            "label": "Sensex",
+            "description": "ETFs tracking the Sensex index",
+            "amfiCodes": {},
+            "keywords": [
+                "sensex"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "Axis BSE Sensex ETF",
+                    "amfiCode": "151585",
+                    "latestNav": "86.1718",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "BANDHAN BSE Sensex ETF",
+                    "amfiCode": "139840",
+                    "latestNav": "906.8124",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "DSP BSE Sensex ETF",
+                    "amfiCode": "151886",
+                    "latestNav": "85.6336",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "DSP BSE SENSEX Next 30 ETF",
+                    "amfiCode": "153228",
+                    "latestNav": "39.5095",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC BSE Sensex ETF - Growth Plan",
+                    "amfiCode": "135854",
+                    "latestNav": "94.2279",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential BSE Sensex ETF",
+                    "amfiCode": "101705",
+                    "latestNav": "954.8670",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak BSE Sensex ETF",
+                    "amfiCode": "109010",
+                    "latestNav": "91.2434",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "LIC MF BSE Sensex ETF",
+                    "amfiCode": "135672",
+                    "latestNav": "938.8471",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset BSE Sensex ETF",
+                    "amfiCode": "152097",
+                    "latestNav": "85.7256",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India BSE Sensex Next 30 ETF",
+                    "amfiCode": "153569",
+                    "latestNav": "39.4130",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF BSE Sensex",
+                    "amfiCode": "131331",
+                    "latestNav": "954.9402",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF BSE Sensex Next 50",
+                    "amfiCode": "147579",
+                    "latestNav": "89.2619",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI BSE SENSEX ETF",
+                    "amfiCode": "121109",
+                    "latestNav": "925.8012",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI BSE Sensex Next 50 ETF",
+                    "amfiCode": "144916",
+                    "latestNav": "913.4998",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "UTI - BSE Sensex Next 50 Exchange Traded Fund",
+                    "amfiCode": "146388",
+                    "latestNav": "91.0456",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "UTI BSE Sensex ETF",
+                    "amfiCode": "135321",
+                    "latestNav": "920.0902",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "gold": {
+            "label": "Precious Metals - Gold",
+            "description": "ETFs investing in gold",
+            "amfiCodes": {},
+            "keywords": [
+                "gold",
+                "goldbees"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "DSP Gold ETF Fund of Fund - Direct - Growth",
+                    "amfiCode": "152183",
+                    "latestNav": "15.243",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Edelweiss Gold and Silver ETF FOF - Direct Plan - Growth",
+                    "amfiCode": "150581",
+                    "latestNav": "18.268",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Groww Gold ETF FOF - DIRECT - GROWTH",
+                    "amfiCode": "152980",
+                    "latestNav": "12.0284",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC Gold ETF Fund of Fund - Direct Plan",
+                    "amfiCode": "119132",
+                    "latestNav": "30.134",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC Gold ETF Fund of Fund - Growth Option",
+                    "amfiCode": "115934",
+                    "latestNav": "28.7863",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Invesco India Gold ETF Fund of Fund - Direct Plan- - Growth",
+                    "amfiCode": "120531",
+                    "latestNav": "28.2585",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Invesco India Gold ETF Fund of Fund - Growth",
+                    "amfiCode": "116077",
+                    "latestNav": "27.2359",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "LIC MF Gold ETF Fund of Fund-Direct Plan-Growth",
+                    "amfiCode": "151974",
+                    "latestNav": "26.432",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Gold ETF Fund of Fund - Direct Plan - Growth",
+                    "amfiCode": "153007",
+                    "latestNav": "12.198",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Gold and Silver ETFs Fund of Funds(Direct Plan)",
+                    "amfiCode": "150642",
+                    "latestNav": "18.0098",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Tata Gold ETF Fund of Fund Direct Plan Growth Option",
+                    "amfiCode": "152287",
+                    "latestNav": "15.0082",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Union Gold ETF Fund of Fund - Direct Plan - Growth Option",
+                    "amfiCode": "153340",
+                    "latestNav": "11.1110",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "UTI Gold ETF Fund of Fund - Direct Plan - Growth Option",
+                    "amfiCode": "150714",
+                    "latestNav": "18.5464",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Zerodha Gold ETF FoF-Direct Plan - Growth Option",
+                    "amfiCode": "153011",
+                    "latestNav": "12.6128",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "360 ONE Gold ETF",
+                    "amfiCode": "153357",
+                    "latestNav": "94.5481",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Axis Gold ETF",
+                    "amfiCode": "113434",
+                    "latestNav": "80.2706",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Baroda BNP Paribas Gold ETF",
+                    "amfiCode": "152231",
+                    "latestNav": "93.4674",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "DSP Gold ETF",
+                    "amfiCode": "151737",
+                    "latestNav": "93.4507",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Edelweiss Gold ETF",
+                    "amfiCode": "152193",
+                    "latestNav": "96.4058",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Groww Gold ETF",
+                    "amfiCode": "152957",
+                    "latestNav": "94.4603",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC Gold ETF - Growth Option",
+                    "amfiCode": "113049",
+                    "latestNav": "82.2061",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Gold ETF",
+                    "amfiCode": "113076",
+                    "latestNav": "82.2930",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Invesco India Gold Exchange Traded Fund",
+                    "amfiCode": "112368",
+                    "latestNav": "8392.2666",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "KOTAK GOLD ETF",
+                    "amfiCode": "106193",
+                    "latestNav": "80.2797",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "LIC MF Gold Exchange Traded Fund",
+                    "amfiCode": "151961",
+                    "latestNav": "8670.8736",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Gold ETF",
+                    "amfiCode": "151416",
+                    "latestNav": "93.5849",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Gold BeES",
+                    "amfiCode": "140088",
+                    "latestNav": "79.7200",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI Gold ETF",
+                    "amfiCode": "111954",
+                    "latestNav": "82.1279",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Tata Gold Exchange Traded Fund",
+                    "amfiCode": "152284",
+                    "latestNav": "9.3338",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Union Gold ETF",
+                    "amfiCode": "153337",
+                    "latestNav": "94.5471",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "UTI GOLD Exchange Traded Fund",
+                    "amfiCode": "105463",
+                    "latestNav": "80.9423",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Zerodha Gold ETF",
+                    "amfiCode": "152476",
+                    "latestNav": "15.1415",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "silver": {
+            "label": "Precious Metals - Silver",
+            "description": "ETFs investing in silver",
+            "amfiCodes": {},
+            "keywords": [
+                "silver",
+                "silverbees"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "DSP Silver ETF Fund of Fund - Direct - Growth",
+                    "amfiCode": "153487",
+                    "latestNav": "11.1237",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Groww Silver ETF FOF - Direct - Growth",
+                    "amfiCode": "153525",
+                    "latestNav": "10.7977",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC Silver ETF Fund of Fund - Growth Option",
+                    "amfiCode": "150736",
+                    "latestNav": "17.561",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC Silver ETF Fund of Fund - Growth Option - Direct Plan",
+                    "amfiCode": "150737",
+                    "latestNav": "17.7332",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI PRUDENTIAL SILVER ETF FUND OF FUND - Direct Plan - Growth",
+                    "amfiCode": "149775",
+                    "latestNav": "16.4588",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI PRUDENTIAL SILVER ETF FUND OF FUND - Growth",
+                    "amfiCode": "149777",
+                    "latestNav": "16.1831",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Silver ETF Fund of Fund - Direct Plan - Growth Option",
+                    "amfiCode": "151603",
+                    "latestNav": "14.2232",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India Silver ETF FOF- Direct Plan-Growth Option",
+                    "amfiCode": "149760",
+                    "latestNav": "16.3807",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI Silver ETF Fund of Fund- Direct Plan - Growth",
+                    "amfiCode": "152735",
+                    "latestNav": "11.3508",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Tata Silver ETF Fund of Fund Direct Plan Growth Option",
+                    "amfiCode": "152293",
+                    "latestNav": "14.3947",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "UTI Silver ETF Fund of Fund - Direct Plan - Growth Option",
+                    "amfiCode": "151731",
+                    "latestNav": "13.7346",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "360 ONE Silver ETF",
+                    "amfiCode": "153415",
+                    "latestNav": "104.5299",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Axis Silver ETF",
+                    "amfiCode": "150610",
+                    "latestNav": "105.3974",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "DSP Silver ETF",
+                    "amfiCode": "150523",
+                    "latestNav": "101.9928",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Edelweiss Silver ETF",
+                    "amfiCode": "152212",
+                    "latestNav": "106.0078",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Groww Silver ETF",
+                    "amfiCode": "153524",
+                    "latestNav": "104.5913",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC Silver ETF - Growth Option",
+                    "amfiCode": "150556",
+                    "latestNav": "101.6789",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI PRUDENTIAL SILVER ETF",
+                    "amfiCode": "149464",
+                    "latestNav": "105.5201",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Silver ETF",
+                    "amfiCode": "150948",
+                    "latestNav": "102.7279",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Silver ETF",
+                    "amfiCode": "151779",
+                    "latestNav": "103.2217",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India Silver ETF",
+                    "amfiCode": "149758",
+                    "latestNav": "101.5016",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI Silver ETF",
+                    "amfiCode": "152725",
+                    "latestNav": "103.8903",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Tata Silver Exchange Traded Fund",
+                    "amfiCode": "152285",
+                    "latestNav": "10.2828",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "UTI Silver Exchange Traded Fund",
+                    "amfiCode": "151730",
+                    "latestNav": "103.6324",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Zerodha Silver ETF",
+                    "amfiCode": "153413",
+                    "latestNav": "10.7671",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "next50": {
+            "label": "Next 50",
+            "description": "ETFs tracking Next 50 index",
+            "amfiCodes": {},
+            "keywords": [
+                "nifty next 50",
+                "juniorbees"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India Nifty Next 50 Junior BeES FoF - Direct Plan - Growth Plan - Growth Option",
+                    "amfiCode": "146513",
+                    "latestNav": "25.6659",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India Nifty Next 50 Junior BeES FoF - Growth Plan - Growth Option",
+                    "amfiCode": "146514",
+                    "latestNav": "25.2854",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY NEXT 50 ETF - Growth Option",
+                    "amfiCode": "150477",
+                    "latestNav": "69.605",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Next 50 ETF",
+                    "amfiCode": "144587",
+                    "latestNav": "71.7812",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty Next 50 ETF",
+                    "amfiCode": "147906",
+                    "latestNav": "701.5212",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "MOTILAL OSWAL NIFTY NEXT 50 ETF",
+                    "amfiCode": "153535",
+                    "latestNav": "68.0562",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty Next 50 Junior BeES",
+                    "amfiCode": "140085",
+                    "latestNav": "735.1318",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI Nifty Next 50 ETF",
+                    "amfiCode": "134013",
+                    "latestNav": "728.3661",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "UTI Nifty Next 50 Exchange Traded Fund",
+                    "amfiCode": "141665",
+                    "latestNav": "73.364",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "liquid": {
+            "label": "Liquid",
+            "description": "Liquid ETFs for short term investments",
+            "amfiCodes": {},
+            "keywords": [
+                "liquid",
+                "liquidbees"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "ANGEL ONE NIFTY 1D RATE LIQUID ETF - GROWTH",
+                    "amfiCode": "153451",
+                    "latestNav": "1014.4377",
+                    "navDate": "29-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Bajaj Finserv Nifty 1D Rate Liquid ETF",
+                    "amfiCode": "152638",
+                    "latestNav": "1036.7894",
+                    "navDate": "29-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "DSP BSE Liquid Rate ETF",
+                    "amfiCode": "152555",
+                    "latestNav": "1079.1510",
+                    "navDate": "29-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "DSP NIFTY 1D Rate Liquid ETF",
+                    "amfiCode": "142589",
+                    "latestNav": "1000.0000",
+                    "navDate": "29-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Groww Nifty 1D Rate Liquid ETF",
+                    "amfiCode": "152891",
+                    "latestNav": "104.6421",
+                    "navDate": "29-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY 1D RATE LIQUID ETF GROWTH",
+                    "amfiCode": "153403",
+                    "latestNav": "1017.224",
+                    "navDate": "29-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential BSE Liquid Rate ETF - Growth",
+                    "amfiCode": "153378",
+                    "latestNav": "1016.8954",
+                    "navDate": "29-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Nifty 1D Rate Liquid ETF",
+                    "amfiCode": "151358",
+                    "latestNav": "1056.9413",
+                    "navDate": "29-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty 1D Rate Liquid ETF - Growth",
+                    "amfiCode": "153045",
+                    "latestNav": "1038.9206",
+                    "navDate": "29-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Shriram Nifty 1D Rate Liquid ETF - Growth",
+                    "amfiCode": "152741",
+                    "latestNav": "1059.3148",
+                    "navDate": "29-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Zerodha Nifty 1D Rate Liquid ETF - Growth Option",
+                    "amfiCode": "152327",
+                    "latestNav": "109.2459",
+                    "navDate": "29-Jun-2025"
+                }
+            ]
+        },
+        "international": {
+            "label": "International",
+            "description": "ETFs with international exposure",
+            "amfiCodes": {},
+            "keywords": [
+                "nasdaq",
+                "sp 500",
+                "international",
+                "global"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "Invesco India - Invesco EQQQ Nasdaq-100 ETF Fund of Fund - Direct Plan - Growth",
+                    "amfiCode": "149961",
+                    "latestNav": "18.0927",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nasdaq 100 ETF (MOFN100)",
+                    "amfiCode": "114984",
+                    "latestNav": "188.0731",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nasdaq Q50 ETF",
+                    "amfiCode": "149438",
+                    "latestNav": "73.2949",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "consumption": {
+            "label": "Consumption",
+            "description": "ETFs focused on consumer goods and services",
+            "amfiCodes": {},
+            "keywords": [
+                "consumption",
+                "consumer"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty India New Age Consumption ETF Fund of Fund - Direct Plan - Growth",
+                    "amfiCode": "153192",
+                    "latestNav": "9.749",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Axis NIFTY India Consumption ETF",
+                    "amfiCode": "149156",
+                    "latestNav": "121.5272",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty India Consumption ETF",
+                    "amfiCode": "149285",
+                    "latestNav": "122.0967",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Nifty India Consumption ETF",
+                    "amfiCode": "150492",
+                    "latestNav": "121.0642",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty India New Age Consumption ETF",
+                    "amfiCode": "153191",
+                    "latestNav": "11.8243",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty India Consumption",
+                    "amfiCode": "128331",
+                    "latestNav": "131.4041",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI Nifty Consumption ETF",
+                    "amfiCode": "149041",
+                    "latestNav": "121.7094",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "healthcare": {
+            "label": "Healthcare",
+            "description": "ETFs focused on healthcare sector",
+            "amfiCodes": {},
+            "keywords": [
+                "healthcare",
+                "pharma"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "Axis NIFTY Healthcare ETF",
+                    "amfiCode": "148934",
+                    "latestNav": "146.2026",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "DSP Nifty Healthcare ETF",
+                    "amfiCode": "152306",
+                    "latestNav": "144.8021",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Healthcare ETF",
+                    "amfiCode": "148957",
+                    "latestNav": "147.0224",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal BSE Healthcare ETF",
+                    "amfiCode": "150445",
+                    "latestNav": "44.4477",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India Nifty Pharma ETF",
+                    "amfiCode": "149008",
+                    "latestNav": "22.4032",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "gilt": {
+            "label": "Gilt",
+            "description": "Government securities ETFs",
+            "amfiCodes": {},
+            "keywords": [
+                "gsec",
+                "gilt",
+                "government bond"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty 8-13 yr Gsec ETF",
+                    "amfiCode": "151695",
+                    "latestNav": "29.1554",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty 8-13 yr G-Sec Long Term Gilt",
+                    "amfiCode": "139496",
+                    "latestNav": "28.7791",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "momentum": {
+            "label": "Momentum",
+            "description": "Momentum factor based ETFs",
+            "amfiCodes": {},
+            "keywords": [
+                "momentum"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY200 MOMENTUM 30 ETF - Growth Option",
+                    "amfiCode": "150657",
+                    "latestNav": "32.0725",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty 200 Momentum 30 ETF",
+                    "amfiCode": "150455",
+                    "latestNav": "32.3827",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nifty 200 Momentum 30 ETF",
+                    "amfiCode": "149801",
+                    "latestNav": "64.5161",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "value": {
+            "label": "Value",
+            "description": "Value factor based ETFs",
+            "amfiCodes": {},
+            "keywords": [
+                "value"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "Axis Nifty500 Value 50 ETF",
+                    "amfiCode": "153414",
+                    "latestNav": "28.9065",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty200 Value 30 ETF",
+                    "amfiCode": "152932",
+                    "latestNav": "13.3456",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty50 Value 20 ETF",
+                    "amfiCode": "139455",
+                    "latestNav": "14.7328",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal BSE Enhanced Value ETF",
+                    "amfiCode": "150517",
+                    "latestNav": "104.9985",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "infrastructure": {
+            "label": "Infrastructure",
+            "description": "Infrastructure sector ETFs",
+            "amfiCodes": {},
+            "keywords": [
+                "infra",
+                "infrastructure"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Infrastructure ETF",
+                    "amfiCode": "150526",
+                    "latestNav": "96.6551",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal BSE India Infrastructure ETF",
+                    "amfiCode": "153564",
+                    "latestNav": "61.0988",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty Infrastructure BeES",
+                    "amfiCode": "140102",
+                    "latestNav": "973.6017",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "equalWeight": {
+            "label": "Equal Weight",
+            "description": "Equal weighted index ETFs",
+            "amfiCodes": {},
+            "keywords": [
+                "equal weight",
+                "equalo"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset BSE 200 Equal Weight ETF Fund of Fund - Direct Plan - Growth",
+                    "amfiCode": "153380",
+                    "latestNav": "11.320",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "DSP Nifty Top 10 Equal Weight ETF",
+                    "amfiCode": "152812",
+                    "latestNav": "101.0862",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Top 15 Equal Weight ETF",
+                    "amfiCode": "153617",
+                    "latestNav": "10.4934",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset BSE 200 Equal Weight ETF",
+                    "amfiCode": "153379",
+                    "latestNav": "13.1997",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty SDL Apr 2026 Top 20 Equal Weight",
+                    "amfiCode": "148798",
+                    "latestNav": "131.7456",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI Nifty50 Equal Weight ETF",
+                    "amfiCode": "152749",
+                    "latestNav": "32.3204",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "metals": {
+            "label": "Metals",
+            "description": "Metal sector ETFs",
+            "amfiCodes": {},
+            "keywords": [
+                "metal"
+            ],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Metal ETF",
+                    "amfiCode": "152769",
+                    "latestNav": "9.5958",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty Metal ETF",
+                    "amfiCode": "152924",
+                    "latestNav": "9.6017",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        },
+        "misc": {
+            "label": "Miscellaneous / Uncategorized",
+            "description": "ETFs that didn't fit other categories or are newly discovered and require manual review.",
+            "amfiCodes": {},
+            "keywords": [],
+            "funds": [
+                {
+                    "symbol": "",
+                    "schemeName": "Axis Nifty AAA Bond Plus SDL Apr 2026 50:50 ETF FOF - Direct Plan - Growth Option",
+                    "amfiCode": "149243",
+                    "latestNav": "12.2487",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "BHARAT Bond ETF FOF - April 2032 Direct Growth",
+                    "amfiCode": "149401",
+                    "latestNav": "12.7493",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "BHARAT Bond ETF FOF - April 2032 Direct Plan Dividend",
+                    "amfiCode": "149402",
+                    "latestNav": "12.7493",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "BHARAT Bond ETF FOF - April 2033 - Direct Plan - Growth",
+                    "amfiCode": "150989",
+                    "latestNav": "12.475",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Groww Nifty 200 ETF FOF - Direct - Growth",
+                    "amfiCode": "153328",
+                    "latestNav": "11.9081",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Groww Nifty EV & New Age Automotive ETF FOF- Direct Plan - Growth",
+                    "amfiCode": "152770",
+                    "latestNav": "9.0284",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Groww Nifty India Defence ETF FOF - Direct Growth",
+                    "amfiCode": "152925",
+                    "latestNav": "12.9329",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential BSE 500 ETF FOF - Direct Plan - Growth",
+                    "amfiCode": "149331",
+                    "latestNav": "16.0912",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential BSE 500 ETF FOF - Growth",
+                    "amfiCode": "149334",
+                    "latestNav": "15.8200",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty EV & New Age Automotive ETF FOF - Direct Plan - Growth",
+                    "amfiCode": "153394",
+                    "latestNav": "11.1812",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty EV & New Age Automotive ETF FOF - Growth",
+                    "amfiCode": "153396",
+                    "latestNav": "11.1703",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset BSE Select IPO ETF Fund of Fund - Direct Plan - Growth",
+                    "amfiCode": "153385",
+                    "latestNav": "12.072",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty India Manufacturing ETF FOF - Direct Plan - Growth",
+                    "amfiCode": "149790",
+                    "latestNav": "18.472",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty200 Alpha 30 ETF Fund of Fund - Direct Plan - Growth",
+                    "amfiCode": "152718",
+                    "latestNav": "9.075",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset NYSE FANG + ETF Fund of Fund Direct Growth",
+                    "amfiCode": "148928",
+                    "latestNav": "29.416",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset S&P 500 Top 50 ETF Fund of Fund Direct Growth",
+                    "amfiCode": "149170",
+                    "latestNav": "19.507",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Axis US Treasury Dynamic Bond ETF Fund of Fund - Direct Plan - Growth Option",
+                    "amfiCode": "152240",
+                    "latestNav": "10.7723",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Developed Market Ex US ETFs Fund of Funds Direct Plan Growth",
+                    "amfiCode": "152090",
+                    "latestNav": "13.6125",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ANGEL ONE NIFTY TOTAL MARKET ETF",
+                    "amfiCode": "153332",
+                    "latestNav": "11.9226",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Axis Nifty AAA Bond Plus SDL Apr 2026 50:50 ETF",
+                    "amfiCode": "148926",
+                    "latestNav": "12.7731",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Bharat Bond ETF - April 2030",
+                    "amfiCode": "147849",
+                    "latestNav": "1518.62",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "BHARAT Bond ETF - April 2032",
+                    "amfiCode": "149398",
+                    "latestNav": "1278.397",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "BHARAT Bond ETF - April 2033",
+                    "amfiCode": "150987",
+                    "latestNav": "1244.141",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "BHARAT Bond ETF April 2025",
+                    "amfiCode": "148444",
+                    "latestNav": "1292.6108",
+                    "navDate": "15-Apr-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "BHARAT Bond ETF- April 2031",
+                    "amfiCode": "148445",
+                    "latestNav": "1359.6865",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Groww Nifty 200 ETF",
+                    "amfiCode": "153329",
+                    "latestNav": "11.5086",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "GROWW NIFTY EV & NEW AGE AUTOMOTIVE ETF",
+                    "amfiCode": "152764",
+                    "latestNav": "29.4228",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Groww Nifty India Defence ETF",
+                    "amfiCode": "152845",
+                    "latestNav": "87.7505",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Groww Nifty India Railways PSU ETF",
+                    "amfiCode": "153229",
+                    "latestNav": "38.7174",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC BSE 500 ETF - Growth Option",
+                    "amfiCode": "151376",
+                    "latestNav": "37.7431",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "HDFC NIFTY GROWTH SECTORS 15 ETF - Growth Option",
+                    "amfiCode": "150621",
+                    "latestNav": "119.2596",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "BHARAT 22 ETF",
+                    "amfiCode": "141957",
+                    "latestNav": "111.1885",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential BSE 500 ETF",
+                    "amfiCode": "143247",
+                    "latestNav": "39.7381",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty 10 yr Benchmark G-sec ETF",
+                    "amfiCode": "151196",
+                    "latestNav": "257.2194",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty 5 yr Benchmark G-SEC ETF",
+                    "amfiCode": "149928",
+                    "latestNav": "62.5217",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Auto ETF",
+                    "amfiCode": "149463",
+                    "latestNav": "24.5402",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty EV & New Age Automotive ETF",
+                    "amfiCode": "153397",
+                    "latestNav": "29.4759",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty FMCG ETF",
+                    "amfiCode": "149072",
+                    "latestNav": "58.6909",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "ICICI Prudential Nifty Oil & Gas ETF",
+                    "amfiCode": "152748",
+                    "latestNav": "11.9310",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak MSCI India ETF",
+                    "amfiCode": "153314",
+                    "latestNav": "30.354",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Nifty Alpha 50 ETF",
+                    "amfiCode": "149397",
+                    "latestNav": "51.3103",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Kotak Nifty MNC ETF",
+                    "amfiCode": "150531",
+                    "latestNav": "29.3831",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "LIC MF Nifty 8-13 yr G-Sec ETF",
+                    "amfiCode": "133307",
+                    "latestNav": "28.3286",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset BSE Select IPO ETF",
+                    "amfiCode": "153384",
+                    "latestNav": "49.2628",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty 200 Alpha 30 ETF",
+                    "amfiCode": "152134",
+                    "latestNav": "25.7913",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty EV and New Age Automotive ETF",
+                    "amfiCode": "152715",
+                    "latestNav": "29.4822",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty Financial Services ETF",
+                    "amfiCode": "149105",
+                    "latestNav": "28.1681",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty India Manufacturing ETF",
+                    "amfiCode": "149786",
+                    "latestNav": "147.1828",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset Nifty500 Multicap 50:25:25 ETF",
+                    "amfiCode": "152811",
+                    "latestNav": "16.5304",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset NYSE FANG + ETF",
+                    "amfiCode": "148927",
+                    "latestNav": "125.5435",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Mirae Asset S&P 500 Top 50 ETF",
+                    "amfiCode": "149169",
+                    "latestNav": "49.7714",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nifty 5 year Benchmark G-sec ETF",
+                    "amfiCode": "148620",
+                    "latestNav": "61.7078",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nifty India Defence ETF",
+                    "amfiCode": "152846",
+                    "latestNav": "96.3928",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nifty India Manufacturing ETF",
+                    "amfiCode": "153572",
+                    "latestNav": "144.5274",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nifty India Tourism ETF",
+                    "amfiCode": "153618",
+                    "latestNav": "92.5567",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nifty PSE ETF",
+                    "amfiCode": "153608",
+                    "latestNav": "100.7819",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Motilal Oswal Nifty Realty ETF",
+                    "amfiCode": "152541",
+                    "latestNav": "99.2485",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "CPSE ETF",
+                    "amfiCode": "140107",
+                    "latestNav": "94.0783",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Hang Seng BeES",
+                    "amfiCode": "140095",
+                    "latestNav": "383.8613",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty 5 yr Benchmark G-Sec",
+                    "amfiCode": "148800",
+                    "latestNav": "62.3086",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India ETF Nifty CPSE Bond Plus SDL Sep2024 50:50",
+                    "amfiCode": "148585",
+                    "latestNav": "124.4652",
+                    "navDate": "30-Sep-2024"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "Nippon India Nifty Auto ETF",
+                    "amfiCode": "149465",
+                    "latestNav": "245.1696",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI BSE 100 ETF",
+                    "amfiCode": "134014",
+                    "latestNav": "294.5655",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI Nifty 10 yr Benchmark G-Sec ETF",
+                    "amfiCode": "139430",
+                    "latestNav": "257.6692",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "SBI NIFTY 1D Rate ETF",
+                    "amfiCode": "152168",
+                    "latestNav": "1000.0000",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "UTI Nifty 10 yr Benchmark G-Sec ETF",
+                    "amfiCode": "152369",
+                    "latestNav": "25.9509",
+                    "navDate": "27-Jun-2025"
+                },
+                {
+                    "symbol": "",
+                    "schemeName": "UTI Nifty 5 yr Benchmark G-Sec ETF",
+                    "amfiCode": "152368",
+                    "latestNav": "62.5736",
+                    "navDate": "27-Jun-2025"
+                }
+            ]
+        }
+    }
+}

@@ -1,4 +1,4 @@
-package broker_connector.broker_connector;
+package com.invom.brokerconnector;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
