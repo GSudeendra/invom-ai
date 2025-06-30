@@ -1,0 +1,1006 @@
+openapi: 3.0.3
+info:
+  title: AI Analyst Financial Analytics API
+  description: |
+    Comprehensive financial analytics system with risk assessment, fund quality evaluation, and portfolio analysis capabilities.
+    
+    ## Features
+    
+    * **Risk Analysis** - Calculate volatility, VaR, drawdown, and other risk metrics
+    * **Quality Evaluation** - Assess financial instrument quality and performance
+    * **Portfolio Analysis** - Analyze portfolio allocation, diversification, and optimization
+    * **Market Data** - Fetch and manage market data from multiple providers
+    * **Intelligence Scoring** - Generate portfolio intelligence scores and recommendations
+    
+    ## Getting Started
+    
+    1. Use the `/docs` endpoint to explore the API interactively
+    2. Use the `/redoc` endpoint for alternative documentation
+    3. All endpoints support async operations for better performance
+    
+    ## Authentication
+    
+    Currently, this API does not require authentication. In production, consider implementing API key authentication.
+    
+    ## Rate Limiting
+    
+    The API implements rate limiting to ensure fair usage. Please respect the rate limits.
+  version: 1.0.0
+  contact:
+    name: AI Analyst Team
+    email: support@ai-analyst.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:7000
+    description: Development server
+  - url: https://api.ai-analyst.com
+    description: Production server
+
+paths:
+  /:
+    get:
+      tags:
+        - Root
+      summary: Root endpoint
+      description: Root endpoint with API information and available endpoints
+      responses:
+        '200':
+          description: API information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "AI Analyst Financial Analytics API"
+                  version:
+                    type: string
+                    example: "1.0.0"
+                  docs:
+                    type: string
+                    example: "/docs"
+                  redoc:
+                    type: string
+                    example: "/redoc"
+                  openapi:
+                    type: string
+                    example: "/openapi.json"
+                  health:
+                    type: string
+                    example: "/health"
+
+  /health:
+    get:
+      tags:
+        - Health
+      summary: Health check
+      description: Health check endpoint to verify API status
+      responses:
+        '200':
+          description: API status information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "healthy"
+                  service:
+                    type: string
+                    example: "AI Analyst Financial Analytics API"
+                  version:
+                    type: string
+                    example: "1.0.0"
+
+  /api/v1/analyze/portfolio:
+    post:
+      tags:
+        - Portfolio Analysis
+      summary: Perform comprehensive portfolio analysis
+      description: |
+        This endpoint analyzes a portfolio of financial instruments and provides
+        risk metrics, quality evaluation, portfolio metrics, and intelligence scoring.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalysisRequest'
+      responses:
+        '200':
+          description: Comprehensive analysis results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalysisResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Analysis failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/analyze/risk:
+    post:
+      tags:
+        - Risk Analysis
+      summary: Perform risk analysis
+      description: |
+        Calculates volatility, VaR, drawdown, beta, Sharpe ratio, and other risk metrics
+        for financial instruments.
+      parameters:
+        - name: symbols
+          in: query
+          required: true
+          description: List of symbols to analyze
+          schema:
+            type: array
+            items:
+              type: string
+            example: ["AAPL", "MSFT", "GOOGL"]
+        - name: period
+          in: query
+          required: false
+          description: Analysis period
+          schema:
+            type: string
+            default: "1y"
+            example: "1y"
+        - name: risk_free_rate
+          in: query
+          required: false
+          description: Risk-free rate for calculations
+          schema:
+            type: number
+            format: float
+            default: 0.02
+            example: 0.02
+      responses:
+        '200':
+          description: Risk analysis results
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/RiskMetrics'
+        '500':
+          description: Analysis failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/analyze/quality:
+    post:
+      tags:
+        - Quality Evaluation
+      summary: Perform quality evaluation
+      description: |
+        Assesses performance consistency, risk-adjusted returns, and financial health
+        for financial instruments.
+      parameters:
+        - name: symbols
+          in: query
+          required: true
+          description: List of symbols to analyze
+          schema:
+            type: array
+            items:
+              type: string
+            example: ["AAPL", "MSFT", "GOOGL"]
+        - name: period
+          in: query
+          required: false
+          description: Analysis period
+          schema:
+            type: string
+            default: "1y"
+            example: "1y"
+        - name: include_fundamentals
+          in: query
+          required: false
+          description: Include fundamental analysis
+          schema:
+            type: boolean
+            default: true
+            example: true
+      responses:
+        '200':
+          description: Quality evaluation results
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/QualityMetrics'
+        '500':
+          description: Analysis failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/analyze/intelligence:
+    post:
+      tags:
+        - Intelligence Scoring
+      summary: Calculate portfolio intelligence score
+      description: |
+        Generates a comprehensive intelligence score based on quality, risk, and diversification.
+      parameters:
+        - name: symbols
+          in: query
+          required: true
+          description: List of portfolio symbols
+          schema:
+            type: array
+            items:
+              type: string
+            example: ["AAPL", "MSFT", "GOOGL"]
+        - name: weights
+          in: query
+          required: false
+          description: Portfolio weights
+          schema:
+            type: array
+            items:
+              type: number
+              format: float
+            example: [0.4, 0.3, 0.3]
+        - name: period
+          in: query
+          required: false
+          description: Analysis period
+          schema:
+            type: string
+            default: "1y"
+            example: "1y"
+      responses:
+        '200':
+          description: Portfolio intelligence analysis
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntelligenceScore'
+        '500':
+          description: Analysis failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/recommendations:
+    get:
+      tags:
+        - Recommendations
+      summary: Generate investment recommendations
+      description: |
+        Provides buy/sell/hold recommendations with confidence levels and reasoning.
+      parameters:
+        - name: symbols
+          in: query
+          required: true
+          description: List of symbols to analyze
+          schema:
+            type: array
+            items:
+              type: string
+            example: ["AAPL", "MSFT", "GOOGL"]
+        - name: analysis_type
+          in: query
+          required: false
+          description: Type of analysis
+          schema:
+            type: string
+            default: "comprehensive"
+            enum: [comprehensive, risk, quality]
+            example: "comprehensive"
+      responses:
+        '200':
+          description: Investment recommendations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recommendation'
+        '500':
+          description: Recommendation generation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/market-data/{symbol}:
+    get:
+      tags:
+        - Market Data
+      summary: Fetch market data
+      description: |
+        Retrieves historical price data from configured data providers.
+      parameters:
+        - name: symbol
+          in: path
+          required: true
+          description: Financial instrument symbol
+          schema:
+            type: string
+            example: "AAPL"
+        - name: period
+          in: query
+          required: false
+          description: Data period
+          schema:
+            type: string
+            default: "1y"
+            example: "1y"
+      responses:
+        '200':
+          description: Historical market data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketData'
+        '500':
+          description: Data retrieval failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/company-info/{symbol}:
+    get:
+      tags:
+        - Market Data
+      summary: Fetch company information
+      description: |
+        Retrieves fundamental data and company details.
+      parameters:
+        - name: symbol
+          in: path
+          required: true
+          description: Financial instrument symbol
+          schema:
+            type: string
+            example: "AAPL"
+      responses:
+        '200':
+          description: Company information
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '500':
+          description: Data retrieval failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/validate-data-quality:
+    post:
+      tags:
+        - Data Quality
+      summary: Validate data quality
+      description: |
+        Checks data completeness, consistency, and accuracy for symbols.
+      parameters:
+        - name: symbols
+          in: query
+          required: true
+          description: List of symbols to validate
+          schema:
+            type: array
+            items:
+              type: string
+            example: ["AAPL", "MSFT", "GOOGL"]
+      responses:
+        '200':
+          description: Data quality validation results
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '500':
+          description: Validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/cache-stats:
+    get:
+      tags:
+        - System
+      summary: Get cache statistics
+      description: |
+        Returns information about cached data and performance.
+      responses:
+        '200':
+          description: Cache statistics
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '500':
+          description: Retrieval failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/cache:
+    delete:
+      tags:
+        - System
+      summary: Clear cache data
+      description: |
+        Clears all cached data or data for a specific symbol.
+      parameters:
+        - name: symbol
+          in: query
+          required: false
+          description: Specific symbol to clear
+          schema:
+            type: string
+            example: "AAPL"
+      responses:
+        '200':
+          description: Clear operation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Cache cleared for AAPL"
+        '500':
+          description: Clear operation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    AnalysisRequest:
+      type: object
+      required:
+        - symbols
+        - analysis_type
+      properties:
+        symbols:
+          type: array
+          items:
+            type: string
+          description: List of symbols to analyze
+          example: ["AAPL", "MSFT", "GOOGL"]
+        analysis_type:
+          type: string
+          enum: [risk, quality, portfolio, intelligence, comprehensive]
+          description: Type of analysis to perform
+          example: "comprehensive"
+        period:
+          type: string
+          description: Analysis period
+          default: "1y"
+          example: "1y"
+        weights:
+          type: array
+          items:
+            type: number
+            format: float
+          description: Portfolio weights
+          example: [0.4, 0.3, 0.3]
+        risk_free_rate:
+          type: number
+          format: float
+          description: Risk-free rate
+          default: 0.02
+          example: 0.02
+        include_benchmark:
+          type: boolean
+          description: Include benchmark comparison
+          default: false
+          example: false
+        benchmark_symbol:
+          type: string
+          description: Benchmark symbol
+          example: "^GSPC"
+
+    AnalysisResponse:
+      type: object
+      required:
+        - request_id
+        - status
+        - data
+        - processing_time
+      properties:
+        request_id:
+          type: string
+          description: Unique request identifier
+          example: "req_123456789"
+        timestamp:
+          type: string
+          format: date-time
+          description: Analysis timestamp
+          example: "2024-01-15T10:30:00Z"
+        status:
+          type: string
+          enum: [success, partial_success, error, processing]
+          description: Analysis status
+          example: "success"
+        data:
+          type: object
+          description: Analysis results
+          additionalProperties: true
+        errors:
+          type: array
+          items:
+            type: string
+          description: Any errors encountered
+          example: []
+        warnings:
+          type: array
+          items:
+            type: string
+          description: Any warnings
+          example: []
+        processing_time:
+          type: number
+          format: float
+          description: Processing time in seconds
+          example: 2.5
+
+    RiskMetrics:
+      type: object
+      required:
+        - volatility
+        - downside_volatility
+        - var_95
+        - var_99
+        - max_drawdown
+        - risk_score
+      properties:
+        volatility:
+          type: number
+          format: float
+          description: Annualized volatility
+          example: 0.25
+        downside_volatility:
+          type: number
+          format: float
+          description: Downside volatility
+          example: 0.18
+        var_95:
+          type: number
+          format: float
+          description: 95% Value at Risk
+          example: -0.02
+        var_99:
+          type: number
+          format: float
+          description: 99% Value at Risk
+          example: -0.035
+        max_drawdown:
+          type: number
+          format: float
+          description: Maximum drawdown
+          example: -0.15
+        risk_score:
+          type: integer
+          minimum: 1
+          maximum: 10
+          description: Risk score 1-10
+          example: 6
+        beta:
+          type: number
+          format: float
+          description: Beta relative to market
+          example: 1.2
+        sharpe_ratio:
+          type: number
+          format: float
+          description: Sharpe ratio
+          example: 1.5
+        sortino_ratio:
+          type: number
+          format: float
+          description: Sortino ratio
+          example: 2.1
+
+    QualityMetrics:
+      type: object
+      required:
+        - symbol
+        - total_return
+        - annual_return
+        - sharpe_ratio
+        - positive_periods_ratio
+        - return_consistency
+        - financial_health_score
+        - quality_score
+        - quality_rating
+      properties:
+        symbol:
+          type: string
+          description: Symbol/ticker
+          example: "AAPL"
+        total_return:
+          type: number
+          format: float
+          description: Total return over period
+          example: 0.25
+        annual_return:
+          type: number
+          format: float
+          description: Annualized return
+          example: 0.15
+        sharpe_ratio:
+          type: number
+          format: float
+          description: Sharpe ratio
+          example: 1.5
+        positive_periods_ratio:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Ratio of positive periods
+          example: 0.65
+        return_consistency:
+          type: number
+          format: float
+          description: Return consistency measure
+          example: 0.75
+        financial_health_score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 10
+          description: Financial health score
+          example: 8.5
+        quality_score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 10
+          description: Overall quality score
+          example: 7.8
+        quality_rating:
+          type: string
+          enum: [Excellent, Good, Average, Below Average, Poor]
+          description: Quality rating
+          example: "Good"
+        market_cap:
+          type: number
+          format: float
+          description: Market capitalization
+          example: 2500000000000
+        pe_ratio:
+          type: number
+          format: float
+          description: P/E ratio
+          example: 25.5
+        debt_to_equity:
+          type: number
+          format: float
+          description: Debt to equity ratio
+          example: 0.15
+
+    PortfolioMetrics:
+      type: object
+      required:
+        - total_value
+        - total_return
+        - annual_return
+        - volatility
+        - sharpe_ratio
+        - max_drawdown
+        - sector_allocations
+        - diversification_score
+        - concentration_risk
+      properties:
+        total_value:
+          type: number
+          format: float
+          description: Total portfolio value
+          example: 100000
+        total_return:
+          type: number
+          format: float
+          description: Total portfolio return
+          example: 0.18
+        annual_return:
+          type: number
+          format: float
+          description: Annualized portfolio return
+          example: 0.12
+        volatility:
+          type: number
+          format: float
+          description: Portfolio volatility
+          example: 0.15
+        sharpe_ratio:
+          type: number
+          format: float
+          description: Portfolio Sharpe ratio
+          example: 1.2
+        max_drawdown:
+          type: number
+          format: float
+          description: Portfolio maximum drawdown
+          example: -0.08
+        sector_allocations:
+          type: array
+          items:
+            $ref: '#/components/schemas/SectorAllocation'
+          description: Sector allocation information
+        diversification_score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 10
+          description: Diversification score
+          example: 7.5
+        concentration_risk:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 10
+          description: Concentration risk score
+          example: 3.2
+
+    SectorAllocation:
+      type: object
+      required:
+        - sector
+        - allocation
+        - value
+        - count
+      properties:
+        sector:
+          type: string
+          description: Sector name
+          example: "Technology"
+        allocation:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+          description: Allocation percentage
+          example: 35.5
+        value:
+          type: number
+          format: float
+          description: Allocated value
+          example: 35500
+        count:
+          type: integer
+          description: Number of instruments in sector
+          example: 5
+
+    IntelligenceScore:
+      type: object
+      required:
+        - portfolio_symbols
+        - average_quality_score
+        - average_risk_score
+        - diversification_score
+        - intelligence_score
+        - intelligence_rating
+        - recommendations
+      properties:
+        portfolio_symbols:
+          type: array
+          items:
+            type: string
+          description: Portfolio symbols
+          example: ["AAPL", "MSFT", "GOOGL"]
+        weights:
+          type: array
+          items:
+            type: number
+            format: float
+          description: Portfolio weights
+          example: [0.4, 0.3, 0.3]
+        average_quality_score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 10
+          description: Average quality score
+          example: 7.8
+        average_risk_score:
+          type: number
+          format: float
+          minimum: 1
+          maximum: 10
+          description: Average risk score
+          example: 5.2
+        diversification_score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 10
+          description: Diversification score
+          example: 7.5
+        intelligence_score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 10
+          description: Overall intelligence score
+          example: 7.2
+        intelligence_rating:
+          type: string
+          enum: [Highly Intelligent, Intelligent, Moderately Intelligent, Below Average, Needs Improvement]
+          description: Intelligence rating
+          example: "Intelligent"
+        recommendations:
+          type: array
+          items:
+            type: string
+          description: Recommendations
+          example: ["Consider increasing diversification", "Monitor high-risk positions"]
+        risk_metrics:
+          $ref: '#/components/schemas/RiskMetrics'
+        quality_metrics:
+          $ref: '#/components/schemas/QualityMetrics'
+
+    Recommendation:
+      type: object
+      required:
+        - symbol
+        - action
+        - confidence
+        - reasoning
+        - risk_level
+        - time_horizon
+      properties:
+        symbol:
+          type: string
+          description: Symbol/ticker
+          example: "AAPL"
+        action:
+          type: string
+          enum: [BUY, SELL, HOLD, STRONG_BUY, STRONG_SELL]
+          description: Recommended action
+          example: "BUY"
+        confidence:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Confidence level
+          example: 0.85
+        reasoning:
+          type: string
+          description: Reasoning for recommendation
+          example: "Strong fundamentals and positive technical indicators"
+        risk_level:
+          type: string
+          enum: [Low, Medium, High, Very High]
+          description: Risk level
+          example: "Medium"
+        time_horizon:
+          type: string
+          description: Recommended time horizon
+          example: "6-12 months"
+        target_price:
+          type: number
+          format: float
+          description: Target price
+          example: 180.0
+        stop_loss:
+          type: number
+          format: float
+          description: Stop loss price
+          example: 150.0
+
+    MarketData:
+      type: object
+      required:
+        - symbol
+        - timestamp
+        - open
+        - high
+        - low
+        - close
+        - volume
+      properties:
+        symbol:
+          type: string
+          description: Symbol/ticker
+          example: "AAPL"
+        timestamp:
+          type: string
+          format: date-time
+          description: Data timestamp
+          example: "2024-01-15T16:00:00Z"
+        open:
+          type: number
+          format: float
+          description: Opening price
+          example: 150.25
+        high:
+          type: number
+          format: float
+          description: High price
+          example: 152.50
+        low:
+          type: number
+          format: float
+          description: Low price
+          example: 149.75
+        close:
+          type: number
+          format: float
+          description: Closing price
+          example: 151.80
+        volume:
+          type: integer
+          description: Trading volume
+          example: 50000000
+        adjusted_close:
+          type: number
+          format: float
+          description: Adjusted closing price
+          example: 151.80
+
+    ErrorResponse:
+      type: object
+      required:
+        - detail
+      properties:
+        detail:
+          type: string
+          description: Error message
+          example: "Analysis failed: Invalid symbols provided"
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for authentication (optional for development)
+
+tags:
+  - name: Root
+    description: Root endpoints
+  - name: Health
+    description: Health check endpoints
+  - name: Portfolio Analysis
+    description: Comprehensive portfolio analysis operations
+  - name: Risk Analysis
+    description: Risk assessment and metrics calculation
+  - name: Quality Evaluation
+    description: Financial instrument quality assessment
+  - name: Intelligence Scoring
+    description: Portfolio intelligence and scoring
+  - name: Recommendations
+    description: Investment recommendations
+  - name: Market Data
+    description: Market data retrieval operations
+  - name: Data Quality
+    description: Data quality validation
+  - name: System
+    description: System management operations 

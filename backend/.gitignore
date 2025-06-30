@@ -112,3 +112,6 @@ invom-ai-frontend/node_modules/
 # Backend
 backend/node_modules/
 backend/dist/
+
+# Nav data
+nav_data/

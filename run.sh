@@ -91,6 +91,9 @@ function wait_for_backend() {
   exit 1
 }
 
+# Set ROOT_DIR to the directory where the script is located
+ROOT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
 # 0. Check and start MongoDB
 if has_cmd mongod; then
   if [ "$(uname)" = "Darwin" ]; then
@@ -168,7 +171,7 @@ FRONTEND_LOG="$LOG_DIR/logs_frontend_$LOG_DATE.log"
 mkdir -p "$LOG_DIR"
 
 # 2. Start backend
-cd backend
+cd "$ROOT_DIR/backend"
 echo -e "${GREEN}==> Starting backend...${NC}"
 if [ ! -d node_modules ] || [ package-lock.json -nt node_modules ]; then
   echo -e "${GREEN}Installing backend dependencies...${NC}"
@@ -178,36 +181,47 @@ npm run start >>"../$BACKEND_LOG" 2>&1 &
 BACKEND_PID=$!
 wait_for_backend
 
-# 3. Start frontend
-cd ../frontend
-echo -e "${GREEN}==> Starting frontend...${NC}"
-if [ ! -d node_modules ] || [ package-lock.json -nt node_modules ]; then
-  echo -e "${GREEN}Installing frontend dependencies...${NC}"
-  npm install
+# 3. Start ai-analyst (Python FastAPI API)
+cd "$ROOT_DIR/ai-analyst"
+AI_ANALYST_LOG="../$LOG_DIR/logs_ai_analyst_$LOG_DATE.log"
+echo -e "${GREEN}==> Starting ai-analyst API (FastAPI, port 3002)...${NC}"
+if [ ! -d venv ] && [ -f requirements.txt ]; then
+  echo -e "${GREEN}Setting up Python virtual environment...${NC}"
+  python3 -m venv venv
+  source venv/bin/activate
+  pip install --upgrade pip
+  pip install -r requirements.txt
+  deactivate
 fi
-npm start >>"../$FRONTEND_LOG" 2>&1 &
-FRONTEND_PID=$!
-sleep 5
+if [ -d venv ]; then
+  source venv/bin/activate
+fi
+chmod +x start.sh
+./start.sh >>"$AI_ANALYST_LOG" 2>&1 &
+AI_ANALYST_PID=$!
+if [ -d venv ]; then
+  deactivate
+fi
+cd ..
 
 # 4. Print summary and instructions
-cd ..
-echo -e "${GREEN}ETF Dashboard started! Backend (port 3001), Frontend (port 4000).${NC}"
-echo -e "${GREEN}To stop: kill $BACKEND_PID $FRONTEND_PID${NC}"
+cd "$ROOT_DIR"
+echo -e "${GREEN}Access your app and services:${NC}\n"
+echo "- Frontend:             http://localhost:4000"
+echo "- Backend:              http://localhost:3001"
+echo "- AI Analyst:           http://localhost:3002"
+echo "- MongoDB:              mongodb://localhost:27017"
+echo "- [Backend] Swagger API Docs:     http://localhost:3001/api-docs/"
+echo "- [ai-analyst] Swagger API Docs:  http://localhost:3002/docs"
 
 # Access instructions
 BACKEND_URL="http://localhost:3001"
 FRONTEND_URL="http://localhost:4000"
+AI_ANALYST_URL="http://localhost:3002"
 MONGO_URL="mongodb://localhost:27017"
 SWAGGER_URL="http://localhost:3001/api-docs/"
 
 cat <<EOM
-
-${GREEN}Access your app and services:${NC}
-
-- Frontend:   		t${FRONTEND_URL}
-- Backend:    		t${BACKEND_URL}
-- MongoDB:    		${MONGO_URL}
-- Swagger API Docs: 	${SWAGGER_URL}
 
 ${GREEN}MongoDB Access Options:${NC}
 - MongoDB Compass:  Open Compass and connect to ${MONGO_URL}
@@ -218,12 +232,23 @@ ${GREEN}Backend API Example:${NC}
 - List high liquidity ETFs:  ${BACKEND_URL}/api/etfs/high-liquidity
 
 ${GREEN}To stop all services:${NC}
-- kill $BACKEND_PID $FRONTEND_PID
+- kill $BACKEND_PID $AI_ANALYST_PID $FRONTEND_PID
 - If using Docker: docker-compose down
 
 EOM
 
-# 5. Open frontend in browser only once, at the end
+# 5. Start frontend (React app)
+cd "$ROOT_DIR/frontend"
+if [ ! -d node_modules ] || [ package-lock.json -nt node_modules ]; then
+  echo -e "${GREEN}Installing frontend dependencies...${NC}"
+  npm install
+fi
+npm start >>"../$FRONTEND_LOG" 2>&1 &
+FRONTEND_PID=$!
+sleep 5
+cd ..
+
+# 6. Open frontend in browser only once, at the end
 BROWSER_LOCK=".frontend_browser_opened"
 if [ ! -f "$BROWSER_LOCK" ]; then
 if command -v open >/dev/null; then
@@ -234,15 +259,17 @@ elif command -v xdg-open >/dev/null; then
   touch "$BROWSER_LOCK"
 fi
 
-# 6. Final console log with decorative borders
+# 7. Final console log with decorative borders
 echo ""
 echo "_______________________________________"
 echo "________________________________________"
 echo "_________________________________________"
 echo "- Frontend:   http://localhost:4000"
 echo "- Backend:    http://localhost:3001"
+echo "- AI Analyst:  http://localhost:3002"
 echo "- MongoDB:    mongodb://localhost:27017"
-echo "- Swagger API Docs:  http://localhost:3001/api-docs/"
+echo "- [Backend] Swagger API Docs:  http://localhost:3001/api-docs/"
+echo "- [ai-analyst] Swagger API Docs:  http://localhost:3002/docs"
 echo "_________________________________________"
 echo "________________________________________"
 echo "_______________________________________"
@@ -250,6 +277,7 @@ echo ""
 echo -e "${GREEN}Application logs are available at:${NC}"
 echo -e "${YELLOW}logs/logs_backend_$LOG_DATE.log${NC} - Backend logs"
 echo -e "${YELLOW}logs/logs_frontend_$LOG_DATE.log${NC} - Frontend logs"
+echo -e "${YELLOW}logs/logs_ai_analyst_$LOG_DATE.log${NC} - AI Analyst logs"
 echo ""
 echo -e "${GREEN}Additional suggestions:${NC}"
 echo -e "${YELLOW}• Monitor logs in real-time: tail -f logs/logs_backend_$LOG_DATE.log${NC}"
@@ -257,4 +285,4 @@ echo -e "${YELLOW}• Check for errors: grep -i error logs/logs_backend_$LOG_DAT
 echo -e "${YELLOW}• View recent logs: ls -la logs/ | tail -5${NC}"
 echo ""
 
-wait $BACKEND_PID $FRONTEND_PID 
+wait $BACKEND_PID $AI_ANALYST_PID $FRONTEND_PID 

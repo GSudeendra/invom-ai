@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  ai-analyst-api:
+    build: .
+    container_name: ai-analyst-api
+    ports:
+      - "3002:3002"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3002
+      - RELOAD=false
+      - LOG_LEVEL=info
+      - CACHE_TTL=300
+      - DEFAULT_RISK_FREE_RATE=0.02
+      - DEFAULT_ANALYSIS_PERIOD=1y
+    volumes:
+      - ./cache:/app/cache
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - ai-analyst-network
+
+  # Optional: Add Redis for caching (uncomment if needed)
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: ai-analyst-redis
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis_data:/data
+  #   restart: unless-stopped
+  #   networks:
+  #     - ai-analyst-network
+
+networks:
+  ai-analyst-network:
+    driver: bridge
+
+# volumes:
+#   redis_data: 
